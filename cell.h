@@ -5,7 +5,9 @@
 class Cell
 {
 public:
-    Cell();
+    Cell(bool state);
+private:
+    bool _state;
 };
 
 #endif // CELL_H
