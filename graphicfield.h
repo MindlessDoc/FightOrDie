@@ -7,10 +7,13 @@
 class GraphicField : public QGraphicsItem
 {
 public:
-    GraphicField(int heightInCells, int widthInCells);
+    GraphicField(int heightInCells, int widthInCells, Cell*** cells);
 private:
     int _heightInCells;
     int _widthInCells;
+
+    Cell*** _cells;
+
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     QRectF boundingRect() const;
 };

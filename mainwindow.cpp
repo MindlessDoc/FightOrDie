@@ -29,6 +29,7 @@ void MainWindow::DrawField(GraphicField* graphicfield)
 
 MainWindow::~MainWindow()
 {
+    delete scene;
     delete ui;
 }
 

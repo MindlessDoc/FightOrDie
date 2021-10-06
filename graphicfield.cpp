@@ -1,9 +1,11 @@
 #include "graphicfield.h"
 
-GraphicField::GraphicField(int heightInCells, int widthInCells)
+GraphicField::GraphicField(int heightInCells, int widthInCells, Cell*** cells)
 {
     _heightInCells = heightInCells;
     _widthInCells = widthInCells;
+
+    _cells = cells;
 }
 
 void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -18,7 +20,7 @@ void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     {
         for(int j = 0; j < _widthInCells; j++)
         {
-            painter->drawRect(j * widthCell, i * heightCell, (j + 1) * widthCell, (i + 1) * heightCell);
+            _cells[i][j]->DrawCell(painter, j * widthCell, i * heightCell, (j + 1) * widthCell, (i + 1) * heightCell);
         }
     }
 

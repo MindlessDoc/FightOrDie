@@ -8,10 +8,16 @@ class Field
 {
 public:
     Field(int heightInCells, int widthInCells);
+    ~Field();
 private:
     int _heightInCells;
     int _widthInCells;
+
     Cell*** _cells;
+
+//    Cell* _entrance;
+//    Cell* _exit;
+
     MainWindow* _mainWindow;
     GraphicField* _graphicField;
 };
