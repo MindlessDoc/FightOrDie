@@ -10,11 +10,15 @@ CONFIG += c++11
 
 SOURCES += \
     cell.cpp \
+    field.cpp \
+    graphicfield.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     cell.h \
+    field.h \
+    graphicfield.h \
     mainwindow.h
 
 FORMS += \
