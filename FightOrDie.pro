@@ -12,6 +12,7 @@ SOURCES += \
     cell.cpp \
     field.cpp \
     graphicfield.cpp \
+    ientity.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -19,6 +20,7 @@ HEADERS += \
     cell.h \
     field.h \
     graphicfield.h \
+    ientity.h \
     mainwindow.h
 
 FORMS += \
