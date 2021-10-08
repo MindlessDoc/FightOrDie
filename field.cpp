@@ -33,8 +33,9 @@ Field::Field(int heightInCells, int widthInCells)
 
 Field::~Field()
 {
-    delete _mainWindow;
     delete _graphicField;
+    delete _mainWindow;
+
 
     for(int i = 0; i < _heightInCells; i++)
     {
