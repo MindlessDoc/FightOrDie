@@ -3,6 +3,7 @@
 
 #include<QPainter>
 #include"ientity.h"
+#include<memory>
 
 enum CellState
 {
@@ -15,6 +16,7 @@ enum CellState
 class Cell
 {
 public:
+    Cell();
     Cell(int state);
     ~Cell();
 
@@ -31,7 +33,7 @@ private:
     QPen _pen;
     QBrush _brush;
 
-    IEntity* _item;
+    std::shared_ptr<IEntity> _item;
 };
 
 #endif // CELL_H

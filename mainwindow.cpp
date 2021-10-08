@@ -22,9 +22,9 @@ MainWindow::MainWindow(int height, int width,  QWidget *parent)
 }
 
 
-void MainWindow::DrawField(GraphicField* graphicfield)
+void MainWindow::DrawField(std::shared_ptr<GraphicField> graphicfield)
 {
-    scene->addItem(graphicfield);
+    scene->addItem(graphicfield.get());
 }
 
 MainWindow::~MainWindow()

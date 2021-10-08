@@ -12,14 +12,13 @@ public:
 private:
     int _heightInCells;
     int _widthInCells;
-
-    Cell*** _cells;
+    std::shared_ptr<std::shared_ptr<Cell[]>[]> _cells;
 
 //    Cell* _entrance;
 //    Cell* _exit;
 
-    MainWindow* _mainWindow;
-    GraphicField* _graphicField;
+    std::shared_ptr<MainWindow> _mainWindow;
+    std::shared_ptr<GraphicField> _graphicField;
 };
 
 #endif // FIELD_H

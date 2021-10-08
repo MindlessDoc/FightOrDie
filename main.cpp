@@ -6,6 +6,6 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Field field(6, 24);
+    Field field(5, 5);
     return a.exec();
 }

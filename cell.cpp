@@ -23,6 +23,11 @@ Cell::Cell(int state)
     }
 }
 
+Cell::Cell()
+{
+
+}
+
 Cell::~Cell()
 {
 

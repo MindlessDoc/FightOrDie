@@ -1,11 +1,11 @@
 #include "graphicfield.h"
 
-GraphicField::GraphicField(int heightInCells, int widthInCells, Cell*** cells)
+GraphicField::GraphicField(int heightInCells, int widthInCells, std::shared_ptr<std::shared_ptr<Cell[]>[]> cells)
 {
     _heightInCells = heightInCells;
     _widthInCells = widthInCells;
 
-    _cells = cells;
+    _cells = std::shared_ptr<std::shared_ptr<Cell[]>[]>(cells);
 }
 
 void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -20,7 +20,7 @@ void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     {
         for(int j = 0; j < _widthInCells; j++)
         {
-            _cells[i][j]->DrawCell(painter, j * widthCell, i * heightCell, (j + 1) * widthCell, (i + 1) * heightCell);
+            _cells[i][j].DrawCell(painter, j * widthCell, i * heightCell, (j + 1) * widthCell, (i + 1) * heightCell);
         }
     }
 

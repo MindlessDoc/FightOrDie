@@ -7,15 +7,15 @@
 class GraphicField : public QGraphicsItem
 {
 public:
-    GraphicField(int heightInCells, int widthInCells, Cell*** cells);
+    GraphicField(int heightInCells, int widthInCells, std::shared_ptr<std::shared_ptr<Cell[]>[]> cells);
 private:
     int _heightInCells;
     int _widthInCells;
 
-    Cell*** _cells;
+    std::shared_ptr<std::shared_ptr<Cell[]>[]> _cells;
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+    QRectF boundingRect() const override;
 };
 
 #endif // GRAPHICFIELD_H

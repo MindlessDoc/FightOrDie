@@ -16,11 +16,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(int height, int width, QWidget *parent = nullptr);
     ~MainWindow();
-    void DrawField(GraphicField* graphicfield);
+    void DrawField(std::shared_ptr<GraphicField> graphicfield);
 
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene* scene;
+    QGraphicsScene *scene;
     int _height;
     int _width;
 };
