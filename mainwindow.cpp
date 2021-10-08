@@ -9,7 +9,7 @@ MainWindow::MainWindow(int height, int width,  QWidget *parent)
 {
     ui->setupUi(this);
 
-    this->setFixedSize(_width + 20, _height + 20);
+    setFixedSize(_width + 20, _height + 20);
 
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);

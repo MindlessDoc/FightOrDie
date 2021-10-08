@@ -4,6 +4,7 @@
 #include<QPainter>
 #include"ientity.h"
 #include<memory>
+#include<iostream>
 
 enum CellState
 {

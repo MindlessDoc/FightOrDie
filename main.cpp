@@ -6,6 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    GraphicField field(50, 50, 5, 5);
+    Field field(70, 70, 5, 5);
+    Field field_2 = field;
     return a.exec();
 }

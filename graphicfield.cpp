@@ -5,6 +5,7 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
     : Field(heightOfCell, widthOfCell, heightInCells, widthInCells)
 {
     _mainWindow = std::shared_ptr<MainWindow>(new MainWindow(_heightInCells * _heightOfCell, _widthInCells * _widthOfCell));
+    _mainWindow->setWindowTitle("Game field");
     _mainWindow->DrawField(this);
     _mainWindow->show();
 }
