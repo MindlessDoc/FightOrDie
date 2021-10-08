@@ -7,8 +7,12 @@ class Field
 public:
     Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells);
     ~Field();
+
     Field(const Field& other);
     Field& operator=(const Field& other) = delete;
+
+    Field(Field&& other);
+    Field& operator=(Field&& other) = delete;
 
 protected:
     const int _heightOfCell;

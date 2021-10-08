@@ -47,3 +47,12 @@ Field::Field(const Field& other)
         }
     }
 }
+
+Field::Field(Field&& other)
+    : _heightOfCell(other._heightOfCell)
+    , _widthOfCell(other._widthOfCell)
+    , _heightInCells(other._heightInCells)
+    , _widthInCells(other._widthInCells)
+{
+    _cells = other._cells;
+}
