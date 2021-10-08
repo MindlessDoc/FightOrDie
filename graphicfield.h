@@ -1,18 +1,15 @@
 #ifndef GRAPHICFIELD_H
 #define GRAPHICFIELD_H
-#include<QGraphicsItem>
-#include<QPainter>
-#include "cell.h"
 
-class GraphicField : public QGraphicsItem
+#include"mainwindow.h"
+#include "field.h"
+
+class GraphicField : public QGraphicsItem, public Field
 {
 public:
-    GraphicField(int heightInCells, int widthInCells, std::shared_ptr<std::shared_ptr<Cell[]>[]> cells);
+    GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells);
 private:
-    int _heightInCells;
-    int _widthInCells;
-
-    std::shared_ptr<std::shared_ptr<Cell[]>[]> _cells;
+    std::shared_ptr<MainWindow> _mainWindow;
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;

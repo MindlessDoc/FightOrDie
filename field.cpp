@@ -1,10 +1,12 @@
 #include "field.h"
 
-Field::Field(int heightInCells, int widthInCells)
+Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
+    : _heightOfCell(heightOfCell),
+      _widthOfCell(widthOfCell),
+      _heightInCells(heightInCells),
+      _widthInCells(widthInCells)
 {
-    _heightInCells = heightInCells;
-    _widthInCells = widthInCells;
-    _mainWindow = std::shared_ptr<MainWindow>(new MainWindow(_heightInCells * Cell::GetHeight(), _widthInCells * Cell::GetWidth()));
+
 
     _cells = std::shared_ptr<std::shared_ptr<Cell[]>[]>(new std::shared_ptr<Cell[]>[_heightInCells]);
 
@@ -21,15 +23,9 @@ Field::Field(int heightInCells, int widthInCells)
                 _cells[i][j] = Cell(WAY);
         }
     }
-
-    _graphicField = std::shared_ptr<GraphicField>(new GraphicField(_heightInCells, _widthInCells, _cells));
-
-//    _entrance = _cells[0][0];
-//    _exit = _cells[_heightInCells - 1][_widthInCells - 1];
-
-    _mainWindow->DrawField(_graphicField);
-    _mainWindow->show();
 }
+
+
 
 Field::~Field()
 {

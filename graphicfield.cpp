@@ -1,18 +1,16 @@
 #include "graphicfield.h"
 
-GraphicField::GraphicField(int heightInCells, int widthInCells, std::shared_ptr<std::shared_ptr<Cell[]>[]> cells)
-{
-    _heightInCells = heightInCells;
-    _widthInCells = widthInCells;
 
-    _cells = std::shared_ptr<std::shared_ptr<Cell[]>[]>(cells);
+GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
+    : Field(heightOfCell, widthOfCell, heightInCells, widthInCells)
+{
+    _mainWindow = std::shared_ptr<MainWindow>(new MainWindow(_heightInCells * _heightOfCell, _widthInCells * _widthOfCell));
+    _mainWindow->DrawField(this);
+    _mainWindow->show();
 }
 
 void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    int heightCell = Cell::GetHeight();
-    int widthCell = Cell::GetWidth();
-
     painter->setPen(QPen(Qt::black, 1.0));
     painter->setBrush(QBrush(Qt::green));
 
@@ -20,7 +18,7 @@ void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     {
         for(int j = 0; j < _widthInCells; j++)
         {
-            _cells[i][j].DrawCell(painter, j * widthCell, i * heightCell, (j + 1) * widthCell, (i + 1) * heightCell);
+            _cells[i][j].DrawCell(painter, j * _widthOfCell, i * _heightOfCell, (j + 1) * _widthOfCell, (i + 1) * _heightOfCell);
         }
     }
 

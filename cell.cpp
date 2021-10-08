@@ -40,12 +40,3 @@ void Cell::DrawCell(QPainter *painter, int leftUpX, int leftUpY, int rightDownX,
     painter->drawRect(leftUpX, leftUpY, rightDownX, rightDownY);
 }
 
-int Cell::GetHeight()
-{
-    return _height;
-}
-int Cell::GetWidth()
-{
-    return _width;
-}
-

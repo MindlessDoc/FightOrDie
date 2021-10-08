@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
-#include "graphicfield.h"
+#include "QGraphicsItem"
+#include "ui_mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,7 +17,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(int height, int width, QWidget *parent = nullptr);
     ~MainWindow();
-    void DrawField(std::shared_ptr<GraphicField> graphicfield);
+    void DrawField(QGraphicsItem* graphicfield);
 
 private:
     Ui::MainWindow *ui;

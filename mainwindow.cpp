@@ -1,6 +1,4 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include<QGraphicsScene>
 
 
 MainWindow::MainWindow(int height, int width,  QWidget *parent)
@@ -22,9 +20,9 @@ MainWindow::MainWindow(int height, int width,  QWidget *parent)
 }
 
 
-void MainWindow::DrawField(std::shared_ptr<GraphicField> graphicfield)
+void MainWindow::DrawField(QGraphicsItem* graphicfield)
 {
-    scene->addItem(graphicfield.get());
+    scene->addItem(graphicfield);
 }
 
 MainWindow::~MainWindow()
