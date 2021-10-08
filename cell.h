@@ -20,7 +20,8 @@ public:
     Cell(int state);
     ~Cell();
 
-    void DrawCell(QPainter *painter, int leftUpX, int leftUpY, int rightDownX, int rightDownY);
+    void DrawCell(QPainter *painter, int leftUpX, int leftUpY,
+                  int rightDownX, int rightDownY);
 
 private:
     int _state;

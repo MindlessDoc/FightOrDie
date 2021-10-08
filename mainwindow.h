@@ -22,7 +22,8 @@ public:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    int _height;
-    int _width;
+
+    const int _height;
+    const int _width;
 };
 #endif // MAINWINDOW_H

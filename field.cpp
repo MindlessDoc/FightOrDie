@@ -1,10 +1,10 @@
 #include "field.h"
 
 Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
-    : _heightOfCell(heightOfCell),
-      _widthOfCell(widthOfCell),
-      _heightInCells(heightInCells),
-      _widthInCells(widthInCells)
+    : _heightOfCell(heightOfCell)
+    , _widthOfCell(widthOfCell)
+    , _heightInCells(heightInCells)
+    , _widthInCells(widthInCells)
 {
 
 

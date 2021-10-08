@@ -4,10 +4,10 @@
 MainWindow::MainWindow(int height, int width,  QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , _height(height)
+    , _width(width)
 {
     ui->setupUi(this);
-    _width = width;
-    _height = height;
 
     this->setFixedSize(_width + 20, _height + 20);
 

@@ -33,7 +33,7 @@ Cell::~Cell()
 
 }
 
-void Cell::DrawCell(QPainter *painter, int leftUpX, int leftUpY, int rightDownX, int rightDownY)
+void Cell::DrawCell(QPainter *painter, const int leftUpX, const int leftUpY, const int rightDownX, const int rightDownY)
 {
     painter->setPen(_pen);
     painter->setBrush(_brush);
