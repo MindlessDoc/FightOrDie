@@ -9,6 +9,10 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
     _mainWindow->DrawField(this);
     _mainWindow->show();
 }
+GraphicField::~GraphicField()
+{
+
+}
 
 void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {

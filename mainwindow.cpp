@@ -27,7 +27,6 @@ void MainWindow::DrawField(QGraphicsItem* graphicfield)
 
 MainWindow::~MainWindow()
 {
-    delete scene;
     delete ui;
 }
 

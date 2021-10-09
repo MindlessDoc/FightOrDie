@@ -55,4 +55,5 @@ Field::Field(Field&& other)
     , _widthInCells(other._widthInCells)
 {
     _cells = other._cells;
+    other._cells.reset();
 }
