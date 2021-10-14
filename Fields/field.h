@@ -14,12 +14,13 @@ public:
     Field(Field&& other);
     Field& operator=(Field&& other) = delete;
 
-protected:
-    const int _heightOfCell;
-    const int _widthOfCell;
 
-    const int _heightInCells;
-    const int _widthInCells;
+protected:
+    int _heightOfCell;
+    int _widthOfCell;
+
+    int _heightInCells;
+    int _widthInCells;
 
     std::shared_ptr<std::shared_ptr<Cell[]>[]> _cells;
 

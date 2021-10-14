@@ -6,8 +6,6 @@ Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCe
     , _heightInCells(heightInCells)
     , _widthInCells(widthInCells)
 {
-
-
     _cells = std::shared_ptr<std::shared_ptr<Cell[]>[]>(new std::shared_ptr<Cell[]>[_heightInCells]);
 
     for(int i = 0; i < _heightInCells; i++)

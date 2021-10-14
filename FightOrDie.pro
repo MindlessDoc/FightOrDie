@@ -8,20 +8,42 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+
 SOURCES += \
-    cell.cpp \
+    Application/main.cpp \
+    Application/mainwindow.cpp \
+    Cells/cell.cpp \
+    Cells/exit.cpp \
+    Cells/graphiccell.cpp \
+    Cells/way.cpp \
+    Entities/ientity.cpp \
+    Fields/field.cpp \
+    Fields/graphicfield.cpp \
+    exit.cpp \
     field.cpp \
+    graphiccell.cpp \
     graphicfield.cpp \
     ientity.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    way.cpp
 
 HEADERS += \
-    cell.h \
+    Application/mainwindow.h \
+    Cells/cell.h \
+    Cells/exit.h \
+    Cells/graphiccell.h \
+    Cells/way.h \
+    Entities/ientity.h \
+    Fields/field.h \
+    Fields/graphicfield.h \
+    exit.h \
     field.h \
+    graphiccell.h \
     graphicfield.h \
     ientity.h \
-    mainwindow.h
+    mainwindow.h \
+    way.h
 
 FORMS += \
     mainwindow.ui
