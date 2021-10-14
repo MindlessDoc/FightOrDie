@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 #include <QApplication>
-#include "graphicfield.h"
+#include "Fields/graphicfield.h"
 
 int main(int argc, char *argv[])
 {

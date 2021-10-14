@@ -13,37 +13,25 @@ SOURCES += \
     Application/main.cpp \
     Application/mainwindow.cpp \
     Cells/cell.cpp \
+    Cells/entrance.cpp \
     Cells/exit.cpp \
     Cells/graphiccell.cpp \
     Cells/way.cpp \
     Entities/ientity.cpp \
     Fields/field.cpp \
     Fields/graphicfield.cpp \
-    exit.cpp \
-    field.cpp \
-    graphiccell.cpp \
-    graphicfield.cpp \
-    ientity.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    way.cpp
+
 
 HEADERS += \
     Application/mainwindow.h \
     Cells/cell.h \
+    Cells/entrance.h \
     Cells/exit.h \
     Cells/graphiccell.h \
     Cells/way.h \
     Entities/ientity.h \
     Fields/field.h \
     Fields/graphicfield.h \
-    exit.h \
-    field.h \
-    graphiccell.h \
-    graphicfield.h \
-    ientity.h \
-    mainwindow.h \
-    way.h
 
 FORMS += \
     mainwindow.ui

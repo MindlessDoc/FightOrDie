@@ -2,13 +2,15 @@
 #define GRAPHICCELL_H
 
 #include<QPainter>
+#include "cell.h"
 
-class GraphicCell
+class GraphicCell : public Cell
 {
 public:
-    GraphicCell();
+    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, QPen pen, QBrush brush);
+    GraphicCell() = default;
 
-    void DrawCell(QPainter *painter, int leftUpX, int leftUpY, int rightDownX, int rightDownY);
+    void DrawCell(QPainter *painter);
 
 private:
     QPen _pen;

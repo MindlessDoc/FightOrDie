@@ -1,14 +1,16 @@
 #include "graphiccell.h"
 
-GraphicCell::GraphicCell()
+GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, QPen pen, QBrush brush)
+    : Cell(leftUpX, leftUpY, rightDownX, rightDownY)
+    , _pen(pen)
+    , _brush(brush)
 {
 
 }
-
-void Cell::DrawCell(QPainter *painter, const int leftUpX, const int leftUpY, const int rightDownX, const int rightDownY)
+void GraphicCell::DrawCell(QPainter *painter)
 {
     painter->setPen(_pen);
     painter->setBrush(_brush);
-    painter->drawRect(leftUpX, leftUpY, rightDownX, rightDownY);
+    painter->drawRect(GetLeftUpX(), GetLeftUpY(), GetRightDownX(), GetRightDownY());
 }
 

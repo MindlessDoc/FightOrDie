@@ -1,7 +1,7 @@
 #ifndef GRAPHICFIELD_H
 #define GRAPHICFIELD_H
 
-#include"mainwindow.h"
+#include"Application/mainwindow.h"
 #include "field.h"
 
 class GraphicField : public QGraphicsItem, public Field

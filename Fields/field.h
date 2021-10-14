@@ -1,6 +1,9 @@
 #ifndef FIELD_H
 #define FIELD_H
-#include "cell.h"
+
+#include "Cells/entrance.h"
+#include "Cells/exit.h"
+#include "Cells/way.h"
 
 class Field
 {
@@ -14,15 +17,21 @@ public:
     Field(Field&& other);
     Field& operator=(Field&& other) = delete;
 
+    int GetHeightOfCell();
+    int GetWidthOfCell();
 
-protected:
+    int GetHeightInCells();
+    int GetWidthInCells();
+
+
+private:
     int _heightOfCell;
     int _widthOfCell;
 
     int _heightInCells;
     int _widthInCells;
-
-    std::shared_ptr<std::shared_ptr<Cell[]>[]> _cells;
+protected:
+    std::shared_ptr<std::shared_ptr<Cell[]>[]> _cells; // Will think how to make it private
 
 //    Cell* _entrance;
 //    Cell* _exit;

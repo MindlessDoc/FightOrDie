@@ -2,32 +2,24 @@
 #define CELL_H
 
 #include<QPainter>
-#include"ientity.h"
+#include"Entities/ientity.h"
 #include<memory>
 #include<iostream>
-
-enum CellState
-{
-    ENTRANCE,
-    EXIT,
-    BARRIER,
-    WAY
-};
 
 class Cell
 {
 public:
-    Cell();
-    Cell(int state);
+    Cell(int leftUpX, int leftUpY, int rightDownX, int rightDownY);
+    Cell() = default;
     ~Cell();
 
-    void DrawCell(QPainter *painter, int leftUpX, int leftUpY,
-                  int rightDownX, int rightDownY);
+    int GetLeftUpX();
+    int GetLeftUpY();
+    int GetRightDownX();
+    int GetRightDownY();
 
 private:
-    int _state;
-    QPen _pen;
-    QBrush _brush;
+    int _leftUpX, _leftUpY, _rightDownX, _rightDownY;
 
     std::shared_ptr<IEntity> _item;
 };
