@@ -31,7 +31,7 @@ private:
     int _heightInCells;
     int _widthInCells;
 protected:
-    std::shared_ptr<std::shared_ptr<Cell[]>[]> _cells; // Will think how to make it private
+    std::shared_ptr<std::shared_ptr<Cell*[]>[]> _cells; // Will think how to make it private
 
 //    Cell* _entrance;
 //    Cell* _exit;
