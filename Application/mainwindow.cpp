@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 
 
-MainWindow::MainWindow(int height, int width,  QWidget *parent)
+MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , _height(height)
-    , _width(width)
+    , _height(heightOfCell * heightInCells)
+    , _width(widthOfCell * widthInCells)
+    , _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells)
 {
     ui->setupUi(this);
 
@@ -17,6 +18,9 @@ MainWindow::MainWindow(int height, int width,  QWidget *parent)
     //ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    setWindowTitle("Game field");
+    DrawField(&_graphicField);
 }
 
 

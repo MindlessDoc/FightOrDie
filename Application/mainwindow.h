@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 #include "QGraphicsItem"
 #include "ui_mainwindow.h"
+#include "Fields/graphicfield.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,15 +16,18 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(int height, int width, QWidget *parent = nullptr);
+    MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells, QWidget *parent = nullptr);
     ~MainWindow();
+
     void DrawField(QGraphicsItem* graphicfield);
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
 
-    const int _height;
-    const int _width;
+    int _height;
+    int _width;
+
+    GraphicField _graphicField;
 };
 #endif // MAINWINDOW_H

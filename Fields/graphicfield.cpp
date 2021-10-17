@@ -16,11 +16,6 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
                 _cells[i][j] = new Way(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell());
         }
     }
-
-    _mainWindow = std::shared_ptr<MainWindow>(new MainWindow(GetHeightInCells() * GetHeightOfCell(), GetWidthInCells() * GetWidthOfCell()));
-    _mainWindow->setWindowTitle("Game field");
-    _mainWindow->DrawField(this);
-    _mainWindow->show();
 }
 GraphicField::~GraphicField()
 {

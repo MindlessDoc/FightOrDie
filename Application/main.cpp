@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 
 #include <QApplication>
-#include "Fields/graphicfield.h"
+#include "Application/mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    GraphicField field(70, 70, 7, 5);
+    MainWindow mainWindow(70, 70, 8, 5);
+    mainWindow.show();
     return a.exec();
 }
