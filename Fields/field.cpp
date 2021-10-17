@@ -6,18 +6,22 @@ Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCe
     , _heightInCells(heightInCells)
     , _widthInCells(widthInCells)
 {
-    _cells = std::shared_ptr<std::shared_ptr<Cell*[]>[]>(new std::shared_ptr<Cell*[]>[_heightInCells]);
+    _cells = new Cell**[_heightInCells];
 
     // Just memory allocation
     for(int i = 0; i < _heightInCells; i++)
     {
-        _cells[i] = std::shared_ptr<Cell*[]>(new Cell*[_widthInCells]);
+        _cells[i] =  new Cell*[_widthInCells];
     }
 }
 
 Field::~Field()
 {
-
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        delete[] _cells[i];
+    }
+    delete[] _cells;
 }
 
 Field::Field(const Field& other)
@@ -26,16 +30,37 @@ Field::Field(const Field& other)
     , _heightInCells(other._heightInCells)
     , _widthInCells(other._widthInCells)
 {
-    _cells = std::shared_ptr<std::shared_ptr<Cell*[]>[]>(new std::shared_ptr<Cell*[]>[_heightInCells]);
+    _cells = new Cell**[_heightInCells];
 
     for(int i = 0; i < _heightInCells; i++)
     {
-        _cells[i] = std::shared_ptr<Cell*[]>(new Cell*[_widthInCells]);
+        _cells[i] =  new Cell*[_widthInCells];
         for(int j = 0; j < _widthInCells; j++)
         {
-                *_cells[i][j] = *other._cells[i][j];
+            *_cells[i][j] = *other._cells[i][j];
         }
     }
+}
+
+Field& Field::operator=(const Field &other)
+{
+    _heightOfCell = other._heightOfCell;
+    _widthOfCell = other._widthOfCell;
+    _heightInCells = other._heightInCells;
+    _widthInCells = other._widthInCells;
+
+    _cells = new Cell**[_heightInCells];
+
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        _cells[i] =  new Cell*[_widthInCells];
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            *_cells[i][j] = *other._cells[i][j];
+        }
+    }
+
+    return *this;
 }
 
 Field::Field(Field&& other)
@@ -45,7 +70,7 @@ Field::Field(Field&& other)
     , _widthInCells(other._widthInCells)
 {
     _cells = other._cells;
-    other._cells.reset();
+    //other._cells.reset();
 }
 
 int Field::GetHeightOfCell() { return _heightOfCell; }

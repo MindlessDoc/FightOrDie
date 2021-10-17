@@ -19,3 +19,23 @@ GraphicCell::~GraphicCell()
 
 }
 
+GraphicCell::GraphicCell(const GraphicCell& other)
+    : Cell(other._leftUpX, other._leftUpY, other._rightDownX, other._rightDownY)
+    , _pen(other._pen)
+    , _brush(other._brush)
+{
+
+}
+
+GraphicCell& GraphicCell::operator=(const GraphicCell& other)
+{
+    _leftUpX = other._leftUpX;
+    _leftUpY = other._leftUpY;
+    _rightDownX = other._rightDownX;
+    _rightDownY = other._rightDownY;
+    _pen = other._pen;
+    _brush = other._brush;
+
+    return *this;
+}
+

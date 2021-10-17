@@ -12,7 +12,7 @@ public:
     virtual ~Field();
 
     Field(const Field& other);
-    Field& operator=(const Field& other) = delete;
+    Field& operator=(const Field& other);
 
     Field(Field&& other);
     Field& operator=(Field&& other) = delete;
@@ -23,15 +23,14 @@ public:
     int GetHeightInCells();
     int GetWidthInCells();
 
-
-private:
+protected:
     int _heightOfCell;
     int _widthOfCell;
 
     int _heightInCells;
     int _widthInCells;
-protected:
-    std::shared_ptr<std::shared_ptr<Cell*[]>[]> _cells; // Will think how to make it private
+
+    Cell*** _cells; // Will think how to make it private
 
 //    Cell* _entrance;
 //    Cell* _exit;

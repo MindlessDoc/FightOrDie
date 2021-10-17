@@ -11,6 +11,9 @@ public:
     GraphicCell() = default;
     virtual ~GraphicCell();
 
+    GraphicCell(const GraphicCell& other);
+    GraphicCell& operator= (const GraphicCell& other);
+
     void DrawCell(QPainter *painter);
 
 private:

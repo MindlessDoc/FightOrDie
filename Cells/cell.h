@@ -21,10 +21,11 @@ public:
     int GetRightDownX() const;
     int GetRightDownY() const;
 
-private:
+protected:
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;
 
-    std::shared_ptr<IEntity> _item;
+private:
+    std::shared_ptr<IEntity> _item; // Find out at what point in time shared_ptr will call "delete"
 };
 
 #endif // CELL_H
