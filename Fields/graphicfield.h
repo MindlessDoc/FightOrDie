@@ -8,7 +8,7 @@ class GraphicField : public QGraphicsItem, public Field
 {
 public:
     GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells);
-    ~GraphicField();
+    virtual ~GraphicField();
 private:
     std::shared_ptr<MainWindow> _mainWindow;
 

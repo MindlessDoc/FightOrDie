@@ -11,7 +11,7 @@ class Cell
 public:
     Cell(int leftUpX, int leftUpY, int rightDownX, int rightDownY);
     Cell() = default;
-    ~Cell();
+    virtual ~Cell();
 
     int GetLeftUpX();
     int GetLeftUpY();

@@ -14,3 +14,8 @@ void GraphicCell::DrawCell(QPainter *painter)
     painter->drawRect(GetLeftUpX(), GetLeftUpY(), GetRightDownX(), GetRightDownY());
 }
 
+GraphicCell::~GraphicCell()
+{
+
+}
+

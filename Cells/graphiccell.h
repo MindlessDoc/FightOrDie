@@ -9,6 +9,7 @@ class GraphicCell : public Cell
 public:
     GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, QPen pen, QBrush brush);
     GraphicCell() = default;
+    virtual ~GraphicCell();
 
     void DrawCell(QPainter *painter);
 

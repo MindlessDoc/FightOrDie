@@ -9,7 +9,7 @@ class Field
 {
 public:
     Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells);
-    ~Field();
+    virtual ~Field();
 
     Field(const Field& other);
     Field& operator=(const Field& other) = delete;

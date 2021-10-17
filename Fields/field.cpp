@@ -8,6 +8,7 @@ Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCe
 {
     _cells = std::shared_ptr<std::shared_ptr<Cell*[]>[]>(new std::shared_ptr<Cell*[]>[_heightInCells]);
 
+    // Just memory allocation
     for(int i = 0; i < _heightInCells; i++)
     {
         _cells[i] = std::shared_ptr<Cell*[]>(new Cell*[_widthInCells]);
