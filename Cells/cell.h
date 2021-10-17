@@ -13,10 +13,13 @@ public:
     Cell() = default;
     virtual ~Cell();
 
-    int GetLeftUpX();
-    int GetLeftUpY();
-    int GetRightDownX();
-    int GetRightDownY();
+    Cell(const Cell& other);
+    Cell& operator= (const Cell& other);
+
+    int GetLeftUpX() const;
+    int GetLeftUpY() const;
+    int GetRightDownX() const;
+    int GetRightDownY() const;
 
 private:
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;

@@ -33,7 +33,7 @@ Field::Field(const Field& other)
         _cells[i] = std::shared_ptr<Cell*[]>(new Cell*[_widthInCells]);
         for(int j = 0; j < _widthInCells; j++)
         {
-                _cells[i][j] = other._cells[i][j]; // Add copy-inicialization constructor
+                *_cells[i][j] = *other._cells[i][j];
         }
     }
 }
