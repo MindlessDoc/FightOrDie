@@ -22,6 +22,70 @@ GraphicField::~GraphicField()
 
 }
 
+GraphicField::GraphicField(const GraphicField& other)
+    : Field(other._heightOfCell, other._widthOfCell, other._heightInCells, other._widthInCells)
+{
+    _cells = new Cell**[_heightInCells];
+
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        _cells[i] =  new Cell*[_widthInCells];
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            *static_cast<GraphicCell*>(_cells[i][j]) = *static_cast<GraphicCell*>(other._cells[i][j]);
+        }
+    }
+}
+
+GraphicField& GraphicField::operator=(const GraphicField &other)
+{
+    if(&other == this)
+        return *this;
+
+    _heightOfCell = other._heightOfCell;
+    _widthOfCell = other._widthOfCell;
+    _heightInCells = other._heightInCells;
+    _widthInCells = other._widthInCells;
+
+    _cells = new Cell**[_heightInCells];
+
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        _cells[i] =  new Cell*[_widthInCells];
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            *static_cast<GraphicCell*>(_cells[i][j]) = *static_cast<GraphicCell*>(other._cells[i][j]);
+        }
+    }
+
+    return *this;
+}
+
+GraphicField::GraphicField(GraphicField&& other)
+    : Field(other._heightOfCell, other._widthOfCell, other._heightInCells, other._widthInCells)
+{
+    _cells = other._cells;
+    other._cells = nullptr;
+}
+
+GraphicField& GraphicField::operator=(GraphicField &&other)
+{
+    if(&other == this)
+        return *this;
+
+    _heightOfCell = other._heightOfCell;
+    _widthOfCell = other._widthOfCell;
+    _heightInCells = other._heightInCells;
+    _widthInCells = other._widthInCells;
+
+    delete _cells;
+
+    _cells = other._cells;
+    other._cells = nullptr;
+
+    return *this;
+}
+
 void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     for(int i = 0; i < GetHeightInCells(); i++)

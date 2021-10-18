@@ -86,6 +86,9 @@ Field& Field::operator=(Field&& other)
     _heightInCells = other._heightInCells;
     _widthInCells = other._widthInCells;
 
+    delete _cells;
+
+    _cells = other._cells;
     other._cells = nullptr;
 
     return *this;

@@ -12,6 +12,9 @@ public:
 
     GraphicField(const GraphicField& other);
     GraphicField& operator= (const GraphicField& other);
+
+    GraphicField(GraphicField&& other);
+    GraphicField& operator= (GraphicField&& other);
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
