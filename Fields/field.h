@@ -15,7 +15,7 @@ public:
     Field& operator=(const Field& other);
 
     Field(Field&& other);
-    Field& operator=(Field&& other) = delete;
+    Field& operator=(Field&& other);
 
     int GetHeightOfCell();
     int GetWidthOfCell();

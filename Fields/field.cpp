@@ -44,6 +44,9 @@ Field::Field(const Field& other)
 
 Field& Field::operator=(const Field &other)
 {
+    if(&other == this)
+        return *this;
+
     _heightOfCell = other._heightOfCell;
     _widthOfCell = other._widthOfCell;
     _heightInCells = other._heightInCells;
@@ -70,7 +73,22 @@ Field::Field(Field&& other)
     , _widthInCells(other._widthInCells)
 {
     _cells = other._cells;
-    //other._cells.reset();
+    other._cells = nullptr;
+}
+
+Field& Field::operator=(Field&& other)
+{
+    if(&other == this)
+        return *this;
+
+    _heightOfCell = other._heightOfCell;
+    _widthOfCell = other._widthOfCell;
+    _heightInCells = other._heightInCells;
+    _widthInCells = other._widthInCells;
+
+    other._cells = nullptr;
+
+    return *this;
 }
 
 int Field::GetHeightOfCell() { return _heightOfCell; }
