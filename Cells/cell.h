@@ -21,6 +21,8 @@ public:
 
     int GetCoordX() const;
     int GetCoordY() const;
+
+    void Moving(int coord_x, int coord_y);
     //std::shared_ptr<IEntity> _item;
 
 protected:

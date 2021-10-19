@@ -29,6 +29,11 @@ void MainWindow::DrawField(QGraphicsItem* graphicfield)
     scene->addItem(graphicfield);
 }
 
+void MainWindow::Update()
+{
+    scene->update();
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;

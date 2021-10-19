@@ -1,4 +1,5 @@
 #include "cell.h"
+#include "graphiccell.h"
 
 Cell::Cell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y)
     : _leftUpX(leftUpX)

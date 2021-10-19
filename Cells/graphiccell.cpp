@@ -5,7 +5,7 @@ GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDown
     , _pen(pen)
     , _brush(brush)
 {
-
+    connect(this, SIGNAL(Moving(int, int)), )
 }
 void GraphicCell::DrawCell(QPainter *painter)
 {
@@ -15,6 +15,16 @@ void GraphicCell::DrawCell(QPainter *painter)
     if(_item != nullptr)
         _item->Draw(painter);
 }
+
+void GraphicCell::Moving(int coord_x, int coord_y)
+{
+    Cell* additional = this - 8 * _coord_x - _coord_y;
+    if(coord_x >= 0 && coord_y >= 0 && coord_x < 5 && coord_y < 8)
+    {
+        std::swap((additional + 8 * coord_x + coord_y)->_item, this->_item);
+    }
+}
+
 
 GraphicCell::~GraphicCell()
 {

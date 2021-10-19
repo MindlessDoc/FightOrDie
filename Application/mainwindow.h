@@ -20,6 +20,9 @@ public:
 
     void DrawField(QGraphicsItem* graphicfield);
 
+public slots:
+    void Update();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
