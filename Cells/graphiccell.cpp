@@ -1,7 +1,7 @@
 #include "graphiccell.h"
 
-GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, QPen pen, QBrush brush)
-    : Cell(leftUpX, leftUpY, rightDownX, rightDownY)
+GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QPen pen, QBrush brush)
+    : Cell(leftUpX, leftUpY, rightDownX, rightDownY, coord_x, coord_y)
     , _pen(pen)
     , _brush(brush)
 {
@@ -22,7 +22,7 @@ GraphicCell::~GraphicCell()
 }
 
 GraphicCell::GraphicCell(const GraphicCell& other)
-    : Cell(other._leftUpX, other._leftUpY, other._rightDownX, other._rightDownY)
+    : Cell(other._leftUpX, other._leftUpY, other._rightDownX, other._rightDownY, other._coord_x, other._coord_y)
     , _pen(other._pen)
     , _brush(other._brush)
 {
@@ -35,6 +35,10 @@ GraphicCell& GraphicCell::operator=(const GraphicCell& other)
     _leftUpY = other._leftUpY;
     _rightDownX = other._rightDownX;
     _rightDownY = other._rightDownY;
+
+    _coord_x = other._coord_x;
+    _coord_y = other._coord_y;
+
     _pen = other._pen;
     _brush = other._brush;
 

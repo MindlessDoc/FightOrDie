@@ -5,5 +5,5 @@
 class Exit : public GraphicCell
 {
 public:
-    Exit(int leftUpX, int leftUpY, int rightDownX, int rightDownY);
+    Exit(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y);
 };

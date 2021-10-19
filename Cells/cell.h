@@ -7,7 +7,7 @@
 class Cell
 {
 public:
-    Cell(int leftUpX, int leftUpY, int rightDownX, int rightDownY);
+    Cell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y);
     Cell() = default;
     virtual ~Cell();
 
@@ -18,10 +18,14 @@ public:
     int GetLeftUpY() const;
     int GetRightDownX() const;
     int GetRightDownY() const;
+
+    int GetCoordX() const;
+    int GetCoordY() const;
     //std::shared_ptr<IEntity> _item;
 
 protected:
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;
+    int _coord_x, _coord_y;
 public:
     IEntity* _item; // Find out at what point in time shared_ptr will call "delete"
 };

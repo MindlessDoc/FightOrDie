@@ -13,9 +13,8 @@ public:
     Avatar(const Cell* cell, const QString filename, QWidget* parent = 0);
     ~Avatar();
 
-    void Draw(QPainter* painter);
+    void Draw(const Cell* cell, QPainter* painter);
 private:
     QImage _image;
-    const Cell* _cell;
 };
 

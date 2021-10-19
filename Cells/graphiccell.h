@@ -6,7 +6,7 @@
 class GraphicCell : public Cell
 {
 public:
-    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, QPen pen, QBrush brush);
+    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QPen pen, QBrush brush);
     GraphicCell() = default;
     virtual ~GraphicCell();
 

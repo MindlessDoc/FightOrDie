@@ -1,12 +1,22 @@
 #include "player.h"
 
-Player::Player(const Cell* cell)
-    : _avatar(cell, "C:/QtProjects/OOP/FightOrDie/Src/XYZ.png")
+Player::Player(Cell* cell)
+    : _avatar(cell, "C:/QtProjects/OOP/FightOrDie/Src/Player.png")
 {
-
+    _cell = cell;
 }
 
 void Player::Draw(QPainter* painter)
 {
-    _avatar.Draw(painter);
+    _avatar.Draw(_cell, painter);
+}
+
+void Player::keyPressEvent(QKeyEvent *event)
+{
+    int key = event->key();
+    switch (key)
+    {
+    case Qt::Key_W:
+        break;
+    }
 }

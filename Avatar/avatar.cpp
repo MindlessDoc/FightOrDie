@@ -4,13 +4,12 @@
 Avatar::Avatar(const Cell* cell, const QString filename, QWidget* parent)
     : QWidget(parent)
 {
-    _cell = cell;
-    _image = QImage(filename).scaled(_cell->GetRightDownX() - _cell->GetLeftUpX(), _cell->GetRightDownY() - _cell->GetLeftUpY(), Qt::KeepAspectRatio);
+    _image = QImage(filename).scaled(cell->GetRightDownX() - cell->GetLeftUpX(), cell->GetRightDownY() - cell->GetLeftUpY(), Qt::KeepAspectRatio);
 
-    setMinimumWidth(_cell->GetRightDownX() - _cell->GetLeftUpX());
-    setMinimumHeight(_cell->GetRightDownY() - _cell->GetLeftUpY());
-    setMaximumWidth(_cell->GetRightDownX() - _cell->GetLeftUpX());
-    setMaximumHeight(_cell->GetRightDownY() - _cell->GetLeftUpY());
+    setMinimumWidth(cell->GetRightDownX() - cell->GetLeftUpX());
+    setMinimumHeight(cell->GetRightDownY() - cell->GetLeftUpY());
+    setMaximumWidth(cell->GetRightDownX() - cell->GetLeftUpX());
+    setMaximumHeight(cell->GetRightDownY() - cell->GetLeftUpY());
 }
 
 Avatar::~Avatar()
@@ -18,7 +17,7 @@ Avatar::~Avatar()
 
 }
 
-void Avatar::Draw(QPainter* painter)
+void Avatar::Draw(const Cell* cell, QPainter* painter)
 {
-    painter->drawImage(_cell->GetLeftUpX(), _cell->GetLeftUpY(), _image);
+    painter->drawImage(cell->GetLeftUpX(), cell->GetLeftUpY(), _image);
 }

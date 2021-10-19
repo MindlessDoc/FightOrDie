@@ -9,11 +9,11 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
         for(int j = 0; j < GetWidthInCells(); j++)
         {
             if(i == 0 && j == 0)
-                _cells[i][j] = new Entrance(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell());
+                _cells[i][j] = new Entrance(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
             else if(i == GetHeightInCells() - 1 && j == GetWidthInCells() - 1)
-                _cells[i][j] = new Exit(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell());
+                _cells[i][j] = new Exit(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
             else
-                _cells[i][j] = new Way(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell());
+                _cells[i][j] = new Way(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
             _cells[i][j]->_item = nullptr;
         }
     }
