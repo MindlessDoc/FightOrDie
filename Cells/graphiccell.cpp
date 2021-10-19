@@ -12,6 +12,8 @@ void GraphicCell::DrawCell(QPainter *painter)
     painter->setPen(_pen);
     painter->setBrush(_brush);
     painter->drawRect(GetLeftUpX(), GetLeftUpY(), GetRightDownX(), GetRightDownY());
+    if(_item != nullptr)
+        _item->Draw(painter);
 }
 
 GraphicCell::~GraphicCell()

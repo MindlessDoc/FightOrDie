@@ -1,5 +1,4 @@
-#ifndef FIELD_H
-#define FIELD_H
+#pragma once
 
 #include "Cells/entrance.h"
 #include "Cells/exit.h"
@@ -36,4 +35,3 @@ protected:
 //    Cell* _exit;
 };
 
-#endif // FIELD_H

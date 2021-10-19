@@ -1,5 +1,4 @@
-#ifndef GRAPHICCELL_H
-#define GRAPHICCELL_H
+#pragma once
 
 #include<QPainter>
 #include "cell.h"
@@ -21,4 +20,3 @@ private:
     QBrush _brush;
 };
 
-#endif // GRAPHICCELL_H

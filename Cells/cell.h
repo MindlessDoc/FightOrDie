@@ -1,8 +1,6 @@
-#ifndef CELL_H
-#define CELL_H
+#pragma once
 
-#include<QPainter>
-#include"Entities/ientity.h"
+#include"Entities/Player/player.h"
 #include<memory>
 #include<iostream>
 
@@ -20,12 +18,10 @@ public:
     int GetLeftUpY() const;
     int GetRightDownX() const;
     int GetRightDownY() const;
+    //std::shared_ptr<IEntity> _item;
 
 protected:
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;
-
-private:
-    std::shared_ptr<IEntity> _item; // Find out at what point in time shared_ptr will call "delete"
+public:
+    IEntity* _item; // Find out at what point in time shared_ptr will call "delete"
 };
-
-#endif // CELL_H

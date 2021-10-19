@@ -1,5 +1,4 @@
-#ifndef GRAPHICFIELD_H
-#define GRAPHICFIELD_H
+#pragma once
 
 #include "field.h"
 #include <QGraphicsItem>
@@ -20,4 +19,3 @@ private:
     QRectF boundingRect() const override;
 };
 
-#endif // GRAPHICFIELD_H

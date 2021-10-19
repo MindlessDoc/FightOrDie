@@ -14,8 +14,10 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
                 _cells[i][j] = new Exit(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell());
             else
                 _cells[i][j] = new Way(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell());
+            _cells[i][j]->_item = nullptr;
         }
     }
+    _cells[0][0]->_item = new Player(_cells[0][0]);
 }
 GraphicField::~GraphicField()
 {

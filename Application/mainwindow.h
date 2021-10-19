@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 #include <QGraphicsScene>
@@ -30,4 +29,3 @@ private:
 
     GraphicField _graphicField;
 };
-#endif // MAINWINDOW_H

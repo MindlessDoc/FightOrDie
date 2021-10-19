@@ -12,11 +12,13 @@ CONFIG += c++17
 SOURCES += \
     Application/main.cpp \
     Application/mainwindow.cpp \
+    Avatar/avatar.cpp \
     Cells/cell.cpp \
     Cells/entrance.cpp \
     Cells/exit.cpp \
     Cells/graphiccell.cpp \
     Cells/way.cpp \
+    Entities/Player/player.cpp \
     Entities/ientity.cpp \
     Fields/field.cpp \
     Fields/graphicfield.cpp \
@@ -24,11 +26,13 @@ SOURCES += \
 
 HEADERS += \
     Application/mainwindow.h \
+    Avatar/avatar.h \
     Cells/cell.h \
     Cells/entrance.h \
     Cells/exit.h \
     Cells/graphiccell.h \
     Cells/way.h \
+    Entities/Player/player.h \
     Entities/ientity.h \
     Fields/field.h \
     Fields/graphicfield.h \

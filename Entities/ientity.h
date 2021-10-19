@@ -1,11 +1,9 @@
-#ifndef IENTITY_H
-#define IENTITY_H
+#pragma once
 
+#include "Avatar/avatar.h"
 
 class IEntity
 {
 public:
-    virtual void Die() = 0;
+    virtual void Draw(QPainter* painter) = 0;
 };
-
-#endif // IENTITY_H
