@@ -4,16 +4,16 @@
 #include <QImage>
 #include <QPainter>
 
-class Cell;
+class GraphicCell;
 
 class Avatar : public QWidget
 {
 public:
     //Avatar(const Cell* cell = nullptr, const QString filename = "", QWidget* parent = 0);
-    Avatar(const Cell* cell, const QString filename, QWidget* parent = 0);
+    Avatar(const GraphicCell* graphicCell, const QString filename, QWidget* parent = 0);
     ~Avatar();
 
-    void Draw(const Cell* cell, QPainter* painter);
+    void Draw(const GraphicCell* graphicCell, QPainter* painter);
 private:
     QImage _image;
 };

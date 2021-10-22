@@ -2,15 +2,19 @@
 
 #include "Entities/ientity.h"
 #include <QKeyEvent>
+#include <QObject>
 
-class Player : public IEntity, public QWidget
+class Cell;
+
+class Player : public QObject, public IEntity
 {
+    Q_OBJECT
 public:
-    Player(Cell* cell);
+    Player(GraphicCell* _cell);
     virtual void Draw(QPainter* painter) override;
-protected:
-    virtual void keyPressEvent(QKeyEvent *event) override;
+public slots:
+    void MovingItemCells(int x, int y, Cell*** cells);
 private:
     Avatar _avatar;
-    Cell* _cell;
+    GraphicCell* _cell;
 };

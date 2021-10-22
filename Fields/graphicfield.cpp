@@ -17,7 +17,9 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
             _cells[i][j]->_item = nullptr;
         }
     }
-    _cells[0][0]->_item = new Player(_cells[0][0]);
+    _player = new Player(static_cast<GraphicCell*>(_cells[0][0]));
+    connect(this, &GraphicField::MovingItemCells, _player, &Player::MovingItemCells);
+    _cells[0][0]->_item = _player;
 }
 GraphicField::~GraphicField()
 {
@@ -105,4 +107,9 @@ void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 QRectF GraphicField::boundingRect() const
 {
     return QRectF(-1000, -1000, 1000, 1000);
+}
+
+void GraphicField::MovingPlayer(int x, int y)
+{
+    emit MovingItemCells(x, y, _cells);
 }

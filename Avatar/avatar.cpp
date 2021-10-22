@@ -1,15 +1,15 @@
 #include "avatar.h"
-#include "Cells/cell.h"
+#include "Cells/graphiccell.h"
 
-Avatar::Avatar(const Cell* cell, const QString filename, QWidget* parent)
+Avatar::Avatar(const GraphicCell* graphicCell, const QString filename, QWidget* parent)
     : QWidget(parent)
 {
-    _image = QImage(filename).scaled(cell->GetRightDownX() - cell->GetLeftUpX(), cell->GetRightDownY() - cell->GetLeftUpY(), Qt::KeepAspectRatio);
+    _image = QImage(filename).scaled(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX(), graphicCell->GetRightDownY() - graphicCell->GetLeftUpY(), Qt::KeepAspectRatio);
 
-    setMinimumWidth(cell->GetRightDownX() - cell->GetLeftUpX());
-    setMinimumHeight(cell->GetRightDownY() - cell->GetLeftUpY());
-    setMaximumWidth(cell->GetRightDownX() - cell->GetLeftUpX());
-    setMaximumHeight(cell->GetRightDownY() - cell->GetLeftUpY());
+    setMinimumWidth(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX());
+    setMinimumHeight(graphicCell->GetRightDownY() - graphicCell->GetLeftUpY());
+    setMaximumWidth(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX());
+    setMaximumHeight(graphicCell->GetRightDownY() - graphicCell->GetLeftUpY());
 }
 
 Avatar::~Avatar()
@@ -17,7 +17,7 @@ Avatar::~Avatar()
 
 }
 
-void Avatar::Draw(const Cell* cell, QPainter* painter)
+void Avatar::Draw(const GraphicCell* graphicCell, QPainter* painter)
 {
-    painter->drawImage(cell->GetLeftUpX(), cell->GetLeftUpY(), _image);
+    painter->drawImage(graphicCell->GetLeftUpX(), graphicCell->GetLeftUpY(), _image);
 }

@@ -1,11 +1,15 @@
 #include "graphiccell.h"
 
 GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QPen pen, QBrush brush)
-    : Cell(leftUpX, leftUpY, rightDownX, rightDownY, coord_x, coord_y)
+    : Cell(coord_x, coord_y)
+    , _leftUpX(leftUpX)
+    , _leftUpY(leftUpY)
+    , _rightDownX(rightDownX)
+    , _rightDownY(rightDownY)
     , _pen(pen)
     , _brush(brush)
 {
-    connect(this, SIGNAL(Moving(int, int)), )
+
 }
 void GraphicCell::DrawCell(QPainter *painter)
 {
@@ -16,15 +20,15 @@ void GraphicCell::DrawCell(QPainter *painter)
         _item->Draw(painter);
 }
 
-void GraphicCell::Moving(int coord_x, int coord_y)
+void GraphicCell::Moving(int x, int y, Cell*** cells)
 {
-    Cell* additional = this - 8 * _coord_x - _coord_y;
+    int coord_x = _coord_x + y;
+    int coord_y = _coord_y + x;
     if(coord_x >= 0 && coord_y >= 0 && coord_x < 5 && coord_y < 8)
     {
-        std::swap((additional + 8 * coord_x + coord_y)->_item, this->_item);
+        std::swap(cells[coord_x][coord_y]->_item, this->_item);
     }
 }
-
 
 GraphicCell::~GraphicCell()
 {
@@ -32,7 +36,11 @@ GraphicCell::~GraphicCell()
 }
 
 GraphicCell::GraphicCell(const GraphicCell& other)
-    : Cell(other._leftUpX, other._leftUpY, other._rightDownX, other._rightDownY, other._coord_x, other._coord_y)
+    : Cell(other._coord_x, other._coord_y)
+    , _leftUpX(other._leftUpX)
+    , _leftUpY(other._leftUpY)
+    , _rightDownX(other._rightDownX)
+    , _rightDownY(other._rightDownY)
     , _pen(other._pen)
     , _brush(other._brush)
 {
@@ -54,4 +62,9 @@ GraphicCell& GraphicCell::operator=(const GraphicCell& other)
 
     return *this;
 }
+
+int GraphicCell::GetLeftUpX() const { return _leftUpX; }
+int GraphicCell::GetLeftUpY() const { return _leftUpY; }
+int GraphicCell::GetRightDownX() const { return _rightDownX; }
+int GraphicCell::GetRightDownY() const { return _rightDownY; }
 

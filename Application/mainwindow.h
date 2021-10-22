@@ -16,12 +16,15 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells, QWidget *parent = nullptr);
-    ~MainWindow();
+    virtual ~MainWindow();
 
     void DrawField(QGraphicsItem* graphicfield);
 
-public slots:
-    void Update();
+signals:
+    void MovingPlayer(int x, int y);
+
+protected:
+    virtual void keyPressEvent(QKeyEvent *event) override;
 
 private:
     Ui::MainWindow *ui;

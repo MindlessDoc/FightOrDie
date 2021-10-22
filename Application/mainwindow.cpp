@@ -12,6 +12,8 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 
     setFixedSize(_width + 20, _height + 20);
 
+    QObject::connect(this, &MainWindow::MovingPlayer, &_graphicField, &GraphicField::MovingPlayer);
+
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
     scene->setSceneRect(0, 0, _width, _height);
@@ -29,13 +31,19 @@ void MainWindow::DrawField(QGraphicsItem* graphicfield)
     scene->addItem(graphicfield);
 }
 
-void MainWindow::Update()
-{
-    scene->update();
-}
-
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key())
+    {
+    case Qt::Key_S: emit MovingPlayer(0, 1); break;
+    case Qt::Key_W: emit MovingPlayer(0, -1); break;
+    case Qt::Key_A: emit MovingPlayer(-1, 0); break;
+    case Qt::Key_D: emit MovingPlayer(1, 0); break;
+    }
+    scene->update();
+}
