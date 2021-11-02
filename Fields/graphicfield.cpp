@@ -51,6 +51,7 @@ GraphicField& GraphicField::operator=(const GraphicField &other)
     _heightInCells = other._heightInCells;
     _widthInCells = other._widthInCells;
 
+    //Maybe need delete _cells
     _cells = new Cell**[_heightInCells];
 
     for(int i = 0; i < _heightInCells; i++)

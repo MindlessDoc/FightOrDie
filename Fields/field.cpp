@@ -7,22 +7,21 @@ Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCe
     , _widthInCells(widthInCells)
 {
     _cells.resize(_heightInCells);
-
     // Just memory allocation
     for(int i = 0; i < _heightInCells; i++)
     {
-        _cells[i] =  new Cell*[_widthInCells];
+        _cells[i].resize(_widthInCells);
     }
 }
 
-Field::~Field()
-{
-    for(int i = 0; i < _heightInCells; i++)
-    {
-        delete[] _cells[i];
-    }
-    delete[] _cells;
-}
+//Field::~Field()
+//{
+//    for(int i = 0; i < _heightInCells; i++)
+//    {
+//        delete[] _cells[i];
+//    }
+//    delete[] _cells;
+//}
 
 Field::Field(const Field& other)
     : _heightOfCell(other._heightOfCell)
@@ -30,14 +29,14 @@ Field::Field(const Field& other)
     , _heightInCells(other._heightInCells)
     , _widthInCells(other._widthInCells)
 {
-    _cells = new Cell**[_heightInCells];
+    _cells.resize(_heightInCells);
 
     for(int i = 0; i < _heightInCells; i++)
     {
-        _cells[i] =  new Cell*[_widthInCells];
+        _cells[i].resize(_widthInCells);
         for(int j = 0; j < _widthInCells; j++)
         {
-            *_cells[i][j] = *other._cells[i][j];
+            _cells[i][j] = std::make_shared<Cell>(other._cells[i][j]);
         }
     }
 }
@@ -52,14 +51,14 @@ Field& Field::operator=(const Field &other)
     _heightInCells = other._heightInCells;
     _widthInCells = other._widthInCells;
 
-    _cells = new Cell**[_heightInCells];
+    _cells.resize(_heightInCells);
 
     for(int i = 0; i < _heightInCells; i++)
     {
-        _cells[i] =  new Cell*[_widthInCells];
+        _cells[i].resize(_widthInCells);
         for(int j = 0; j < _widthInCells; j++)
         {
-            *_cells[i][j] = *other._cells[i][j];
+            _cells[i][j] = std::make_shared<Cell>(other._cells[i][j]);
         }
     }
 
@@ -73,7 +72,7 @@ Field::Field(Field&& other)
     , _widthInCells(other._widthInCells)
 {
     _cells = other._cells;
-    other._cells = nullptr;
+    //other._cells = nullptr; ///THINK///
 }
 
 Field& Field::operator=(Field&& other)
@@ -86,10 +85,10 @@ Field& Field::operator=(Field&& other)
     _heightInCells = other._heightInCells;
     _widthInCells = other._widthInCells;
 
-    delete _cells;
+    //delete _cells; ///THINK///
 
     _cells = other._cells;
-    other._cells = nullptr;
+    //other._cells = nullptr; ///THINK///
 
     return *this;
 }

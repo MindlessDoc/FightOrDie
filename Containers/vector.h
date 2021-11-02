@@ -2,12 +2,29 @@
 
 #include <iostream>
 #include <memory>
+#include <vector>
 
 template<class T>
 class Vector
 {
 public:
     Vector() {}
+
+    Vector(size_t size)
+        :_size(size)
+    {
+        _array = new T[_size];
+    }
+
+    Vector(const Vector& other)
+        :_size(other._size)
+    {
+        _array = new T[_size];
+        for(size_t i = 0; i < _size; i++)
+        {
+            _array[i] = other._array[i];
+        }
+    }
 
     ~Vector()
     {
@@ -17,6 +34,28 @@ public:
     T& operator[](size_t index)
     {
         return _array[index];
+    }
+
+    const T& operator[](size_t index) const
+    {
+        return _array[index];
+    }
+
+    Vector& operator= (const Vector& other)
+    {
+        if(&other == this)
+            return *this;
+
+        _size = other._size;
+
+        delete[] _array;
+        _array = new T[_size];
+        for(size_t i = 0; i < _size; i++)
+        {
+            _array[i] = other._array[i];
+        }
+
+        return *this;
     }
 
     void resize(size_t size)
