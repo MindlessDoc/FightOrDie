@@ -18,7 +18,7 @@ public:
 public slots:
     void MovingPlayer(int x, int y);
 signals:
-    void MovingItemCells(int x, int y, Cell*** cells);
+    void MovingItemCells(int x, int y, Vector<Vector<std::shared_ptr<Cell>>> cells);
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
