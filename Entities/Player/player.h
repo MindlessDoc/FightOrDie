@@ -16,5 +16,5 @@ public slots:
     void MovingItemCells(int x, int y, Cell*** cells);
 private:
     Avatar _avatar;
-    GraphicCell* _cell;
+    GraphicCell* _graphicCell;
 };

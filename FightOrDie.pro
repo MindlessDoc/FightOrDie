@@ -36,6 +36,7 @@ HEADERS += \
     Entities/ientity.h \
     Fields/field.h \
     Fields/graphicfield.h \
+    Containers/vector.h
 
 FORMS += \
     mainwindow.ui

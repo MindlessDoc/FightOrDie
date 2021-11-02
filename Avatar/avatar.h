@@ -14,7 +14,10 @@ public:
     ~Avatar();
 
     void Draw(const GraphicCell* graphicCell, QPainter* painter);
+
+    QString GetFilename() const;
 private:
     QImage _image;
+    QString _filename;
 };
 

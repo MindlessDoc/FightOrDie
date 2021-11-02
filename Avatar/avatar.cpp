@@ -4,6 +4,8 @@
 Avatar::Avatar(const GraphicCell* graphicCell, const QString filename, QWidget* parent)
     : QWidget(parent)
 {
+    _filename = filename;
+
     _image = QImage(filename).scaled(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX(), graphicCell->GetRightDownY() - graphicCell->GetLeftUpY(), Qt::KeepAspectRatio);
 
     setMinimumWidth(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX());
@@ -17,7 +19,9 @@ Avatar::~Avatar()
 
 }
 
-void Avatar::Draw(const GraphicCell* graphicCell, QPainter* painter)
+void Avatar::Draw(const GraphicCell* cell, QPainter* painter)
 {
-    painter->drawImage(graphicCell->GetLeftUpX(), graphicCell->GetLeftUpY(), _image);
+    painter->drawImage(cell->GetLeftUpX(), cell->GetLeftUpY(), _image);
 }
+
+QString Avatar::GetFilename() const { return _filename; }

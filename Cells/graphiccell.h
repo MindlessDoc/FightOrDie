@@ -3,12 +3,14 @@
 #include<QPainter>
 #include "cell.h"
 #include <QObject>
+#include "Avatar/avatar.h"
 
 class GraphicCell : public QObject, public Cell
 {
     Q_OBJECT
 public:
-    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QPen pen, QBrush brush);
+    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QPen pen, QBrush brush,
+                QString file);
     GraphicCell() = default;
     virtual ~GraphicCell();
 
@@ -33,5 +35,6 @@ signals:
 private:
     QPen _pen;
     QBrush _brush;
+    Avatar _avatar;
 };
 

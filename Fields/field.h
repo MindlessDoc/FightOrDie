@@ -3,6 +3,7 @@
 #include "Cells/entrance.h"
 #include "Cells/exit.h"
 #include "Cells/way.h"
+#include "Containers/vector.h"
 
 class Field
 {
@@ -29,7 +30,7 @@ protected:
     int _heightInCells;
     int _widthInCells;
 
-    Cell*** _cells; // Will think how to make it private
+    Vector<Vector<std::shared_ptr<Cell>>> _cells; // Will think how to make it private
 
 //    Cell* _entrance;
 //    Cell* _exit;

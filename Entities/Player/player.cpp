@@ -2,19 +2,24 @@
 #include "Cells/cell.h"
 #include "Cells/graphiccell.h"
 
-Player::Player(GraphicCell* cell)
-    : _avatar(cell, "C:/QtProjects/OOP/FightOrDie/Src/Player.png")
+Player::Player(GraphicCell* graphicCell)
+    : _avatar(graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Player.png")
 {
-    _cell = cell;
+    _graphicCell = graphicCell;
 }
 
 void Player::Draw(QPainter* painter)
 {
-    _avatar.Draw(_cell, painter);
+    _avatar.Draw(_graphicCell, painter);
 }
 
 void Player::MovingItemCells(int x, int y, Cell*** cells)
 {
-    static_cast<GraphicCell*>(_cell)->Moving(x, y, cells);
-    _cell = static_cast<GraphicCell*>(cells[_cell->GetCoordX() + y][_cell->GetCoordY() + x]);
+    int newColumn = _graphicCell->GetColumn() + y;
+    int newRow = _graphicCell->GetRow() + x;
+    if(newColumn >= 0 && newRow >= 0 && newColumn < 5 && newRow < 8)
+    {
+        _graphicCell->Moving(x, y, cells);
+        _graphicCell = static_cast<GraphicCell*>(cells[newColumn][newRow]);
+    }
 }
