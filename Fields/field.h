@@ -30,7 +30,7 @@ protected:
     int _heightInCells;
     int _widthInCells;
 
-    Vector<Vector<std::shared_ptr<Cell>>> _cells; // Will think how to make it private
+    Vector<Vector<Cell*>> _cells; // Will think how to make it private
 
 //    Cell* _entrance;
 //    Cell* _exit;

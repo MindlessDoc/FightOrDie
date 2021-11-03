@@ -9,15 +9,15 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
         for(int j = 0; j < GetWidthInCells(); j++)
         {
             if(i == 0 && j == 0)
-                _cells[i][j] = std::make_shared<GraphicCell>(new Entrance(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j));
+                _cells[i][j] = new Entrance(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
             else if(i == GetHeightInCells() - 1 && j == GetWidthInCells() - 1)
-                _cells[i][j] = std::make_shared<GraphicCell>(new Exit(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j));
+               _cells[i][j] = new Exit(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
             else
-                _cells[i][j] = std::make_shared<GraphicCell>(new Way(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j));
+                _cells[i][j] = new Way(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
             _cells[i][j]->_item = nullptr;
         }
     }
-    _player = new Player(static_cast<GraphicCell*>(_cells[0][0].get()));
+    _player = new Player(static_cast<GraphicCell*>(_cells[0][0]));
     connect(this, &GraphicField::MovingItemCells, _player, &Player::MovingItemCells);
     _cells[0][0]->_item = _player;
 }
@@ -36,7 +36,7 @@ GraphicField::GraphicField(const GraphicField& other)
         _cells[i].resize(_widthInCells);
         for(int j = 0; j < _widthInCells; j++)
         {
-            _cells[i][j] = std::make_shared<GraphicCell>(other._cells[i][j]);
+            _cells[i][j] = new GraphicCell(*static_cast<GraphicCell*>(other._cells[i][j]));
         }
     }
 }
@@ -58,7 +58,7 @@ GraphicField& GraphicField::operator=(const GraphicField &other)
         _cells[i].resize(_widthInCells);
         for(int j = 0; j < _widthInCells; j++)
         {
-            _cells[i][j] = std::make_shared<GraphicCell>(other._cells[i][j]);
+            _cells[i][j] = new GraphicCell(*static_cast<GraphicCell*>(other._cells[i][j]));
         }
     }
 
@@ -94,7 +94,7 @@ void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     {
         for(int j = 0; j < GetWidthInCells(); j++)
         {
-            static_cast<GraphicCell*>(_cells[i][j].get())->DrawCell(painter);
+            static_cast<GraphicCell*>(_cells[i][j])->DrawCell(painter);
         }
     }
 

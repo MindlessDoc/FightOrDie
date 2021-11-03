@@ -14,14 +14,14 @@ Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCe
     }
 }
 
-//Field::~Field()
-//{
+Field::~Field()
+{
 //    for(int i = 0; i < _heightInCells; i++)
 //    {
 //        delete[] _cells[i];
 //    }
 //    delete[] _cells;
-//}
+}
 
 Field::Field(const Field& other)
     : _heightOfCell(other._heightOfCell)
@@ -36,7 +36,7 @@ Field::Field(const Field& other)
         _cells[i].resize(_widthInCells);
         for(int j = 0; j < _widthInCells; j++)
         {
-            _cells[i][j] = std::make_shared<Cell>(other._cells[i][j]);
+            _cells[i][j] = new Cell(*other._cells[i][j]);
         }
     }
 }
@@ -58,7 +58,8 @@ Field& Field::operator=(const Field &other)
         _cells[i].resize(_widthInCells);
         for(int j = 0; j < _widthInCells; j++)
         {
-            _cells[i][j] = std::make_shared<Cell>(other._cells[i][j]);
+            delete _cells[i][j];
+            _cells[i][j] = new Cell(*other._cells[i][j]);
         }
     }
 

@@ -13,7 +13,7 @@ void Player::Draw(QPainter* painter)
     _avatar.Draw(_graphicCell, painter);
 }
 
-void Player::MovingItemCells(int x, int y, Cell*** cells)
+void Player::MovingItemCells(int x, int y, Vector<Vector<Cell*>> cells)
 {
     int newColumn = _graphicCell->GetColumn() + y;
     int newRow = _graphicCell->GetRow() + x;

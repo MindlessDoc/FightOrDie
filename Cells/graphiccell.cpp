@@ -23,7 +23,7 @@ void GraphicCell::DrawCell(QPainter *painter)
         _item->Draw(painter);
 }
 
-void GraphicCell::Moving(int x, int y, Cell*** cells)
+void GraphicCell::Moving(int x, int y, Vector<Vector<Cell*>> cells)
 {
     int newColumn = _column + y;
     int newRow = _row + x;

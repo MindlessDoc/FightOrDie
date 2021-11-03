@@ -24,7 +24,7 @@ public:
 
     void DrawCell(QPainter *painter);
 
-    void Moving(int x, int y, Cell*** cells);
+    void Moving(int x, int y, Vector<Vector<Cell*>> cells);
 
 protected:
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;
