@@ -19,6 +19,8 @@ public:
     virtual ~MainWindow();
 
     void DrawField(QGraphicsItem* graphicfield);
+public slots:
+    void DoCloseWindow();
 
 signals:
     void MovingPlayer(int x, int y);

@@ -23,7 +23,6 @@ void Player::MovingItemCells(int x, int y)
     if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
     {
         static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
-        //_graphicCell->Moving(static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow)));
         _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
     }
 }

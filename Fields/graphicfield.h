@@ -9,7 +9,7 @@ class GraphicField : public QObject, public Field, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells, MainWindow* mainWindow);
+    GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells);
     virtual ~GraphicField();
 
     GraphicField(const GraphicField& other);
@@ -23,6 +23,7 @@ public slots:
     void GameOver();
 signals:
     void MovingItemCells(int x, int y);
+    void DoCloseWindow();
 
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
@@ -31,6 +32,5 @@ private:
     GraphicCell* _entrance;
     GraphicCell* _exit;
     Player* _player;
-    MainWindow* _mainWindow;
 };
 

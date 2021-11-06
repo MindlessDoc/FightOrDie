@@ -2,9 +2,8 @@
 #include "Application/mainwindow.h"
 
 
-GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells, MainWindow* mainWindow)
+GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
     : Field(heightOfCell, widthOfCell, heightInCells, widthInCells)
-    , _mainWindow(mainWindow)
 {
     for(int i = 0; i < GetHeightInCells(); i++)
     {
@@ -126,5 +125,5 @@ void GraphicField::MovingPlayer(int x, int y)
 
 void GraphicField::GameOver()
 {
-    _mainWindow->close();
+    emit DoCloseWindow();
 }

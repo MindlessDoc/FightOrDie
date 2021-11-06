@@ -6,13 +6,14 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     , ui(new Ui::MainWindow)
     , _height(heightOfCell * heightInCells)
     , _width(widthOfCell * widthInCells)
-    , _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells, this)
+    , _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells)
 {
     ui->setupUi(this);
 
     setFixedSize(_width + 20, _height + 20);
 
-    QObject::connect(this, &MainWindow::MovingPlayer, &_graphicField, &GraphicField::MovingPlayer);
+    connect(this, &MainWindow::MovingPlayer, &_graphicField, &GraphicField::MovingPlayer);
+    connect(&_graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
 
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
@@ -29,6 +30,11 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 void MainWindow::DrawField(QGraphicsItem* graphicfield)
 {
     scene->addItem(graphicfield);
+}
+
+void MainWindow::DoCloseWindow()
+{
+    close();
 }
 
 MainWindow::~MainWindow()
