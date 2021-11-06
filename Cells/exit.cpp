@@ -5,3 +5,10 @@ Exit::Exit(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x
 {
 
 }
+
+void Exit::Moving(GraphicCell* swapCell)
+{
+    std::swap(swapCell->_item, _item); // Think how add checking
+    emit GameOver();
+}
+

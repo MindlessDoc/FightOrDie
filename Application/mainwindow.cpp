@@ -6,7 +6,7 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     , ui(new Ui::MainWindow)
     , _height(heightOfCell * heightInCells)
     , _width(widthOfCell * widthInCells)
-    , _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells)
+    , _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells, this)
 {
     ui->setupUi(this);
 

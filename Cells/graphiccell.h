@@ -24,7 +24,7 @@ public:
 
     void DrawCell(QPainter *painter);
 
-    void Moving(GraphicCell* swapCell);
+    virtual void Moving(GraphicCell* swapCell);
 
 protected:
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;

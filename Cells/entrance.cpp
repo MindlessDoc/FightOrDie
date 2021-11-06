@@ -5,3 +5,4 @@ Entrance::Entrance(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int
 {
 
 }
+

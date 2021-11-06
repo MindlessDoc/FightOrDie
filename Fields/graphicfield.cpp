@@ -1,8 +1,10 @@
 #include "graphicfield.h"
+#include "Application/mainwindow.h"
 
 
-GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
+GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells, MainWindow* mainWindow)
     : Field(heightOfCell, widthOfCell, heightInCells, widthInCells)
+    , _mainWindow(mainWindow)
 {
     for(int i = 0; i < GetHeightInCells(); i++)
     {
@@ -29,6 +31,7 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
     }
     _player = new Player(this, _entrance);
     connect(this, &GraphicField::MovingItemCells, _player, &Player::MovingItemCells);
+    connect(static_cast<Exit*>(_exit), &Exit::GameOver, this, &GraphicField::GameOver);
 }
 GraphicField::~GraphicField()
 {
@@ -119,4 +122,9 @@ QRectF GraphicField::boundingRect() const
 void GraphicField::MovingPlayer(int x, int y)
 {
     emit MovingItemCells(x, y);
+}
+
+void GraphicField::GameOver()
+{
+    _mainWindow->close();
 }
