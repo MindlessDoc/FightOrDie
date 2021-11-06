@@ -6,16 +6,18 @@
 #include <QObject>
 
 class Cell;
+class GraphicField;
 
 class Player : public QObject, public IEntity
 {
     Q_OBJECT
 public:
-    Player(GraphicCell* _cell);
+    Player(GraphicField* gameField, GraphicCell* graphicCell);
     virtual void Draw(QPainter* painter) override;
 public slots:
-    void MovingItemCells(int x, int y, Vector<Vector<Cell*>> cells);
+    void MovingItemCells(int x, int y);
 private:
     Avatar _avatar;
+    GraphicField* _gameField;
     GraphicCell* _graphicCell;
 };

@@ -23,6 +23,8 @@ public:
     int GetHeightInCells();
     int GetWidthInCells();
 
+    Cell* GetCell(int column, int row);
+
 protected:
     int _heightOfCell;
     int _widthOfCell;

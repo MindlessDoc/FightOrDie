@@ -99,3 +99,5 @@ int Field::GetWidthOfCell() { return _widthOfCell; }
 
 int Field::GetHeightInCells() { return _heightInCells; }
 int Field::GetWidthInCells() { return _widthInCells; }
+
+Cell* Field::GetCell(int column, int row) { return _cells[column][row]; }

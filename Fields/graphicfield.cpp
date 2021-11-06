@@ -17,7 +17,7 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
             _cells[i][j]->_item = nullptr;
         }
     }
-    _player = new Player(static_cast<GraphicCell*>(_cells[0][0]));
+    _player = new Player(this, static_cast<GraphicCell*>(_cells[0][0]));
     connect(this, &GraphicField::MovingItemCells, _player, &Player::MovingItemCells);
     _cells[0][0]->_item = _player;
 }
@@ -109,5 +109,5 @@ QRectF GraphicField::boundingRect() const
 
 void GraphicField::MovingPlayer(int x, int y)
 {
-    emit MovingItemCells(x, y, _cells);
+    emit MovingItemCells(x, y);
 }

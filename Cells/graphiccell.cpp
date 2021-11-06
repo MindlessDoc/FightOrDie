@@ -23,14 +23,14 @@ void GraphicCell::DrawCell(QPainter *painter)
         _item->Draw(painter);
 }
 
-void GraphicCell::Moving(int x, int y, Vector<Vector<Cell*>> cells)
+void GraphicCell::Moving(GraphicCell* swapCell)
 {
-    int newColumn = _column + y;
-    int newRow = _row + x;
-    if(newColumn >= 0 && newRow >= 0 && newColumn < 5 && newRow < 8)
-    {
-        std::swap(cells[newColumn][newRow]->_item, this->_item);
-    }
+//    int newColumn = _column + y;
+//    int newRow = _row + x;
+//    if(newColumn >= 0 && newRow >= 0 && newColumn < 5 && newRow < 8)
+//    {
+        std::swap(swapCell->_item, _item);
+//    }
 }
 
 GraphicCell::~GraphicCell()
