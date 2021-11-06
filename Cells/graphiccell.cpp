@@ -29,7 +29,7 @@ void GraphicCell::Moving(GraphicCell* swapCell)
 //    int newRow = _row + x;
 //    if(newColumn >= 0 && newRow >= 0 && newColumn < 5 && newRow < 8)
 //    {
-        std::swap(swapCell->_item, _item);
+        std::swap(swapCell->_item, _item); // Think how add checking
 //    }
 }
 

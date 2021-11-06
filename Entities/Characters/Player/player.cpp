@@ -8,7 +8,7 @@ Player::Player(GraphicField* gameField, GraphicCell* graphicCell)
     , _gameField(gameField)
     , _graphicCell(graphicCell)
 {
-    //_graphicCell = graphicCell;
+
 }
 
 void Player::Draw(QPainter* painter)
