@@ -5,7 +5,7 @@ Cell::Cell(int column, int row)
     : _column(column)
     , _row(row)
 {
-
+    _item = nullptr;
 }
 
 Cell::~Cell()

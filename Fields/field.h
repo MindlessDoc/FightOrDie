@@ -34,7 +34,5 @@ protected:
 
     Vector<Vector<Cell*>> _cells; // Will think how to make it private
 
-//    Cell* _entrance;
-//    Cell* _exit;
 };
 

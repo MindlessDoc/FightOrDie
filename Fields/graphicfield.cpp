@@ -9,17 +9,26 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
         for(int j = 0; j < GetWidthInCells(); j++)
         {
             if(i == 0 && j == 0)
-                _cells[i][j] = new Entrance(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
+            {
+                _cells[i][j] = new Entrance(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(),
+                                            (i + 1) * GetHeightOfCell(), i, j);
+                _entrance = static_cast<GraphicCell*>(_cells[i][j]);
+            }
             else if(i == GetHeightInCells() - 1 && j == GetWidthInCells() - 1)
-               _cells[i][j] = new Exit(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
+            {
+               _cells[i][j] = new Exit(j * GetWidthOfCell(), i * GetHeightOfCell(),
+                                       (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
+               _exit = static_cast<GraphicCell*>(_cells[i][j]);
+            }
             else
-                _cells[i][j] = new Way(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
-            _cells[i][j]->_item = nullptr;
+            {
+                _cells[i][j] = new Way(j * GetWidthOfCell(), i * GetHeightOfCell(),
+                                       (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
+            }
         }
     }
-    _player = new Player(this, static_cast<GraphicCell*>(_cells[0][0]));
+    _player = new Player(this, _entrance);
     connect(this, &GraphicField::MovingItemCells, _player, &Player::MovingItemCells);
-    _cells[0][0]->_item = _player;
 }
 GraphicField::~GraphicField()
 {

@@ -15,13 +15,18 @@ public:
 
     GraphicField(GraphicField&& other);
     GraphicField& operator= (GraphicField&& other);
+
 public slots:
     void MovingPlayer(int x, int y);
 signals:
     void MovingItemCells(int x, int y);
+
 private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
+
+    GraphicCell* _entrance;
+    GraphicCell* _exit;
     Player* _player;
 };
 

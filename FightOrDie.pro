@@ -19,6 +19,7 @@ SOURCES += \
     Cells/graphiccell.cpp \
     Cells/way.cpp \
     Entities/Characters/Player/player.cpp \
+    Entities/Characters/icharacter.cpp \
     Entities/ientity.cpp \
     Fields/field.cpp \
     Fields/graphicfield.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     Cells/graphiccell.h \
     Cells/way.h \
     Entities/Characters/Player/player.h \
+    Entities/Characters/icharacter.h \
     Entities/ientity.h \
     Fields/field.h \
     Fields/graphicfield.h \
