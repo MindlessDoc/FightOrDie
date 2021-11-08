@@ -32,6 +32,7 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 }
 MainWindow::~MainWindow()
 {
+    delete _timer;
     delete ui;
 }
 

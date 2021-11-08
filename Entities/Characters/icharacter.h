@@ -6,5 +6,6 @@
 class ICharacter : public IEntity
 {
 public:
+
 };
 

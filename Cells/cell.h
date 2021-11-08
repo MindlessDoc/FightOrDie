@@ -1,6 +1,7 @@
 #pragma once
 
 #include"Entities/Characters/Player/player.h"
+#include"Entities/Characters/Enemies/enemy.h"
 #include<memory>
 #include<iostream>
 
