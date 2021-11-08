@@ -7,6 +7,7 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     , _height(heightOfCell * heightInCells)
     , _width(widthOfCell * widthInCells)
     , _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells)
+    , _frameUpdateTime(20)
 {
     ui->setupUi(this);
 
@@ -14,6 +15,10 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 
     connect(this, &MainWindow::MovingPlayerSignal, &_graphicField, &GraphicField::MovingPlayerSlot);
     connect(&_graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
+
+    _timer = new QTimer();
+    connect(_timer, &QTimer::timeout, this, &MainWindow::FrameUpdate);
+    _timer->start(_frameUpdateTime);
 
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
@@ -24,6 +29,10 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 
     setWindowTitle("Game field");
     DrawField(&_graphicField);
+}
+MainWindow::~MainWindow()
+{
+    delete ui;
 }
 
 
@@ -37,9 +46,9 @@ void MainWindow::DoCloseWindow()
     close();
 }
 
-MainWindow::~MainWindow()
+void MainWindow::FrameUpdate()
 {
-    delete ui;
+    scene->update();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -51,5 +60,5 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     case Qt::Key_A: emit MovingPlayerSignal(-1, 0); break;
     case Qt::Key_D: emit MovingPlayerSignal(1, 0); break;
     }
-    scene->update();
+    //scene->update();
 }

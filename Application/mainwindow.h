@@ -5,6 +5,8 @@
 #include "QGraphicsItem"
 #include "ui_mainwindow.h"
 #include "Fields/graphicfield.h"
+#include "QTimer"
+#include "QTime"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,8 +21,10 @@ public:
     virtual ~MainWindow();
 
     void DrawField(QGraphicsItem* graphicfield);
+
 public slots:
     void DoCloseWindow();
+    void FrameUpdate();
 
 signals:
     void MovingPlayerSignal(int x, int y);
@@ -36,4 +40,7 @@ private:
     int _width;
 
     GraphicField _graphicField;
+
+    QTimer* _timer;
+    int _frameUpdateTime;
 };

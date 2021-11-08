@@ -9,9 +9,9 @@ class GraphicCell : public QObject, public Cell
 {
     Q_OBJECT
 public:
+    GraphicCell() = default;
     GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QPen pen, QBrush brush,
                 QString file);
-    GraphicCell() = default;
     virtual ~GraphicCell();
 
     GraphicCell(const GraphicCell& other);

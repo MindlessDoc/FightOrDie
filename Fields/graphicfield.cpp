@@ -20,6 +20,7 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
                _cells[i][j] = new Exit(j * GetWidthOfCell(), i * GetHeightOfCell(),
                                        (j + 1) * GetWidthOfCell(), (i + 1) * GetHeightOfCell(), i, j);
                _exit = static_cast<GraphicCell*>(_cells[i][j]);
+               connect(static_cast<Exit*>(_exit), &Exit::GameOver, this, &GraphicField::GameOver);
             }
             else
             {
@@ -30,7 +31,6 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
     }
     _player = new Player(this, _entrance);
     connect(this, &GraphicField::MovingPlayerSignal, _player, &Player::Move);
-    connect(static_cast<Exit*>(_exit), &Exit::GameOver, this, &GraphicField::GameOver);
 }
 GraphicField::~GraphicField()
 {
