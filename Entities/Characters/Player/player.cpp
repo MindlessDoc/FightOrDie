@@ -16,7 +16,7 @@ void Player::Draw(QPainter* painter)
     _avatar.Draw(_graphicCell, painter);
 }
 
-void Player::MovingItemCells(int x, int y)
+void Player::Move(int x, int y)
 {
     int newColumn = _graphicCell->GetColumn() + y;
     int newRow = _graphicCell->GetRow() + x;

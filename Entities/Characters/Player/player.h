@@ -15,7 +15,7 @@ public:
     Player(GraphicField* gameField, GraphicCell* graphicCell);
     virtual void Draw(QPainter* painter) override;
 public slots:
-    void MovingItemCells(int x, int y);
+    void Move(int x, int y);
 private:
     Avatar _avatar;
     GraphicField* _gameField;

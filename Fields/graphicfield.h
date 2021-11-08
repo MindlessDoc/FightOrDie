@@ -19,10 +19,10 @@ public:
     GraphicField& operator= (GraphicField&& other);
 
 public slots:
-    void MovingPlayer(int x, int y);
+    void MovingPlayerSlot(int x, int y);
     void GameOver();
 signals:
-    void MovingItemCells(int x, int y);
+    void MovingPlayerSignal(int x, int y);
     void DoCloseWindow();
 
 private:

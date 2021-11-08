@@ -23,7 +23,7 @@ public slots:
     void DoCloseWindow();
 
 signals:
-    void MovingPlayer(int x, int y);
+    void MovingPlayerSignal(int x, int y);
 
 protected:
     virtual void keyPressEvent(QKeyEvent *event) override;

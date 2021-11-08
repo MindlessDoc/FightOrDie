@@ -12,7 +12,7 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 
     setFixedSize(_width + 20, _height + 20);
 
-    connect(this, &MainWindow::MovingPlayer, &_graphicField, &GraphicField::MovingPlayer);
+    connect(this, &MainWindow::MovingPlayerSignal, &_graphicField, &GraphicField::MovingPlayerSlot);
     connect(&_graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
 
     scene = new QGraphicsScene();
@@ -46,10 +46,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key())
     {
-    case Qt::Key_S: emit MovingPlayer(0, 1); break;
-    case Qt::Key_W: emit MovingPlayer(0, -1); break;
-    case Qt::Key_A: emit MovingPlayer(-1, 0); break;
-    case Qt::Key_D: emit MovingPlayer(1, 0); break;
+    case Qt::Key_S: emit MovingPlayerSignal(0, 1); break;
+    case Qt::Key_W: emit MovingPlayerSignal(0, -1); break;
+    case Qt::Key_A: emit MovingPlayerSignal(-1, 0); break;
+    case Qt::Key_D: emit MovingPlayerSignal(1, 0); break;
     }
     scene->update();
 }

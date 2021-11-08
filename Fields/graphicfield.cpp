@@ -29,7 +29,7 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
         }
     }
     _player = new Player(this, _entrance);
-    connect(this, &GraphicField::MovingItemCells, _player, &Player::MovingItemCells);
+    connect(this, &GraphicField::MovingPlayerSignal, _player, &Player::Move);
     connect(static_cast<Exit*>(_exit), &Exit::GameOver, this, &GraphicField::GameOver);
 }
 GraphicField::~GraphicField()
@@ -118,9 +118,9 @@ QRectF GraphicField::boundingRect() const
     return QRectF(-1000, -1000, 1000, 1000);
 }
 
-void GraphicField::MovingPlayer(int x, int y)
+void GraphicField::MovingPlayerSlot(int x, int y)
 {
-    emit MovingItemCells(x, y);
+    emit MovingPlayerSignal(x, y);
 }
 
 void GraphicField::GameOver()
