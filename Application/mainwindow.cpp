@@ -10,8 +10,7 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     , _frameUpdateTime(20)
 {
     ui->setupUi(this);
-
-    setFixedSize(_width + 20, _height + 20);
+    setFixedSize(_width + 20, _height + 145);
 
     connect(this, &MainWindow::MovingPlayerSignal, &_graphicField, &GraphicField::MovingPlayerSlot);
     connect(&_graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
@@ -26,6 +25,9 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     //ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    QPixmap avatar("C:/QtProjects/OOP/FightOrDie/Src/Player.png");
+    ui->playerAvatar->setPixmap(avatar.scaled(100, 100));
 
     setWindowTitle("Game field");
     DrawField(&_graphicField);

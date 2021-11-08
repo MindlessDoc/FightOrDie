@@ -21,6 +21,10 @@ public slots:
 signals:
     void GameOver();
 private:
+    int _health;
+    int _attack;
+    int _armor;
+
     Avatar _avatar;
     GraphicField* _gameField;
     GraphicCell* _graphicCell;

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>705</width>
-    <height>519</height>
+    <width>762</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="font">
@@ -22,6 +22,104 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QGraphicsView" name="graphicsView"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="playerAvatar">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="title">
+             <string/>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QLabel" name="staticHealth">
+               <property name="text">
+                <string>Здоровье</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="staticAttack">
+               <property name="text">
+                <string>Аттака</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="staticArmor">
+               <property name="text">
+                <string>Броня</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_4">
+            <property name="title">
+             <string/>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QLabel" name="healthText">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="attackText">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="armorText">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>

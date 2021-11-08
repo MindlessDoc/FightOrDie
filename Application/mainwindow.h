@@ -7,6 +7,7 @@
 #include "Fields/graphicfield.h"
 #include "QTimer"
 #include "QTime"
+#include <QPixmap>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
