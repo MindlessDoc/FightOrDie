@@ -13,7 +13,7 @@ class Player : public QObject, public ICharacter
     Q_OBJECT
 public:
     Player(GraphicField* gameField, GraphicCell* graphicCell);
-    ~Player();
+    virtual ~Player();
     virtual void Draw(QPainter* painter) override;
     virtual int Type() override;
 public slots:

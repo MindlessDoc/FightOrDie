@@ -30,6 +30,7 @@ Enemy::Enemy(GraphicField* gameField, GraphicCell* graphicCell)
 
 Enemy::~Enemy()
 {
+    _graphicCell->_item = nullptr;
     delete _timerForMove;
 }
 
@@ -46,6 +47,10 @@ void Enemy::Move()
     if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
     {
         if(_gameField->GetCell(newColumn, newRow)->_item && _gameField->GetCell(newColumn, newRow)->_item->Type() == IEntity::PLAYER)
+        {
+            delete static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->_item);
+        }
+        else if(_gameField->GetCell(newColumn, newRow)->_item && _gameField->GetCell(newColumn, newRow)->_item->Type() == IEntity::ENEMY)
         {
             delete static_cast<Enemy*>(_gameField->GetCell(newColumn, newRow)->_item);
         }

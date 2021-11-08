@@ -13,6 +13,7 @@ Player::Player(GraphicField* gameField, GraphicCell* graphicCell)
 
 Player::~Player()
 {
+    _graphicCell->_item = nullptr;
     emit GameOver();
 }
 

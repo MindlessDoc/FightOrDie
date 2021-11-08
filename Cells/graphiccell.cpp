@@ -25,7 +25,7 @@ void GraphicCell::DrawCell(QPainter *painter)
 
 void GraphicCell::Moving(GraphicCell* swapCell)
 {
-        std::swap(swapCell->_item, _item); // Think how add checking
+    std::swap(swapCell->_item, _item); // Think how add checking
 }
 
 GraphicCell::~GraphicCell()

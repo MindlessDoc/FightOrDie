@@ -32,6 +32,9 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
     }
     _player = new Player(this, _entrance);
     new Enemy(this, static_cast<GraphicCell*>(_cells[5][5])); //FIX
+    new Enemy(this, static_cast<GraphicCell*>(_cells[7][7])); //FIX
+    new Enemy(this, static_cast<GraphicCell*>(_cells[5][1])); //FIX
+    new Enemy(this, static_cast<GraphicCell*>(_cells[7][2])); //FIX
     connect(this, &GraphicField::MovingPlayerSignal, _player, &Player::Move);
     connect(_player, &Player::GameOver, this, &GraphicField::GameOver);
 }
