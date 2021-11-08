@@ -18,6 +18,8 @@ public:
     int GetColumn() const;
     int GetRow() const;
 
+
+
     //void Moving(int coord_x, int coord_y);
     //std::shared_ptr<IEntity> _item;
 
@@ -25,5 +27,6 @@ protected:
     int _column, _row;
 
 public:
-    IEntity* _item; // Find out at what point in time shared_ptr will call "delete"
+    IEntity* _item; // MAKE PRIVATE
+    //IEntity* GetItem();
 };

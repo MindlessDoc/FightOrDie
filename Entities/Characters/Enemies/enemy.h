@@ -15,6 +15,7 @@ public:
     Enemy(GraphicField* gameField, GraphicCell* graphicCell);
     virtual ~Enemy();
     virtual void Draw(QPainter* painter) override;
+    virtual int Type() override;
 public slots:
     void Move();
 private:

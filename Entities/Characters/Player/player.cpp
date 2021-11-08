@@ -11,6 +11,11 @@ Player::Player(GraphicField* gameField, GraphicCell* graphicCell)
     _graphicCell->_item = this;
 }
 
+Player::~Player()
+{
+    emit GameOver();
+}
+
 void Player::Draw(QPainter* painter)
 {
     _avatar.Draw(_graphicCell, painter);
@@ -22,7 +27,16 @@ void Player::Move(int x, int y)
     int newRow = _graphicCell->GetRow() + x;
     if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
     {
+        if(_gameField->GetCell(newColumn, newRow)->_item && _gameField->GetCell(newColumn, newRow)->_item->Type() == IEntity::ENEMY)
+        {
+            delete static_cast<Enemy*>(_gameField->GetCell(newColumn, newRow)->_item);
+        }
         static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
         _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
     }
+}
+
+int Player::Type()
+{
+    return IEntity::PLAYER;
 }

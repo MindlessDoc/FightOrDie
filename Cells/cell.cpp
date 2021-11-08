@@ -32,3 +32,4 @@ Cell& Cell::operator=(const Cell& other)
 
 int Cell::GetColumn() const { return _column; }
 int Cell::GetRow() const { return _row; }
+//IEntity* Cell::GetItem() { return _item; }
