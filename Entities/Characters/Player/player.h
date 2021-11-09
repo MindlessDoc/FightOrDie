@@ -4,6 +4,7 @@
 #include "Containers/vector.h"
 #include <QKeyEvent>
 #include <QObject>
+#include "Entities/Items/item.h"
 
 class Cell;
 class GraphicField;
@@ -28,4 +29,6 @@ private:
     Avatar _avatar;
     GraphicField* _gameField;
     GraphicCell* _graphicCell;
+
+    void UseItem(Item* item);
 };

@@ -5,7 +5,7 @@ Cell::Cell(int column, int row)
     : _column(column)
     , _row(row)
 {
-    _item = nullptr;
+    _entity = nullptr;
 }
 
 Cell::~Cell()
@@ -17,7 +17,7 @@ Cell::Cell(const Cell& other)
     : _column(other._column)
     , _row(other._row)
 {
-    _item = other._item; // Add copy constructor for concrete type of enemy
+    _entity = other._entity; // Add copy constructor for concrete type of enemy
 }
 
 Cell& Cell::operator=(const Cell& other)
@@ -25,7 +25,7 @@ Cell& Cell::operator=(const Cell& other)
     _column = other._column;
     _row = other._row;
 
-    _item = other._item; // Add copy constructor for concrete type of enemy
+    _entity = other._entity; // Add copy constructor for concrete type of enemy
 
     return *this;
 }

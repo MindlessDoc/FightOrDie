@@ -21,6 +21,8 @@ SOURCES += \
     Entities/Characters/Enemies/enemy.cpp \
     Entities/Characters/Player/player.cpp \
     Entities/Characters/icharacter.cpp \
+    Entities/Items/AidKit/aidkit.cpp \
+    Entities/Items/item.cpp \
     Entities/ientity.cpp \
     Fields/field.cpp \
     Fields/graphicfield.cpp \
@@ -37,6 +39,8 @@ HEADERS += \
     Entities/Characters/Enemies/enemy.h \
     Entities/Characters/Player/player.h \
     Entities/Characters/icharacter.h \
+    Entities/Items/AidKit/aidkit.h \
+    Entities/Items/item.h \
     Entities/ientity.h \
     Fields/field.h \
     Fields/graphicfield.h \

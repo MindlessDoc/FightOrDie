@@ -9,7 +9,7 @@ Enemy::Enemy(GraphicField* gameField, GraphicCell* graphicCell)
     , _graphicCell(graphicCell)
     , _movingTime(1000)
 {
-    _graphicCell->_item = this;
+    _graphicCell->_entity = this;
 
     _timerForMove = new QTimer();
     connect(_timerForMove, &QTimer::timeout, this, &Enemy::Move);
@@ -30,7 +30,7 @@ Enemy::Enemy(GraphicField* gameField, GraphicCell* graphicCell)
 
 Enemy::~Enemy()
 {
-    _graphicCell->_item = nullptr;
+    _graphicCell->_entity = nullptr;
     delete _timerForMove;
 }
 
@@ -46,13 +46,13 @@ void Enemy::Move()
     int newRow = _graphicCell->GetRow() + _direction[index][1];
     if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
     {
-        if(_gameField->GetCell(newColumn, newRow)->_item && _gameField->GetCell(newColumn, newRow)->_item->Type() == IEntity::PLAYER)
+        if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
         {
-            delete static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->_item);
+            delete static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->_entity);
         }
-        else if(_gameField->GetCell(newColumn, newRow)->_item && _gameField->GetCell(newColumn, newRow)->_item->Type() == IEntity::ENEMY)
+        else if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::ENEMY)
         {
-            delete static_cast<Enemy*>(_gameField->GetCell(newColumn, newRow)->_item);
+            delete static_cast<Enemy*>(_gameField->GetCell(newColumn, newRow)->_entity);
         }
         static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
         _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));

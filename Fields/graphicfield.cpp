@@ -35,6 +35,7 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
     new Enemy(this, static_cast<GraphicCell*>(_cells[7][7])); //FIX
     new Enemy(this, static_cast<GraphicCell*>(_cells[5][1])); //FIX
     new Enemy(this, static_cast<GraphicCell*>(_cells[7][2])); //FIX
+    new AidKit(static_cast<GraphicCell*>(_cells[9][5])); //FIX
     connect(this, &GraphicField::MovingPlayerSignal, _player, &Player::Move);
     connect(_player, &Player::GameOver, this, &GraphicField::GameOver);
 }
@@ -132,4 +133,9 @@ void GraphicField::MovingPlayerSlot(int x, int y)
 void GraphicField::GameOver()
 {
     emit DoCloseWindow();
+}
+
+const Player* GraphicField::GetPlayer()
+{
+    return _player;
 }

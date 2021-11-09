@@ -18,6 +18,8 @@ public:
     GraphicField(GraphicField&& other);
     GraphicField& operator= (GraphicField&& other);
 
+    const Player* GetPlayer();
+
 public slots:
     void MovingPlayerSlot(int x, int y);
     void GameOver();

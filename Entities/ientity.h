@@ -8,7 +8,8 @@ protected:
     enum Entites
     {
         PLAYER,
-        ENEMY
+        ENEMY,
+        AIDKIT
     };
 
 public:

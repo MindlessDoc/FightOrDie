@@ -19,13 +19,13 @@ void GraphicCell::DrawCell(QPainter *painter)
     painter->setBrush(_brush);
     painter->drawRect(GetLeftUpX(), GetLeftUpY(), GetRightDownX(), GetRightDownY());
     _avatar.Draw(this, painter);
-    if(_item != nullptr)
-        _item->Draw(painter);
+    if(_entity != nullptr)
+        _entity->Draw(painter);
 }
 
 void GraphicCell::Moving(GraphicCell* swapCell)
 {
-    std::swap(swapCell->_item, _item); // Think how add checking
+    std::swap(swapCell->_entity, _entity); // Think how add checking
 }
 
 GraphicCell::~GraphicCell()

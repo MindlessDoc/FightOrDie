@@ -2,6 +2,8 @@
 
 #include"Entities/Characters/Player/player.h"
 #include"Entities/Characters/Enemies/enemy.h"
+#include"Entities/Items/AidKit/aidkit.h"
+
 #include<memory>
 #include<iostream>
 
@@ -27,6 +29,6 @@ protected:
     int _column, _row;
 
 public:
-    IEntity* _item; // MAKE PRIVATE
+    IEntity* _entity; // MAKE PRIVATE
     //IEntity* GetItem();
 };
