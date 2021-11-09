@@ -14,6 +14,7 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 
     connect(this, &MainWindow::MovingPlayerSignal, &_graphicField, &GraphicField::MovingPlayerSlot);
     connect(&_graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
+    connect(_graphicField.GetPlayer(), &Player::HealthChange, this, &MainWindow::PlayerInfoHealthUpdate);
 
     _timer = new QTimer();
     connect(_timer, &QTimer::timeout, this, &MainWindow::FrameUpdate);
@@ -41,14 +42,19 @@ void MainWindow::InitInterface()
     QPixmap avatar("C:/QtProjects/OOP/FightOrDie/Src/Player.png");
     ui->playerAvatar->setPixmap(avatar.scaled(_sizeOfPlayerAvatar, _sizeOfPlayerAvatar));
 
+    const Player* additional = _graphicField.GetPlayer();
+
     QPixmap health("C:/QtProjects/OOP/FightOrDie/Src/Heart.png");
     ui->staticHealth->setPixmap(health.scaled(_sizeOfIcons, _sizeOfIcons));
+    ui->healthText->setText(QString::number(additional->GetHealth()));
 
     QPixmap attack("C:/QtProjects/OOP/FightOrDie/Src/Attack.png");
     ui->staticAttack->setPixmap(attack.scaled(_sizeOfIcons, _sizeOfIcons));
+    ui->attackText->setText(QString::number(additional->GetAttack()));
 
     QPixmap armor("C:/QtProjects/OOP/FightOrDie/Src/Armor.png");
     ui->staticArmor->setPixmap(armor.scaled(_sizeOfIcons, _sizeOfIcons));
+    ui->armorText->setText(QString::number(additional->GetArmor()));
 
     setWindowTitle("Game field");
 }
@@ -78,4 +84,9 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     case Qt::Key_D: emit MovingPlayerSignal(1, 0); break;
     }
     //scene->update();
+}
+
+void MainWindow::PlayerInfoHealthUpdate(int health)
+{
+    ui->healthText->setText(QString::number(health));
 }

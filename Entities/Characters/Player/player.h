@@ -17,10 +17,18 @@ public:
     virtual ~Player();
     virtual void Draw(QPainter* painter) override;
     virtual int Type() override;
+
+    int GetHealth() const;
+    int GetAttack() const;
+    int GetArmor() const;
+
 public slots:
     void Move(int x, int y);
 signals:
     void GameOver();
+    void HealthChange(int health);
+    void AttackChange(int attack);
+    void ArmorChange(int armor);
 private:
     int _health;
     int _attack;

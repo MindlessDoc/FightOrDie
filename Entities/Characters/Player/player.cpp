@@ -61,4 +61,9 @@ int Player::Type()
 void Player::UseAidKitItem(int plusHealth)
 {
     _health += plusHealth;
+    emit HealthChange(_health);
 }
+
+int Player::GetHealth() const { return _health; }
+int Player::GetAttack() const { return _attack; }
+int Player::GetArmor() const { return _armor; }

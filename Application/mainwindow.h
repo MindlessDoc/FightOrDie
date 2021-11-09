@@ -26,6 +26,9 @@ public:
 public slots:
     void DoCloseWindow();
     void FrameUpdate();
+    void PlayerInfoHealthUpdate(int health);
+    //void PlayerInfoAttackUpdate();
+    //void PlayerInfoArmorUpdate();
 
 signals:
     void MovingPlayerSignal(int x, int y);
