@@ -31,7 +31,9 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
         }
     }
     _player = new Player(this, _entrance, 100, 100, 100);
-    new AidKit(static_cast<GraphicCell*>(_cells[4][4])); //FIX
+    new HealthItem(static_cast<GraphicCell*>(_cells[4][4])); //FIX
+    new AttackItem(static_cast<GraphicCell*>(_cells[4][5])); //FIX
+    new ArmorItem(static_cast<GraphicCell*>(_cells[4][6])); //FIX
     //new Enemy(this, static_cast<GraphicCell*>(_cells[7][7])); //FIX
     //new Enemy(this, static_cast<GraphicCell*>(_cells[5][1])); //FIX
     //new Enemy(this, static_cast<GraphicCell*>(_cells[7][2])); //FIX

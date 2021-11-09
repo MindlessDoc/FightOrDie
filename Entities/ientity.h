@@ -9,7 +9,9 @@ protected:
     {
         PLAYER,
         ENEMY,
-        AIDKIT
+        HEALTHITEM,
+        ATTACKITEM,
+        ARMORITEM
     };
 
 public:

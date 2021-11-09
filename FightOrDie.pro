@@ -21,7 +21,9 @@ SOURCES += \
     Entities/Characters/Enemies/enemy.cpp \
     Entities/Characters/Player/player.cpp \
     Entities/Characters/icharacter.cpp \
-    Entities/Items/AidKit/aidkit.cpp \
+    Entities/Items/HealthItem/healthitem.cpp \
+    Entities/Items/ArmorItem/armoritem.cpp \
+    Entities/Items/AttackItem/attackitem.cpp \
     Entities/Items/item.cpp \
     Entities/ientity.cpp \
     Fields/field.cpp \
@@ -39,7 +41,9 @@ HEADERS += \
     Entities/Characters/Enemies/enemy.h \
     Entities/Characters/Player/player.h \
     Entities/Characters/icharacter.h \
-    Entities/Items/AidKit/aidkit.h \
+    Entities/Items/HealthItem/healthitem.h \
+    Entities/Items/ArmorItem/armoritem.h \
+    Entities/Items/AttackItem/attackitem.h \
     Entities/Items/item.h \
     Entities/ientity.h \
     Fields/field.h \

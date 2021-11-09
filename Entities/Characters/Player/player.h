@@ -38,7 +38,7 @@ private:
     GraphicField* _gameField;
     GraphicCell* _graphicCell;
 
-    void UseAidKitItem(int plusHealth);
+    void UseHealthItem(int plusHealth);
     void UseAttackItem(int plusAttck);
     void UseArmorItem(int plusArmor);
 

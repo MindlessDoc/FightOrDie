@@ -2,11 +2,11 @@
 
 #include "Entities/Items/item.h"
 
-class AidKit : public Item
+class HealthItem : public Item
 {
 public:
-    AidKit(GraphicCell* graphicCell);
-    virtual ~AidKit();
+    HealthItem(GraphicCell* graphicCell);
+    virtual ~HealthItem();
 
     virtual void Draw(QPainter* painter) override;
     virtual int Type() override;

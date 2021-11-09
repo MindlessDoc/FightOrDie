@@ -14,7 +14,10 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 
     connect(this, &MainWindow::MovingPlayerSignal, &_graphicField, &GraphicField::MovingPlayerSlot);
     connect(&_graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
+
     connect(_graphicField.GetPlayer(), &Player::HealthChange, this, &MainWindow::PlayerInfoHealthUpdate);
+    connect(_graphicField.GetPlayer(), &Player::AttackChange, this, &MainWindow::PlayerInfoAttackUpdate);
+    connect(_graphicField.GetPlayer(), &Player::ArmorChange, this, &MainWindow::PlayerInfoArmorUpdate);
 
     _timer = new QTimer();
     connect(_timer, &QTimer::timeout, this, &MainWindow::FrameUpdate);
@@ -44,15 +47,15 @@ void MainWindow::InitInterface()
 
     const Player* additional = _graphicField.GetPlayer();
 
-    QPixmap health("C:/QtProjects/OOP/FightOrDie/Src/Heart.png");
+    QPixmap health("C:/QtProjects/OOP/FightOrDie/Src/HealthIcon.png");
     ui->staticHealth->setPixmap(health.scaled(_sizeOfIcons, _sizeOfIcons));
     ui->healthText->setText(QString::number(additional->GetHealth()));
 
-    QPixmap attack("C:/QtProjects/OOP/FightOrDie/Src/Attack.png");
+    QPixmap attack("C:/QtProjects/OOP/FightOrDie/Src/AttackIcon.png");
     ui->staticAttack->setPixmap(attack.scaled(_sizeOfIcons, _sizeOfIcons));
     ui->attackText->setText(QString::number(additional->GetAttack()));
 
-    QPixmap armor("C:/QtProjects/OOP/FightOrDie/Src/Armor.png");
+    QPixmap armor("C:/QtProjects/OOP/FightOrDie/Src/ArmorIcon.png");
     ui->staticArmor->setPixmap(armor.scaled(_sizeOfIcons, _sizeOfIcons));
     ui->armorText->setText(QString::number(additional->GetArmor()));
 
@@ -89,4 +92,14 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 void MainWindow::PlayerInfoHealthUpdate(int health)
 {
     ui->healthText->setText(QString::number(health));
+}
+
+void MainWindow::PlayerInfoAttackUpdate(int attack)
+{
+    ui->attackText->setText(QString::number(attack));
+}
+
+void MainWindow::PlayerInfoArmorUpdate(int armor)
+{
+    ui->armorText->setText(QString::number(armor));
 }

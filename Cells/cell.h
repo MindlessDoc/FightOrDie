@@ -2,7 +2,9 @@
 
 #include"Entities/Characters/Player/player.h"
 #include"Entities/Characters/Enemies/enemy.h"
-#include"Entities/Items/AidKit/aidkit.h"
+#include"Entities/Items/HealthItem/healthitem.h"
+#include"Entities/Items/ArmorItem/armoritem.h"
+#include"Entities/Items/AttackItem/attackitem.h"
 
 #include<memory>
 #include<iostream>

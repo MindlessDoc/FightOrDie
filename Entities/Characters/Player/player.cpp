@@ -40,10 +40,22 @@ void Player::Move(int x, int y)
                 delete static_cast<Enemy*>(_gameField->GetCell(newColumn, newRow)->_entity);
                 break;
             }
-            case IEntity::AIDKIT:
+            case IEntity::HEALTHITEM:
             {
-                UseAidKitItem(static_cast<AidKit*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetHealthPointers());
-                delete static_cast<AidKit*>(_gameField->GetCell(newColumn, newRow)->_entity);
+                UseHealthItem(static_cast<HealthItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetHealthPointers());
+                delete static_cast<HealthItem*>(_gameField->GetCell(newColumn, newRow)->_entity);
+                break;
+            }
+            case IEntity::ATTACKITEM:
+            {
+                UseAttackItem(static_cast<AttackItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetAttackPointers());
+                delete static_cast<AttackItem*>(_gameField->GetCell(newColumn, newRow)->_entity);
+                break;
+            }
+            case IEntity::ARMORITEM:
+            {
+                UseArmorItem(static_cast<ArmorItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetArmorPointers());
+                delete static_cast<ArmorItem*>(_gameField->GetCell(newColumn, newRow)->_entity);
                 break;
             }
             }
@@ -58,11 +70,25 @@ int Player::Type()
     return IEntity::PLAYER;
 }
 
-void Player::UseAidKitItem(int plusHealth)
+void Player::UseHealthItem(int plusHealth)
 {
     _health += plusHealth;
     emit HealthChange(_health);
 }
+
+void Player::UseAttackItem(int plusAttck)
+{
+    _attack += plusAttck;
+    emit AttackChange(_attack);
+}
+
+void Player::UseArmorItem(int plusArmor)
+{
+    _armor += plusArmor;
+    emit ArmorChange(_armor);
+}
+
+
 
 int Player::GetHealth() const { return _health; }
 int Player::GetAttack() const { return _attack; }
