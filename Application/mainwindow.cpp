@@ -10,7 +10,7 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     , _frameUpdateTime(20)
 {
     ui->setupUi(this);
-    setFixedSize(_width + 20, _height + 145);
+    setFixedSize(_width + 20, _height + _sizeOfPlayerAvatar + _sizeOfIcons * 3);
 
     connect(this, &MainWindow::MovingPlayerSignal, &_graphicField, &GraphicField::MovingPlayerSlot);
     connect(&_graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
@@ -26,10 +26,8 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    QPixmap avatar("C:/QtProjects/OOP/FightOrDie/Src/Player.png");
-    ui->playerAvatar->setPixmap(avatar.scaled(100, 100));
+    InitInterface();
 
-    setWindowTitle("Game field");
     DrawField(&_graphicField);
 }
 MainWindow::~MainWindow()
@@ -38,6 +36,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::InitInterface()
+{
+    QPixmap avatar("C:/QtProjects/OOP/FightOrDie/Src/Player.png");
+    ui->playerAvatar->setPixmap(avatar.scaled(_sizeOfPlayerAvatar, _sizeOfPlayerAvatar));
+
+    QPixmap health("C:/QtProjects/OOP/FightOrDie/Src/Heart.png");
+    ui->staticHealth->setPixmap(health.scaled(_sizeOfIcons, _sizeOfIcons));
+
+    QPixmap attack("C:/QtProjects/OOP/FightOrDie/Src/Attack.png");
+    ui->staticAttack->setPixmap(attack.scaled(_sizeOfIcons, _sizeOfIcons));
+
+    QPixmap armor("C:/QtProjects/OOP/FightOrDie/Src/Armor.png");
+    ui->staticArmor->setPixmap(armor.scaled(_sizeOfIcons, _sizeOfIcons));
+
+    setWindowTitle("Game field");
+}
 
 void MainWindow::DrawField(QGraphicsItem* graphicfield)
 {

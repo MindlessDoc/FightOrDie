@@ -7,6 +7,11 @@ AidKit::AidKit(GraphicCell* graphicCell)
     _graphicCell->_entity = this;
 }
 
+AidKit::~AidKit()
+{
+    _graphicCell->_entity = nullptr;
+}
+
 void AidKit::Draw(QPainter* painter)
 {
     _avatar.Draw(_graphicCell, painter);

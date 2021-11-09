@@ -6,6 +6,7 @@ class AidKit : public Item
 {
 public:
     AidKit(GraphicCell* graphicCell);
+    virtual ~AidKit();
 
     virtual void Draw(QPainter* painter) override;
     virtual int Type() override;
@@ -13,6 +14,5 @@ public:
     int GetHealthPointers();
 private:
     const int _healthPointers = 10;
-
 };
 

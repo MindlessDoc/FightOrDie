@@ -34,6 +34,10 @@ protected:
     virtual void keyPressEvent(QKeyEvent *event) override;
 
 private:
+    const int _sizeOfPlayerAvatar = 100;
+    const int _sizeOfIcons = 25;
+    void InitInterface();
+
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
 

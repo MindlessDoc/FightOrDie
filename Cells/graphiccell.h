@@ -10,8 +10,7 @@ class GraphicCell : public QObject, public Cell
     Q_OBJECT
 public:
     GraphicCell() = default;
-    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QPen pen, QBrush brush,
-                QString file);
+    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QString file);
     virtual ~GraphicCell();
 
     GraphicCell(const GraphicCell& other);
@@ -33,8 +32,6 @@ signals:
     void CellUpdate();
 
 private:
-    QPen _pen;
-    QBrush _brush;
     Avatar _avatar;
 };
 
