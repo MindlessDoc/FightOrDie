@@ -24,6 +24,7 @@ public:
 
 public slots:
     void Move(int x, int y);
+
 signals:
     void GameOver();
     void HealthChange(int health);
@@ -42,5 +43,5 @@ private:
     void UseAttackItem(int plusAttck);
     void UseArmorItem(int plusArmor);
 
-    void UseItem(Item* item);
+    //void UseItem(Item* item);
 };

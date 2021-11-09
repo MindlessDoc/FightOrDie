@@ -5,3 +5,13 @@ Way::Way(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, 
 {
 
 }
+
+int Way::Type()
+{
+    return GraphicCellsTypes::WAY;
+}
+
+bool Way::CanMoveIn()
+{
+    return true;
+}

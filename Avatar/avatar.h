@@ -9,7 +9,6 @@ class GraphicCell;
 class Avatar : public QWidget
 {
 public:
-    //Avatar(const Cell* cell = nullptr, const QString filename = "", QWidget* parent = 0);
     Avatar(const GraphicCell* graphicCell, const QString filename, QWidget* parent = 0);
     ~Avatar();
 

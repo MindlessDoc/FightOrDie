@@ -6,3 +6,13 @@ Entrance::Entrance(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int
 
 }
 
+int Entrance::Type()
+{
+    return GraphicCellsTypes::ENTRANCE;
+}
+
+bool Entrance::CanMoveIn()
+{
+    return false;
+}
+

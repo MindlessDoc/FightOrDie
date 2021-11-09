@@ -12,3 +12,12 @@ void Exit::Moving(GraphicCell* swapCell)
     emit GameOver();
 }
 
+int Exit::Type()
+{
+    return GraphicCellsTypes::EXIT;
+}
+
+bool Exit::CanMoveIn()
+{
+    return false;
+}

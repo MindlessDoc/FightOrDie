@@ -12,6 +12,7 @@
 class Cell
 {
 public:
+
     Cell(int column, int row);
     Cell() = default;
     virtual ~Cell();
@@ -21,8 +22,6 @@ public:
 
     int GetColumn() const;
     int GetRow() const;
-
-
 
     //void Moving(int coord_x, int coord_y);
     //std::shared_ptr<IEntity> _item;

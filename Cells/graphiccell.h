@@ -9,6 +9,15 @@ class GraphicCell : public QObject, public Cell
 {
     Q_OBJECT
 public:
+
+    enum GraphicCellsTypes
+    {
+        GRAPHICCELL,
+        ENTRANCE,
+        WAY,
+        EXIT
+    };
+
     GraphicCell() = default;
     GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QString file);
     virtual ~GraphicCell();
@@ -23,7 +32,9 @@ public:
 
     void DrawCell(QPainter *painter);
 
+    virtual int Type();
     virtual void Moving(GraphicCell* swapCell);
+    virtual bool CanMoveIn();
 
 protected:
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;

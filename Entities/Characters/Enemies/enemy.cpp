@@ -46,16 +46,18 @@ void Enemy::Move()
     int newRow = _graphicCell->GetRow() + _direction[index][1];
     if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
     {
-        if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
+        if(((_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
+                || (!_gameField->GetCell(newColumn, newRow)->_entity))
+                && static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->CanMoveIn())
         {
-            delete static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->_entity);
-        }
-        else if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::ENEMY)
-        {
-            delete static_cast<Enemy*>(_gameField->GetCell(newColumn, newRow)->_entity);
-        }
-        static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
-        _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
+            if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
+            {
+                delete static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->_entity);
+            }
+            static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
+            _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
+
+        }        
     }
 }
 

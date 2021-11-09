@@ -12,12 +12,19 @@ GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDown
 }
 void GraphicCell::DrawCell(QPainter *painter)
 {
-    //painter->setPen(_pen);
-    //painter->setBrush(_brush);
-    //painter->drawRect(GetLeftUpX(), GetLeftUpY(), GetRightDownX(), GetRightDownY());
     _avatar.Draw(this, painter);
     if(_entity != nullptr)
         _entity->Draw(painter);
+}
+
+int GraphicCell::Type()
+{
+    return GraphicCellsTypes::GRAPHICCELL;
+}
+
+bool GraphicCell::CanMoveIn()
+{
+    return false;
 }
 
 void GraphicCell::Moving(GraphicCell* swapCell)
