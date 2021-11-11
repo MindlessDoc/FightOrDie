@@ -19,6 +19,7 @@ SOURCES += \
     Cells/graphiccell.cpp \
     Cells/way.cpp \
     Entities/Characters/Enemies/enemy.cpp \
+    Entities/Characters/Enemies/trojan.cpp \
     Entities/Characters/Enemies/virus.cpp \
     Entities/Characters/Player/player.cpp \
     Entities/Characters/icharacter.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     Cells/graphiccell.h \
     Cells/way.h \
     Entities/Characters/Enemies/enemy.h \
+    Entities/Characters/Enemies/trojan.h \
     Entities/Characters/Enemies/virus.h \
     Entities/Characters/Player/player.h \
     Entities/Characters/icharacter.h \

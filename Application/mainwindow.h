@@ -2,11 +2,11 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
-#include "QGraphicsItem"
+#include <QGraphicsItem>
 #include "ui_mainwindow.h"
 #include "Fields/graphicfield.h"
-#include "QTimer"
-#include "QTime"
+#include <QTimer>
+#include <QTime>
 #include <QPixmap>
 
 QT_BEGIN_NAMESPACE

@@ -18,7 +18,6 @@ public:
         EXIT
     };
 
-    GraphicCell() = default;
     GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QString file);
     virtual ~GraphicCell();
 

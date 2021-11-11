@@ -1,7 +1,10 @@
 #pragma once
 
+#include"Entities/ientity.h"
+
 #include"Entities/Characters/Player/player.h"
 #include"Entities/Characters/Enemies/virus.h"
+#include"Entities/Characters/Enemies/trojan.h"
 #include"Entities/Items/HealthItem/healthitem.h"
 #include"Entities/Items/ArmorItem/armoritem.h"
 #include"Entities/Items/AttackItem/attackitem.h"
@@ -31,5 +34,6 @@ protected:
 
 public:
     IEntity* _entity; // MAKE PRIVATE
+    int GetEntityType();
     //IEntity* GetItem();
 };

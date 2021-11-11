@@ -2,11 +2,14 @@
 
 #include "Avatar/avatar.h"
 
+class Cell;
+
 class IEntity
 {
-protected:
+public:
     enum Entites
     {
+        NULLPTR,
         PLAYER,
         ENEMY,
         HEALTHITEM,
@@ -15,7 +18,6 @@ protected:
     };
 
 public:
-
     virtual void Draw(QPainter* painter) = 0;
     virtual int Type() = 0;
 };

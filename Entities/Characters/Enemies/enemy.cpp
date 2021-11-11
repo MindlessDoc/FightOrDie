@@ -14,7 +14,6 @@ Enemy::Enemy(GraphicField* gameField, GraphicCell* graphicCell, QString filename
     _timerForMove = new QTimer();
     connect(_timerForMove, &QTimer::timeout, this, &Enemy::Move);
     _timerForMove->start(_movingTime);
-
 }
 
 Enemy::~Enemy()
@@ -26,28 +25,6 @@ Enemy::~Enemy()
 void Enemy::Draw(QPainter* painter)
 {
     _avatar.Draw(_graphicCell, painter);
-}
-
-void Enemy::Move()
-{
-    int index = QRandomGenerator::global()->bounded(0, _directionCount);
-    int newColumn = _graphicCell->GetColumn() + _direction[index][0];
-    int newRow = _graphicCell->GetRow() + _direction[index][1];
-    if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
-    {
-        if(((_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
-                || (!_gameField->GetCell(newColumn, newRow)->_entity))
-                && static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->CanMoveIn())
-        {
-            if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
-            {
-                delete static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->_entity);
-            }
-            static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
-            _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
-
-        }        
-    }
 }
 
 int Enemy::Type()
