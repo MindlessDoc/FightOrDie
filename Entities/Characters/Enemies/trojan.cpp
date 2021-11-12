@@ -3,7 +3,7 @@
 #include "Fields/graphicfield.h"
 
 Trojan::Trojan(GraphicField* gameField, GraphicCell* graphicCell)
-    : Enemy(gameField, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Enemy.png", 3000)
+    : Enemy(gameField, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Trojan.png", 1000)
 {
     //Think how to reduce
     _directionCount = 8;
@@ -33,7 +33,7 @@ Trojan::~Trojan()
 
 void Trojan::SetNextStep()
 {
-    Vector<Vector<int>> canMove;
+    _possibleDirection.resize(0);
     for(int i = 0; i < _directionCount; i++)
     {
         int newColumn = _graphicCell->GetColumn() + _direction[i][0];
@@ -42,15 +42,15 @@ void Trojan::SetNextStep()
                 && newRow < _gameField->GetWidthInCells()
              && static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->CanMoveIn())
         {
-            canMove.push_back(_direction[i]);
+            _possibleDirection.push_back(_direction[i]);
         }
     }
 
-    if(!canMove.empty())
+    if(!_possibleDirection.empty())
     {
-        int index = QRandomGenerator::global()->bounded(0, int(canMove.size()));
-        _nextStep = static_cast<GraphicCell*>(_gameField->GetCell(_graphicCell->GetColumn() + canMove[index][0],
-                                    _graphicCell->GetRow() + canMove[index][1]));
+        int index = QRandomGenerator::global()->bounded(0, int(_possibleDirection.size()));
+        _nextStep = static_cast<GraphicCell*>(_gameField->GetCell(_graphicCell->GetColumn() + _possibleDirection[index][0],
+                                    _graphicCell->GetRow() + _possibleDirection[index][1]));
         _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/NextStepTrojan.png");
     }
     else
@@ -61,15 +61,17 @@ void Trojan::SetNextStep()
 
 void Trojan::Move()
 {
-    if(_nextStep)
+    if(_nextStep && _nextStep->CanMoveIn())
     {
         if(_nextStep->GetEntityType() == IEntity::PLAYER)
         {
             delete static_cast<Player*>(_nextStep->_entity);
         }
+        _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
         _nextStep->Moving(_graphicCell);
         _graphicCell = _nextStep;
-        _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
     }
+    else if(_nextStep)
+        _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
     SetNextStep();
 }

@@ -30,7 +30,12 @@ Cell& Cell::operator=(const Cell& other)
     return *this;
 }
 
-int Cell::GetEntityType(){ return _entity ? _entity->Type() : IEntity::NULLPTR; }
+//bool Cell::CanMoveIn()
+//{
+//    return false;
+//}
+
+int Cell::GetEntityType(){ return (_entity) ? _entity->Type() : IEntity::NULLPTR; }
 
 int Cell::GetColumn() const { return _column; }
 int Cell::GetRow() const { return _row; }

@@ -8,7 +8,12 @@ template<class T>
 class Vector
 {
 public:
-    Vector() {}
+    Vector()
+        :_size(0)
+        ,_max_size(0)
+    {
+        _array = new T[_max_size];
+    }
 
     Vector(size_t size)
         :_size(size)
@@ -43,7 +48,7 @@ public:
             }
             return _array[index];
         }
-        catch (std::string exception)
+        catch (char const* exception)
         {
             std::cout << "Error: " << exception << std::endl;
         }
@@ -60,7 +65,7 @@ public:
 
             return _array[index];
         }
-        catch (std::string exception)
+        catch (char const* exception)
         {
             std::cout << "Error: " << exception << std::endl;
         }
@@ -91,6 +96,25 @@ public:
             resize(_size);
         }
         _array[_size++] = elemetn;
+    }
+
+    void pop()
+    {
+        try
+        {
+            if(_size == 0)
+            {
+                throw "Vector is empty";
+            }
+            else
+            {
+                resize(--_size);
+            }
+        }
+        catch (char const* exception)
+        {
+            std::cout << "Error: " << exception << std::endl;
+        }
     }
 
     void resize(size_t size)

@@ -3,7 +3,7 @@
 #include "Fields/graphicfield.h"
 
 Virus::Virus(GraphicField* gameField, GraphicCell* graphicCell)
-    : Enemy(gameField, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Enemy.png", 1000)
+    : Enemy(gameField, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Virus.png", 1000)
 {
     //Think how to reduce
     _directionCount = 4;

@@ -13,4 +13,6 @@ private:
 
     GraphicCell* _nextStep;
     QString NextStepAvatarFilename;
+
+    Vector<Vector<int>> _possibleDirection;
 };

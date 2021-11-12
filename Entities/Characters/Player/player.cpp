@@ -40,6 +40,11 @@ void Player::Move(int x, int y)
                 delete static_cast<Enemy*>(_gameField->GetCell(newColumn, newRow)->_entity);
                 break;
             }
+            case IEntity::IMMORTAL:
+            {
+                delete this;
+                break;
+            }
             case IEntity::HEALTHITEM:
             {
                 UseHealthItem(static_cast<HealthItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetHealthPointers());

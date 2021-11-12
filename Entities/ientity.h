@@ -12,6 +12,7 @@ public:
         NULLPTR,
         PLAYER,
         ENEMY,
+        IMMORTAL,
         HEALTHITEM,
         ATTACKITEM,
         ARMORITEM

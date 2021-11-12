@@ -5,6 +5,7 @@
 #include"Entities/Characters/Player/player.h"
 #include"Entities/Characters/Enemies/virus.h"
 #include"Entities/Characters/Enemies/trojan.h"
+#include"Entities/Characters/Enemies/immortal.h"
 #include"Entities/Items/HealthItem/healthitem.h"
 #include"Entities/Items/ArmorItem/armoritem.h"
 #include"Entities/Items/AttackItem/attackitem.h"
@@ -25,6 +26,8 @@ public:
 
     int GetColumn() const;
     int GetRow() const;
+
+//    virtual bool CanMoveIn();
 
     //void Moving(int coord_x, int coord_y);
     //std::shared_ptr<IEntity> _item;
