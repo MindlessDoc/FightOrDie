@@ -28,4 +28,5 @@ protected:
 
     int _directionCount;
     Vector<Vector<int>> _direction;
+    Vector<Vector<int>> _possibleDirection;
 };

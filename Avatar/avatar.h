@@ -14,6 +14,7 @@ public:
 
     void Draw(const GraphicCell* graphicCell, QPainter* painter);
 
+
     QString GetFilename() const;
 private:
     QImage _image;

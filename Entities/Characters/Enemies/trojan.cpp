@@ -21,26 +21,52 @@ Trojan::Trojan(GraphicField* gameField, GraphicCell* graphicCell)
     _direction[5][0] = 1; _direction[5][1] = 2;
     _direction[6][0] = 2; _direction[6][1] = -1;
     _direction[7][0] = 2; _direction[7][1] = 1;
+
+    SetNextStep();
+}
+
+void Trojan::SetNextStep()
+{
+    Vector<Vector<int>> canMove;
+    for(int i = 0; i < _directionCount; i++)
+    {
+        int newColumn = _graphicCell->GetColumn() + _direction[i][0];
+        int newRow = _graphicCell->GetRow() + _direction[i][1];
+        if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells()
+                && newRow < _gameField->GetWidthInCells()
+             && static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->CanMoveIn())
+        {
+            canMove.push_back(_direction[i]);
+        }
+    }
+
+    if(!canMove.empty())
+    {
+        int index = QRandomGenerator::global()->bounded(0, int(canMove.size()));
+        _nextStep = static_cast<GraphicCell*>(_gameField->GetCell(_graphicCell->GetColumn() + canMove[index][0],
+                                    _graphicCell->GetRow() + canMove[index][1]));
+    }
+    else
+    {
+        _nextStep = nullptr;
+    }
 }
 
 void Trojan::Move()
 {
-    int index = QRandomGenerator::global()->bounded(0, _directionCount);
-    int newColumn = _graphicCell->GetColumn() + _direction[index][0];
-    int newRow = _graphicCell->GetRow() + _direction[index][1];
-    if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells()
-            && static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->CanMoveIn())
+    if(_nextStep)
     {
-        if(_gameField->GetCell(newColumn, newRow)->GetEntityType() == IEntity::PLAYER)
+        if(_nextStep->GetEntityType() == IEntity::PLAYER)
         {
-            delete static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->_entity);
-            static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
-            _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
+            delete static_cast<Player*>(_nextStep->_entity);
+            _nextStep->Moving(_graphicCell);
+            _graphicCell = _nextStep;
         }
-        else if(_gameField->GetCell(newColumn, newRow)->GetEntityType() == IEntity::NULLPTR)
+        else if(_nextStep->GetEntityType() == IEntity::NULLPTR)
         {
-            static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
-            _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
+            _nextStep->Moving(_graphicCell);
+            _graphicCell = _nextStep;
         }
     }
+    SetNextStep();
 }
