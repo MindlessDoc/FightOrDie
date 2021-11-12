@@ -3,15 +3,17 @@
 
 Avatar::Avatar(const GraphicCell* graphicCell, const QString filename, QWidget* parent)
     : QWidget(parent)
+    , _width(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX())
+    , _height(graphicCell->GetRightDownY() - graphicCell->GetLeftUpY())
 {
     _filename = filename;
 
-    _image = QImage(filename).scaled(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX(), graphicCell->GetRightDownY() - graphicCell->GetLeftUpY(), Qt::KeepAspectRatio);
+    _image = QImage(filename).scaled(_width, _height, Qt::KeepAspectRatio);
 
-    setMinimumWidth(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX());
-    setMinimumHeight(graphicCell->GetRightDownY() - graphicCell->GetLeftUpY());
-    setMaximumWidth(graphicCell->GetRightDownX() - graphicCell->GetLeftUpX());
-    setMaximumHeight(graphicCell->GetRightDownY() - graphicCell->GetLeftUpY());
+    setMinimumWidth(_width);
+    setMinimumHeight(_height);
+    setMaximumWidth(_width);
+    setMaximumHeight(_height);
 }
 
 Avatar::~Avatar()
@@ -22,6 +24,16 @@ Avatar::~Avatar()
 void Avatar::Draw(const GraphicCell* cell, QPainter* painter)
 {
     painter->drawImage(cell->GetLeftUpX(), cell->GetLeftUpY(), _image);
+}
+
+void Avatar::UpdatePicture(QString filename)
+{
+    _image = QImage(filename).scaled(_width, _height, Qt::KeepAspectRatio);
+
+    setMinimumWidth(_width);
+    setMinimumHeight(_height);
+    setMaximumWidth(_width);
+    setMaximumHeight(_height);
 }
 
 QString Avatar::GetFilename() const { return _filename; }

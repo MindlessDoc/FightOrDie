@@ -17,6 +17,11 @@ void GraphicCell::DrawCell(QPainter *painter)
         _entity->Draw(painter);
 }
 
+void GraphicCell::UpdateAvatar(QString filename)
+{
+    _avatar.UpdatePicture(filename);
+}
+
 int GraphicCell::Type()
 {
     return GraphicCellsTypes::GRAPHICCELL;

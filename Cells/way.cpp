@@ -13,5 +13,8 @@ int Way::Type()
 
 bool Way::CanMoveIn()
 {
-    return true;
+    if(GetEntityType() == IEntity::NULLPTR || GetEntityType() == IEntity::PLAYER)
+        return true;
+    else
+        return false;
 }

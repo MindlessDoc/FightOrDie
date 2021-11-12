@@ -30,6 +30,7 @@ public:
     int GetRightDownY() const;
 
     void DrawCell(QPainter *painter);
+    void UpdateAvatar(QString filename);
 
     virtual int Type();
     virtual void Moving(GraphicCell* swapCell);

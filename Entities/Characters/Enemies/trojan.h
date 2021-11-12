@@ -9,5 +9,7 @@ public:
     virtual void Move() override;
 private:
     void SetNextStep();
+
     GraphicCell* _nextStep;
+    QString NextStepAvatarFilename;
 };

@@ -13,10 +13,13 @@ public:
     ~Avatar();
 
     void Draw(const GraphicCell* graphicCell, QPainter* painter);
-
+    void UpdatePicture(QString filename);
 
     QString GetFilename() const;
 private:
+    int _width;
+    int _height;
+
     QImage _image;
     QString _filename;
 };

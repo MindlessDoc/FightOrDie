@@ -3,7 +3,7 @@
 #include "Fields/graphicfield.h"
 
 Trojan::Trojan(GraphicField* gameField, GraphicCell* graphicCell)
-    : Enemy(gameField, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Enemy.png", 1000)
+    : Enemy(gameField, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Enemy.png", 3000)
 {
     //Think how to reduce
     _directionCount = 8;
@@ -45,6 +45,7 @@ void Trojan::SetNextStep()
         int index = QRandomGenerator::global()->bounded(0, int(canMove.size()));
         _nextStep = static_cast<GraphicCell*>(_gameField->GetCell(_graphicCell->GetColumn() + canMove[index][0],
                                     _graphicCell->GetRow() + canMove[index][1]));
+        _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/NextStepTrojan.png");
     }
     else
     {
@@ -59,14 +60,10 @@ void Trojan::Move()
         if(_nextStep->GetEntityType() == IEntity::PLAYER)
         {
             delete static_cast<Player*>(_nextStep->_entity);
-            _nextStep->Moving(_graphicCell);
-            _graphicCell = _nextStep;
         }
-        else if(_nextStep->GetEntityType() == IEntity::NULLPTR)
-        {
-            _nextStep->Moving(_graphicCell);
-            _graphicCell = _nextStep;
-        }
+        _nextStep->Moving(_graphicCell);
+        _graphicCell = _nextStep;
+        _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
     }
     SetNextStep();
 }
