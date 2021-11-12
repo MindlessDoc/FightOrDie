@@ -25,6 +25,12 @@ Trojan::Trojan(GraphicField* gameField, GraphicCell* graphicCell)
     SetNextStep();
 }
 
+Trojan::~Trojan()
+{
+    if(_nextStep)
+        _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
+}
+
 void Trojan::SetNextStep()
 {
     Vector<Vector<int>> canMove;
