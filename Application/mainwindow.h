@@ -18,7 +18,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells, QWidget *parent = nullptr);
+    MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells,
+               GraphicField* _graphicField, Player* _player, QWidget *parent = 0);
     virtual ~MainWindow();
 
     void DrawField(QGraphicsItem* graphicfield);
@@ -39,7 +40,7 @@ protected:
 private:
     const int _sizeOfPlayerAvatar = 100;
     const int _sizeOfIcons = 25;
-    void InitInterface();
+    void InitInterface(Player* player);
 
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -47,7 +48,7 @@ private:
     int _height;
     int _width;
 
-    GraphicField _graphicField;
+    //GraphicField _graphicField;
 
     QTimer* _timer;
     int _frameUpdateTime;

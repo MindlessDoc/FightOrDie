@@ -3,14 +3,21 @@
 #include "Cells/graphiccell.h"
 #include "Fields/graphicfield.h"
 
-Player::Player(GraphicField* gameField, GraphicCell* graphicCell, int health, int attack, int armor)
-    : _avatar(graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Player.png")
-    , _gameField(gameField)
-    , _graphicCell(graphicCell)
-    , _health(health)
+Player::Player(int health, int attack, int armor)
+    : _health(health)
     , _attack(attack)
     , _armor(armor)
 {
+    _gameField = nullptr;
+    _graphicCell = nullptr;
+}
+
+void Player::Init(GraphicField *gameField, GraphicCell *graphicCell)
+{
+    _gameField = gameField;
+    _graphicCell = graphicCell;
+    _avatar = Avatar(_graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Player.png");
+
     _graphicCell->_entity = this;
 }
 

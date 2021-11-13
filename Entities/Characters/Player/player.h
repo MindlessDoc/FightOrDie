@@ -13,8 +13,11 @@ class Player : public QObject, public ICharacter
 {
     Q_OBJECT
 public:
-    Player(GraphicField* gameField, GraphicCell* graphicCell, int health, int attack, int armor);
+    Player(int health, int attack, int armor);
     virtual ~Player();
+
+    void Init(GraphicField* gameField, GraphicCell* graphicCell);
+
     virtual void Draw(QPainter* painter) override;
     virtual int Type() override;
 

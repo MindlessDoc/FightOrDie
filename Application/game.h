@@ -7,12 +7,14 @@ class Game
 {
 public:
     Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells);
-    ~Game();
+    ~Game() = default;
 
-    void Start(int argc, char *argv[]);
+    void  Start();
 private:
-    GraphicField _graphicField;
-    Player _player;
-    MainWindow _mainWindow;
+//    QApplication a;
+
+    GraphicField* _graphicField;
+    Player* _player;
+    MainWindow* _mainWindow;
 };
 

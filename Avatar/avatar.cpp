@@ -8,12 +8,34 @@ Avatar::Avatar(const GraphicCell* graphicCell, const QString filename, QWidget* 
 {
     _filename = filename;
 
-    _image = QImage(filename).scaled(_width, _height, Qt::KeepAspectRatio);
+    _image = QImage(_filename).scaled(_width, _height, Qt::KeepAspectRatio);
 
     setMinimumWidth(_width);
     setMinimumHeight(_height);
     setMaximumWidth(_width);
     setMaximumHeight(_height);
+}
+
+Avatar::Avatar(QWidget* parent)
+    : QWidget(parent)
+{
+
+}
+
+Avatar& Avatar::operator=(const Avatar &other)
+{
+    _width = other._width;
+    _height = other._height;
+    _filename = other._filename;
+
+    _image = QImage(_filename).scaled(_width, _height, Qt::KeepAspectRatio);
+
+    setMinimumWidth(_width);
+    setMinimumHeight(_height);
+    setMaximumWidth(_width);
+    setMaximumHeight(_height);
+
+    return *this;
 }
 
 Avatar::~Avatar()

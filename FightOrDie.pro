@@ -10,7 +10,7 @@ CONFIG += c++17
 
 
 SOURCES += \
-#    Application/game.cpp \
+    Application/game.cpp \
     Application/main.cpp \
     Application/mainwindow.cpp \
     Avatar/avatar.cpp \
@@ -35,7 +35,7 @@ SOURCES += \
 
 
 HEADERS += \
-#    Application/game.h \
+    Application/game.h \
     Application/mainwindow.h \
     Avatar/avatar.h \
     Cells/cell.h \

@@ -12,13 +12,15 @@ public:
     GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells);
     virtual ~GraphicField();
 
+    void InitGraphicField(Player* player);
+
     GraphicField(const GraphicField& other);
     GraphicField& operator= (const GraphicField& other);
 
     GraphicField(GraphicField&& other);
     GraphicField& operator= (GraphicField&& other);
 
-    const Player* GetPlayer();
+    //const Player* GetPlayer();
 
 public slots:
     void MovingPlayerSlot(int x, int y);
@@ -33,6 +35,6 @@ private:
 
     GraphicCell* _entrance;
     GraphicCell* _exit;
-    Player* _player;
+    //Player* _player;
 };
 

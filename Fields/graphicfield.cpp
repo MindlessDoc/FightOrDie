@@ -5,6 +5,11 @@
 GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
     : Field(heightOfCell, widthOfCell, heightInCells, widthInCells)
 {
+
+}
+
+void GraphicField::InitGraphicField(Player *player)
+{
     for(int i = 0; i < GetHeightInCells(); i++)
     {
         for(int j = 0; j < GetWidthInCells(); j++)
@@ -14,6 +19,7 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
                 _cells[i][j] = new Entrance(j * GetWidthOfCell(), i * GetHeightOfCell(), (j + 1) * GetWidthOfCell(),
                                             (i + 1) * GetHeightOfCell(), i, j);
                 _entrance = static_cast<GraphicCell*>(_cells[i][j]);
+                player->Init(this, _entrance);
             }
             else if(i == GetHeightInCells() - 1 && j == GetWidthInCells() - 1)
             {
@@ -30,7 +36,6 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
             }
         }
     }
-    _player = new Player(this, _entrance, 100, 100, 100);
     new HealthItem(static_cast<GraphicCell*>(_cells[4][4])); //FIX
     new AttackItem(static_cast<GraphicCell*>(_cells[4][5])); //FIX
     new ArmorItem(static_cast<GraphicCell*>(_cells[4][6])); //FIX
@@ -53,9 +58,10 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
     new Trojan(this, static_cast<GraphicCell*>(_cells[1][4])); //FIX
     new Trojan(this, static_cast<GraphicCell*>(_cells[1][5])); //FIX
 
-    connect(this, &GraphicField::MovingPlayerSignal, _player, &Player::Move);
-    connect(_player, &Player::GameOver, this, &GraphicField::GameOver);
+    connect(this, &GraphicField::MovingPlayerSignal, player, &Player::Move);
+    connect(player, &Player::GameOver, this, &GraphicField::GameOver);
 }
+
 GraphicField::~GraphicField()
 {
     //delete _player;
@@ -152,4 +158,4 @@ void GraphicField::GameOver()
     emit DoCloseWindow();
 }
 
-const Player* GraphicField::GetPlayer() { return _player; }
+//const Player* GraphicField::GetPlayer() { return _player; }

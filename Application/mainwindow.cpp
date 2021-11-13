@@ -1,23 +1,24 @@
 #include "mainwindow.h"
 
 
-MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells, QWidget *parent)
+MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells,
+                       GraphicField* graphicField, Player* player, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , _height(heightOfCell * heightInCells)
     , _width(widthOfCell * widthInCells)
-    , _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells)
+    //, _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells)
     , _frameUpdateTime(20)
 {
     ui->setupUi(this);
     setFixedSize(_width + 20, _height + _sizeOfPlayerAvatar + _sizeOfIcons * 3);
 
-    connect(this, &MainWindow::MovingPlayerSignal, &_graphicField, &GraphicField::MovingPlayerSlot);
-    connect(&_graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
+    connect(this, &MainWindow::MovingPlayerSignal, graphicField, &GraphicField::MovingPlayerSlot);
+    connect(graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
 
-    connect(_graphicField.GetPlayer(), &Player::HealthChange, this, &MainWindow::PlayerInfoHealthUpdate);
-    connect(_graphicField.GetPlayer(), &Player::AttackChange, this, &MainWindow::PlayerInfoAttackUpdate);
-    connect(_graphicField.GetPlayer(), &Player::ArmorChange, this, &MainWindow::PlayerInfoArmorUpdate);
+    connect(player, &Player::HealthChange, this, &MainWindow::PlayerInfoHealthUpdate);
+    connect(player, &Player::AttackChange, this, &MainWindow::PlayerInfoAttackUpdate);
+    connect(player, &Player::ArmorChange, this, &MainWindow::PlayerInfoArmorUpdate);
 
     _timer = new QTimer();
     connect(_timer, &QTimer::timeout, this, &MainWindow::FrameUpdate);
@@ -30,9 +31,9 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    InitInterface();
+    InitInterface(player);
 
-    DrawField(&_graphicField);
+    DrawField(graphicField);
 }
 MainWindow::~MainWindow()
 {
@@ -40,24 +41,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::InitInterface()
+void MainWindow::InitInterface(Player* player)
 {
     QPixmap avatar("C:/QtProjects/OOP/FightOrDie/Src/Player.png");
     ui->playerAvatar->setPixmap(avatar.scaled(_sizeOfPlayerAvatar, _sizeOfPlayerAvatar));
 
-    const Player* additional = _graphicField.GetPlayer();
-
     QPixmap health("C:/QtProjects/OOP/FightOrDie/Src/HealthIcon.png");
     ui->staticHealth->setPixmap(health.scaled(_sizeOfIcons, _sizeOfIcons));
-    ui->healthText->setText(QString::number(additional->GetHealth()));
+    ui->healthText->setText(QString::number(player->GetHealth()));
 
     QPixmap attack("C:/QtProjects/OOP/FightOrDie/Src/AttackIcon.png");
     ui->staticAttack->setPixmap(attack.scaled(_sizeOfIcons, _sizeOfIcons));
-    ui->attackText->setText(QString::number(additional->GetAttack()));
+    ui->attackText->setText(QString::number(player->GetAttack()));
 
     QPixmap armor("C:/QtProjects/OOP/FightOrDie/Src/ArmorIcon.png");
     ui->staticArmor->setPixmap(armor.scaled(_sizeOfIcons, _sizeOfIcons));
-    ui->armorText->setText(QString::number(additional->GetArmor()));
+    ui->armorText->setText(QString::number(player->GetArmor()));
 
     setWindowTitle("Game field");
 }
