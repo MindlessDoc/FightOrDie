@@ -37,7 +37,7 @@ void Player::Move(int x, int y)
             {
             case IEntity::ENEMY:
             {
-                delete static_cast<Enemy*>(_gameField->GetCell(newColumn, newRow)->_entity);
+                delete _gameField->GetCell(newColumn, newRow)->_entity;
                 break;
             }
             case IEntity::IMMORTAL:
@@ -48,19 +48,19 @@ void Player::Move(int x, int y)
             case IEntity::HEALTHITEM:
             {
                 UseHealthItem(static_cast<HealthItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetHealthPointers());
-                delete static_cast<HealthItem*>(_gameField->GetCell(newColumn, newRow)->_entity);
+                delete _gameField->GetCell(newColumn, newRow)->_entity;
                 break;
             }
             case IEntity::ATTACKITEM:
             {
                 UseAttackItem(static_cast<AttackItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetAttackPointers());
-                delete static_cast<AttackItem*>(_gameField->GetCell(newColumn, newRow)->_entity);
+                delete _gameField->GetCell(newColumn, newRow)->_entity;
                 break;
             }
             case IEntity::ARMORITEM:
             {
                 UseArmorItem(static_cast<ArmorItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetArmorPointers());
-                delete static_cast<ArmorItem*>(_gameField->GetCell(newColumn, newRow)->_entity);
+                delete _gameField->GetCell(newColumn, newRow)->_entity;
                 break;
             }
             }

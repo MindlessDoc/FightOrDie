@@ -31,13 +31,13 @@ signals:
     void AttackChange(int attack);
     void ArmorChange(int armor);
 private:
-    int _health;
-    int _attack;
-    int _armor;
-
     Avatar _avatar;
     GraphicField* _gameField;
     GraphicCell* _graphicCell;
+
+    int _health;
+    int _attack;
+    int _armor;
 
     void UseHealthItem(int plusHealth);
     void UseAttackItem(int plusAttck);

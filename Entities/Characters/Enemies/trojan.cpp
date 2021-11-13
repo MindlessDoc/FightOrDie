@@ -65,7 +65,7 @@ void Trojan::Move()
     {
         if(_nextStep->GetEntityType() == IEntity::PLAYER)
         {
-            delete static_cast<Player*>(_nextStep->_entity);
+            delete _nextStep->_entity;
         }
         _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
         _nextStep->Moving(_graphicCell);

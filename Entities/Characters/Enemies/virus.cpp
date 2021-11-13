@@ -32,7 +32,7 @@ void Virus::Move()
         {
             if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
             {
-                delete static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->_entity);
+                delete _gameField->GetCell(newColumn, newRow)->_entity;
             }
             static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
             _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
