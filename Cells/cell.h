@@ -30,7 +30,6 @@ public:
     virtual bool CanMoveIn();
 
     void Moving(Cell* swapCell);
-    //std::shared_ptr<IEntity> _item;
 
 protected:
     int _column, _row;

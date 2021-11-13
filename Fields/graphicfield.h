@@ -20,13 +20,9 @@ public:
     GraphicField(GraphicField&& other);
     GraphicField& operator= (GraphicField&& other);
 
-    //const Player* GetPlayer();
-
 public slots:
-    void MovingPlayerSlot(int x, int y);
     void GameOver();
 signals:
-    void MovingPlayerSignal(int x, int y);
     void DoCloseWindow();
 
 private:
@@ -35,6 +31,5 @@ private:
 
     GraphicCell* _entrance;
     GraphicCell* _exit;
-    //Player* _player;
 };
 

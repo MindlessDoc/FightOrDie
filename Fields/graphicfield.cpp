@@ -58,13 +58,12 @@ void GraphicField::InitGraphicField(Player *player)
     new Trojan(this, static_cast<GraphicCell*>(_cells[1][4])); //FIX
     new Trojan(this, static_cast<GraphicCell*>(_cells[1][5])); //FIX
 
-    connect(this, &GraphicField::MovingPlayerSignal, player, &Player::Move);
     connect(player, &Player::GameOver, this, &GraphicField::GameOver);
 }
 
 GraphicField::~GraphicField()
 {
-    //delete _player;
+
 }
 
 GraphicField::GraphicField(const GraphicField& other)
@@ -148,14 +147,7 @@ QRectF GraphicField::boundingRect() const
     return QRectF(-1000, -1000, 1000, 1000);
 }
 
-void GraphicField::MovingPlayerSlot(int x, int y)
-{
-    emit MovingPlayerSignal(x, y);
-}
-
 void GraphicField::GameOver()
 {
     emit DoCloseWindow();
 }
-
-//const Player* GraphicField::GetPlayer() { return _player; }

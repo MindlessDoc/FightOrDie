@@ -8,6 +8,13 @@ Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCell
     _mainWindow = new MainWindow(heightOfCell, widthOfCell, heightInCells, widthInCells, _graphicField, _player);
 }
 
+Game::~Game()
+{
+    delete _mainWindow;
+    //delete _player; //DANGLING POINTER - FIX!!!
+    delete _graphicField;
+}
+
 void Game::Start()
 {
     _mainWindow->show();
