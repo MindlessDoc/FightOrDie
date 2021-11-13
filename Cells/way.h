@@ -7,6 +7,8 @@ class Way : public GraphicCell
 public:
     Way(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y,
         QString filename = "C:/QtProjects/OOP/FightOrDie/Src/Way.png");
+    virtual ~Way() = default;
+
     virtual int Type() override;
     virtual bool CanMoveIn() override;
 };

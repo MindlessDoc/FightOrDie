@@ -16,11 +16,7 @@ Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCe
 
 Field::~Field()
 {
-//    for(int i = 0; i < _heightInCells; i++)
-//    {
-//        delete[] _cells[i];
-//    }
-//    delete[] _cells;
+
 }
 
 Field::Field(const Field& other)

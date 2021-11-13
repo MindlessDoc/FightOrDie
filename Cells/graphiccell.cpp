@@ -37,10 +37,6 @@ void GraphicCell::Moving(GraphicCell* swapCell)
     std::swap(swapCell->_entity, _entity); // Think how add checking
 }
 
-GraphicCell::~GraphicCell()
-{
-
-}
 
 GraphicCell::GraphicCell(const GraphicCell& other)
     : Cell(other._column, other._row)

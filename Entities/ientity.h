@@ -19,6 +19,8 @@ public:
     };
 
 public:
+    virtual ~IEntity() = default;
+
     virtual void Draw(QPainter* painter) = 0;
     virtual int Type() = 0;
 };

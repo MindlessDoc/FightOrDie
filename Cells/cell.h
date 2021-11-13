@@ -27,9 +27,9 @@ public:
     int GetColumn() const;
     int GetRow() const;
 
-//    virtual bool CanMoveIn();
+    virtual bool CanMoveIn();
 
-    //void Moving(int coord_x, int coord_y);
+    void Moving(Cell* swapCell);
     //std::shared_ptr<IEntity> _item;
 
 protected:

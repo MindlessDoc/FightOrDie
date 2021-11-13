@@ -19,7 +19,7 @@ public:
     };
 
     GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QString file);
-    virtual ~GraphicCell();
+    virtual ~GraphicCell() = default;
 
     GraphicCell(const GraphicCell& other);
     GraphicCell& operator= (const GraphicCell& other);
@@ -34,7 +34,7 @@ public:
 
     virtual int Type();
     virtual void Moving(GraphicCell* swapCell);
-    virtual bool CanMoveIn();
+    virtual bool CanMoveIn() override;
 
 protected:
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;

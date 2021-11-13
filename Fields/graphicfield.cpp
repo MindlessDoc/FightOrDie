@@ -58,7 +58,7 @@ GraphicField::GraphicField(int heightOfCell, int widthOfCell, int heightInCells,
 }
 GraphicField::~GraphicField()
 {
-
+    //delete _player;
 }
 
 GraphicField::GraphicField(const GraphicField& other)

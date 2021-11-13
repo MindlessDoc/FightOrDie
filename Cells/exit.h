@@ -8,6 +8,8 @@ class Exit : public GraphicCell
 public:
     Exit(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y,
          QString filename = "C:/QtProjects/OOP/FightOrDie/Src/Portal.png");
+    virtual ~Exit() = default;
+
     virtual void Moving(GraphicCell* swapCell) override;
     virtual int Type() override;
     virtual bool CanMoveIn() override;

@@ -10,7 +10,7 @@ Cell::Cell(int column, int row)
 
 Cell::~Cell()
 {
-
+    delete _entity;
 }
 
 Cell::Cell(const Cell& other)
@@ -30,13 +30,17 @@ Cell& Cell::operator=(const Cell& other)
     return *this;
 }
 
-//bool Cell::CanMoveIn()
-//{
-//    return false;
-//}
+void Cell::Moving(Cell* swapCell)
+{
+    std::swap(swapCell->_entity, _entity); // Think how add checking
+}
+
+bool Cell::CanMoveIn()
+{
+    return false;
+}
 
 int Cell::GetEntityType(){ return (_entity) ? _entity->Type() : IEntity::NULLPTR; }
 
 int Cell::GetColumn() const { return _column; }
 int Cell::GetRow() const { return _row; }
-//IEntity* Cell::GetItem() { return _item; }
