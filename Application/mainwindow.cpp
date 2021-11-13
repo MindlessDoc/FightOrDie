@@ -86,7 +86,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     case Qt::Key_A: emit MovingPlayerSignal(-1, 0); break;
     case Qt::Key_D: emit MovingPlayerSignal(1, 0); break;
     }
-    //scene->update();
 }
 
 void MainWindow::PlayerInfoHealthUpdate(int health)
