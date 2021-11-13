@@ -7,6 +7,8 @@ class Trojan : public Enemy
 public:
     Trojan(GraphicField* gameField, GraphicCell* graphicCell);
     virtual ~Trojan();
+
+    virtual int Type() override;
     virtual void Move() override;
 private:
     void SetNextStep();

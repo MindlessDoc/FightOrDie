@@ -75,3 +75,8 @@ void Trojan::Move()
         _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
     SetNextStep();
 }
+
+int Trojan::Type()
+{
+    return IEntity::TROJAN;
+}

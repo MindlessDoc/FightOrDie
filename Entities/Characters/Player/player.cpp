@@ -36,6 +36,8 @@ void Player::Move(int x, int y)
             switch (_gameField->GetCell(newColumn, newRow)->_entity->Type())
             {
             case IEntity::ENEMY:
+            case IEntity::VIRUS:
+            case IEntity::TROJAN:
             {
                 delete _gameField->GetCell(newColumn, newRow)->_entity;
                 break;
@@ -92,7 +94,6 @@ void Player::UseArmorItem(int plusArmor)
     _armor += plusArmor;
     emit ArmorChange(_armor);
 }
-
 
 
 int Player::GetHealth() const { return _health; }

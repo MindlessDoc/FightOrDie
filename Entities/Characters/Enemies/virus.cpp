@@ -40,3 +40,8 @@ void Virus::Move()
     }
 }
 
+int Virus::Type()
+{
+    return IEntity::VIRUS;
+}
+

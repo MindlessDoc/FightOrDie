@@ -13,6 +13,7 @@ class Enemy : public QObject, public ICharacter
 public:
     Enemy(GraphicField* gameField, GraphicCell* graphicCell, QString filename, int movingTime);
     virtual ~Enemy();
+
     virtual void Draw(QPainter* painter) override;
     virtual int Type() override;
     virtual void Move() = 0; // Think need 'Slot' or no

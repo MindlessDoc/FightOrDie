@@ -12,6 +12,8 @@ public:
         NULLPTR,
         PLAYER,
         ENEMY,
+        VIRUS,
+        TROJAN,
         IMMORTAL,
         HEALTHITEM,
         ATTACKITEM,
