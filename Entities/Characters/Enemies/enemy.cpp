@@ -4,9 +4,9 @@
 #include "Fields/graphicfield.h"
 
 Enemy::Enemy(GraphicField* gameField, GraphicCell* graphicCell, QString filename, int movingTime)
-    : _avatar(graphicCell, filename)
-    , _gameField(gameField)
+    : _gameField(gameField)
     , _graphicCell(graphicCell)
+    , _avatar(graphicCell, filename)
     , _movingTime(movingTime)
 {
     _graphicCell->_entity = this;

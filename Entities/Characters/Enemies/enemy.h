@@ -16,12 +16,7 @@ public:
 
     virtual void Draw(QPainter* painter) override;
     virtual int Type() override;
-    virtual void Move() = 0; // Think need 'Slot' or no
-private:
-    Avatar _avatar;
-
-    QTimer* _timerForMove;
-    int _movingTime;
+    virtual void Move() = 0; // Think need 'Slot' or no    
 
 protected:
     GraphicField* _gameField;
@@ -29,4 +24,12 @@ protected:
 
     int _directionCount;
     Vector<Vector<int>> _direction;
+
+private:
+    Avatar _avatar;
+
+    QTimer* _timerForMove;
+    int _movingTime;
+
+
 };

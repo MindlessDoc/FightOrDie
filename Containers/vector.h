@@ -46,12 +46,12 @@ public:
             {
                 throw "Invalid index";
             }
-            return _array[index];
         }
         catch (char const* exception)
         {
             std::cout << "Error: " << exception << std::endl;
         }
+        return _array[index];
     }
 
     const T& operator[](size_t index) const
@@ -62,13 +62,12 @@ public:
             {
                 throw "Invalid index";
             }
-
-            return _array[index];
         }
         catch (char const* exception)
         {
             std::cout << "Error: " << exception << std::endl;
         }
+        return _array[index];
     }
 
     Vector& operator= (const Vector& other)
