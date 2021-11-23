@@ -12,7 +12,7 @@ class GraphicCell : public QObject
     Q_OBJECT
 public:
     GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY,
-                Cell* cell, GraphicIEntity* graphicEntity,  QString file);
+                Cell* cell,  QString file);
     virtual ~GraphicCell() = default;
 
     GraphicCell(const GraphicCell& other);

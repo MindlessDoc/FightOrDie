@@ -1,16 +1,45 @@
 #include "field.h"
 
-Field::Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
-    : _heightOfCell(heightOfCell)
-    , _widthOfCell(widthOfCell)
-    , _heightInCells(heightInCells)
+#include "Cells/entrance.h"
+#include "Cells/exit.h"
+#include "Cells/way.h"
+
+Field::Field(int heightInCells, int widthInCells)
+    : _heightInCells(heightInCells)
     , _widthInCells(widthInCells)
 {
+    //Just memory allocation
     _cells.resize(_heightInCells);
-    // Just memory allocation
     for(int i = 0; i < _heightInCells; i++)
     {
         _cells[i].resize(_widthInCells);
+    }
+    //there may be a memory leak!!!!!
+}
+
+void Field::InitField(Player* player)
+{
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            if(i == 0 && j == 0)
+            {
+                _cells[i][j] = new Entrance(i, j);
+                player->Init(this, _cells[i][j]);
+            }
+            else if(i == GetHeightInCells() - 1 && j == GetWidthInCells() - 1)
+            {
+               _cells[i][j] = new Exit(i, j);
+//               _exit = static_cast<GraphicCell*>(_cells[i][j]);
+//               connect(static_cast<Exit*>(_exit), &Exit::GameOver, this, &GraphicField::GameOver);
+            }
+            else
+
+            {
+                _cells[i][j] = new Way(i, j);
+            }
+        }
     }
 }
 
@@ -19,53 +48,55 @@ Field::~Field()
 
 }
 
-Field::Field(const Field& other)
-    : _heightOfCell(other._heightOfCell)
-    , _widthOfCell(other._widthOfCell)
-    , _heightInCells(other._heightInCells)
-    , _widthInCells(other._widthInCells)
-{
-    _cells.resize(_heightInCells);
 
-    for(int i = 0; i < _heightInCells; i++)
-    {
-        _cells[i].resize(_widthInCells);
-        for(int j = 0; j < _widthInCells; j++)
-        {
-            _cells[i][j] = new Cell(*other._cells[i][j]);
-        }
-    }
-}
+//UPDATE THIS UPDATE THIS UPDATE THIS
 
-Field& Field::operator=(const Field &other)
-{
-    if(&other == this)
-        return *this;
+//Field::Field(const Field& other)
+//    : _heightInCells(other._heightInCells)
+//    , _widthInCells(other._widthInCells)
+//{
+//    _cells.resize(_heightInCells);
 
-    _heightOfCell = other._heightOfCell;
-    _widthOfCell = other._widthOfCell;
-    _heightInCells = other._heightInCells;
-    _widthInCells = other._widthInCells;
+//    for(int i = 0; i < _heightInCells; i++)
+//    {
+//        _cells[i].resize(_widthInCells);
+//        for(int j = 0; j < _widthInCells; j++)
+//        {
+//            _cells[i][j] = new Cell(*other._cells[i][j]);
+//        }
+//    }
+//}
 
-    _cells.resize(_heightInCells);
+//UPDATE THIS UPDATE THIS UPDATE THIS
 
-    for(int i = 0; i < _heightInCells; i++)
-    {
-        _cells[i].resize(_widthInCells);
-        for(int j = 0; j < _widthInCells; j++)
-        {
-            delete _cells[i][j];
-            _cells[i][j] = new Cell(*other._cells[i][j]);
-        }
-    }
 
-    return *this;
-}
+//UPDATE THIS UPDATE THIS UPDATE THIS
+//Field& Field::operator=(const Field &other)
+//{
+//    if(&other == this)
+//        return *this;
+
+//    _heightInCells = other._heightInCells;
+//    _widthInCells = other._widthInCells;
+
+//    _cells.resize(_heightInCells);
+
+//    for(int i = 0; i < _heightInCells; i++)
+//    {
+//        _cells[i].resize(_widthInCells);
+//        for(int j = 0; j < _widthInCells; j++)
+//        {
+//            delete _cells[i][j];
+//            _cells[i][j] = new Cell(*other._cells[i][j]);
+//        }
+//    }
+
+//    return *this;
+//}
+//UPDATE THIS UPDATE THIS UPDATE THIS
 
 Field::Field(Field&& other)
-    : _heightOfCell(other._heightOfCell)
-    , _widthOfCell(other._widthOfCell)
-    , _heightInCells(other._heightInCells)
+    : _heightInCells(other._heightInCells)
     , _widthInCells(other._widthInCells)
 {
     _cells = other._cells;
@@ -77,8 +108,6 @@ Field& Field::operator=(Field&& other)
     if(&other == this)
         return *this;
 
-    _heightOfCell = other._heightOfCell;
-    _widthOfCell = other._widthOfCell;
     _heightInCells = other._heightInCells;
     _widthInCells = other._widthInCells;
 
@@ -89,9 +118,6 @@ Field& Field::operator=(Field&& other)
 
     return *this;
 }
-
-int Field::GetHeightOfCell() { return _heightOfCell; }
-int Field::GetWidthOfCell() { return _widthOfCell; }
 
 int Field::GetHeightInCells() { return _heightInCells; }
 int Field::GetWidthInCells() { return _widthInCells; }

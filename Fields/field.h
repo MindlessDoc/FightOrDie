@@ -2,12 +2,15 @@
 
 #include "Cells/cell.h"
 #include "Containers/vector.h"
+#include "Entities/Characters/Player/player.h"
 
 class Field
 {
 public:
-    Field(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells);
+    Field(int heightInCells, int widthInCells);
     virtual ~Field();
+
+    void InitField(Player* player);
 
     Field(const Field& other);
     Field& operator=(const Field& other);
@@ -15,18 +18,12 @@ public:
     Field(Field&& other);
     Field& operator=(Field&& other);
 
-    int GetHeightOfCell();
-    int GetWidthOfCell();
-
     int GetHeightInCells();
     int GetWidthInCells();
 
     Cell* GetCell(int column, int row);
 
 protected:
-    int _heightOfCell;
-    int _widthOfCell;
-
     int _heightInCells;
     int _widthInCells;
 

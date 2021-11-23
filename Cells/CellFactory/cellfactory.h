@@ -7,6 +7,6 @@ class CellFactory
 {
 public:
     CellFactory();
-    virtual Cell* CreateCell() = 0;
-    virtual GraphicCell* CreateGraphicCell() = 0;
+    //virtual Cell* CreateCell();
+    virtual GraphicCell* CreateGraphicCell(int heightOfCell, int widthOfCell, Cell* cell);
 };

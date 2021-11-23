@@ -1,9 +1,8 @@
 #include "graphiccell.h"
 
 GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY,
-                         Cell* cell, GraphicIEntity* graphicEntity,  QString file)
+                         Cell* cell, QString file)
     : _cell(cell)
-    , _graphicEntity(graphicEntity)
     , _leftUpX(leftUpX)
     , _leftUpY(leftUpY)
     , _rightDownX(rightDownX)
@@ -15,8 +14,8 @@ GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDown
 void GraphicCell::DrawCell(QPainter *painter)
 {
     _avatar.Draw(this, painter);
-    if(_cell->GetEntity() != nullptr)
-        _cell->GetEntity()->Draw(painter);
+    if(_graphicEntity != nullptr)
+        _graphicEntity->Draw(painter);
 }
 
 void GraphicCell::UpdateAvatar(QString filename)
