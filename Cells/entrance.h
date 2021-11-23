@@ -1,16 +1,13 @@
 #pragma once
 
-#include "graphiccell.h"
+#include "cell.h"
 
-class Entrance : public GraphicCell
+class Entrance : public Cell
 {
-    Q_OBJECT
 public:
-    Entrance(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y,
-             QString filename = "C:/QtProjects/OOP/FightOrDie/Src/Door.png");
+    Entrance(int coord_x, int coord_y);
     virtual ~Entrance() = default;
 
-    virtual int Type() override;
-    virtual bool CanMoveIn() override;
+    virtual bool CanMoveIn(const IEntity* entity) override;
 };
 

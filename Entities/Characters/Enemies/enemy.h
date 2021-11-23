@@ -1,15 +1,12 @@
 #pragma once
 
 #include "Entities/Characters/icharacter.h"
-#include <QTimer>
-#include <QRandomGenerator>
 #include "Containers/vector.h"
 
 class GraphicField;
 
-class Enemy : public QObject, public ICharacter
+class Enemy : public ICharacter
 {
-    Q_OBJECT
 public:
     Enemy(GraphicField* gameField, GraphicCell* graphicCell, QString filename, int movingTime);
     virtual ~Enemy();
@@ -26,7 +23,6 @@ protected:
     Vector<Vector<int>> _direction;
 
 private:
-    Avatar _avatar;
 
     QTimer* _timerForMove;
     int _movingTime;

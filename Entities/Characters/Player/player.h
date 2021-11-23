@@ -3,13 +3,12 @@
 #include "Entities/Characters/icharacter.h"
 #include "Containers/vector.h"
 #include <QKeyEvent>
-#include <QObject>
 #include "Entities/Items/item.h"
 
 class Cell;
 class GraphicField;
 
-class Player : public QObject, public ICharacter
+class Player : public ICharacter
 {
     Q_OBJECT
 public:

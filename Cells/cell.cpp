@@ -35,12 +35,11 @@ void Cell::Moving(Cell* swapCell)
     std::swap(swapCell->_entity, _entity); // Think how add checking
 }
 
-bool Cell::CanMoveIn()
-{
-    return false;
-}
-
-int Cell::GetEntityType(){ return (_entity) ? _entity->Type() : IEntity::NULLPTR; }
-
 int Cell::GetColumn() const { return _column; }
 int Cell::GetRow() const { return _row; }
+
+IEntity* Cell::GetEntity() { return _entity; }
+void Cell::SetEntity(IEntity *entity)
+{
+    _entity = entity;
+}

@@ -1,16 +1,14 @@
 #pragma once
 
-#include "graphiccell.h"
+#include "cell.h"
 
-class Way : public GraphicCell
+class Way : public Cell
 {
 public:
-    Way(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y,
-        QString filename = "C:/QtProjects/OOP/FightOrDie/Src/Way.png");
+    Way(int coord_x, int coord_y);
     virtual ~Way() = default;
 
-    virtual int Type() override;
-    virtual bool CanMoveIn() override;
+    virtual bool CanMoveIn(const IEntity* entity) override;
 };
 
 

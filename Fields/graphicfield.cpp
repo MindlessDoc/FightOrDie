@@ -40,21 +40,21 @@ void GraphicField::InitGraphicField(Player *player)
     new AttackItem(static_cast<GraphicCell*>(_cells[4][5])); //FIX
     new ArmorItem(static_cast<GraphicCell*>(_cells[4][6])); //FIX
 
-    new Virus(this, static_cast<GraphicCell*>(_cells[0][1])); //FIX
-    new Virus(this, static_cast<GraphicCell*>(_cells[0][2])); //FIX
-    new Virus(this, static_cast<GraphicCell*>(_cells[0][3])); //FIX
+//    new Virus(this, static_cast<GraphicCell*>(_cells[0][1])); //FIX
+//    new Virus(this, static_cast<GraphicCell*>(_cells[0][2])); //FIX
+//    new Virus(this, static_cast<GraphicCell*>(_cells[0][3])); //FIX
     new Virus(this, static_cast<GraphicCell*>(_cells[0][4])); //FIX
     new Virus(this, static_cast<GraphicCell*>(_cells[0][5])); //FIX
 
-    new Immortal(this, static_cast<GraphicCell*>(_cells[2][1])); //FIX
-    new Immortal(this, static_cast<GraphicCell*>(_cells[2][2])); //FIX
-    new Immortal(this, static_cast<GraphicCell*>(_cells[2][3])); //FIX
+//    new Immortal(this, static_cast<GraphicCell*>(_cells[2][1])); //FIX
+//    new Immortal(this, static_cast<GraphicCell*>(_cells[2][2])); //FIX
+//    new Immortal(this, static_cast<GraphicCell*>(_cells[2][3])); //FIX
     new Immortal(this, static_cast<GraphicCell*>(_cells[2][4])); //FIX
     new Immortal(this, static_cast<GraphicCell*>(_cells[2][5])); //FIX
 
-    new Trojan(this, static_cast<GraphicCell*>(_cells[1][1])); //FIX
-    new Trojan(this, static_cast<GraphicCell*>(_cells[1][2])); //FIX
-    new Trojan(this, static_cast<GraphicCell*>(_cells[1][3])); //FIX
+//    new Trojan(this, static_cast<GraphicCell*>(_cells[1][1])); //FIX
+//    new Trojan(this, static_cast<GraphicCell*>(_cells[1][2])); //FIX
+//    new Trojan(this, static_cast<GraphicCell*>(_cells[1][3])); //FIX
     new Trojan(this, static_cast<GraphicCell*>(_cells[1][4])); //FIX
     new Trojan(this, static_cast<GraphicCell*>(_cells[1][5])); //FIX
 

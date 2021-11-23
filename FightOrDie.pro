@@ -14,6 +14,10 @@ SOURCES += \
     Application/main.cpp \
     Application/mainwindow.cpp \
     Avatar/avatar.cpp \
+    Cells/CellFactory/QtCellFactory/qtentrancecellfactory.cpp \
+    Cells/CellFactory/QtCellFactory/qtexitcellfactory.cpp \
+    Cells/CellFactory/QtCellFactory/qtwaycellfactory.cpp \
+    Cells/CellFactory/cellfactory.cpp \
     Cells/cell.cpp \
     Cells/entrance.cpp \
     Cells/exit.cpp \
@@ -29,6 +33,7 @@ SOURCES += \
     Entities/Items/ArmorItem/armoritem.cpp \
     Entities/Items/AttackItem/attackitem.cpp \
     Entities/Items/item.cpp \
+    Entities/graphicentity.cpp \
     Entities/ientity.cpp \
     Fields/field.cpp \
     Fields/graphicfield.cpp \
@@ -38,6 +43,10 @@ HEADERS += \
     Application/game.h \
     Application/mainwindow.h \
     Avatar/avatar.h \
+    Cells/CellFactory/QtCellFactory/qtentrancecellfactory.h \
+    Cells/CellFactory/QtCellFactory/qtexitcellfactory.h \
+    Cells/CellFactory/QtCellFactory/qtwaycellfactory.h \
+    Cells/CellFactory/cellfactory.h \
     Cells/cell.h \
     Cells/entrance.h \
     Cells/exit.h \
@@ -53,6 +62,7 @@ HEADERS += \
     Entities/Items/ArmorItem/armoritem.h \
     Entities/Items/AttackItem/attackitem.h \
     Entities/Items/item.h \
+    Entities/graphicentity.h \
     Entities/ientity.h \
     Fields/field.h \
     Fields/graphicfield.h \

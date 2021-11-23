@@ -1,7 +1,9 @@
 #include "graphiccell.h"
 
-GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QString file)
-    : Cell(coord_x, coord_y)
+GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY,
+                         Cell* cell, GraphicIEntity* graphicEntity,  QString file)
+    : _cell(cell)
+    , _graphicEntity(graphicEntity)
     , _leftUpX(leftUpX)
     , _leftUpY(leftUpY)
     , _rightDownX(rightDownX)
@@ -13,8 +15,8 @@ GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDown
 void GraphicCell::DrawCell(QPainter *painter)
 {
     _avatar.Draw(this, painter);
-    if(_entity != nullptr)
-        _entity->Draw(painter);
+    if(_cell->GetEntity() != nullptr)
+        _cell->GetEntity()->Draw(painter);
 }
 
 void GraphicCell::UpdateAvatar(QString filename)
@@ -22,24 +24,9 @@ void GraphicCell::UpdateAvatar(QString filename)
     _avatar.UpdatePicture(filename);
 }
 
-int GraphicCell::Type()
-{
-    return GraphicCellsTypes::GRAPHICCELL;
-}
-
-bool GraphicCell::CanMoveIn()
-{
-    return false;
-}
-
-void GraphicCell::Moving(GraphicCell* swapCell)
-{
-    std::swap(swapCell->_entity, _entity); // Think how add checking
-}
-
 
 GraphicCell::GraphicCell(const GraphicCell& other)
-    : Cell(other._column, other._row)
+    : _cell(other._cell)
     , _leftUpX(other._leftUpX)
     , _leftUpY(other._leftUpY)
     , _rightDownX(other._rightDownX)
@@ -51,13 +38,11 @@ GraphicCell::GraphicCell(const GraphicCell& other)
 
 GraphicCell& GraphicCell::operator=(const GraphicCell& other)
 {
+    _cell = other._cell;
     _leftUpX = other._leftUpX;
     _leftUpY = other._leftUpY;
     _rightDownX = other._rightDownX;
     _rightDownY = other._rightDownY;
-
-    _column = other._column;
-    _row = other._row;
 
     return *this;
 }

@@ -5,20 +5,14 @@
 #include <QObject>
 #include "Avatar/avatar.h"
 
-class GraphicCell : public QObject, public Cell
+class GraphicIEntity; // REPLACE WITH FILE INCLUDE
+
+class GraphicCell : public QObject
 {
     Q_OBJECT
 public:
-
-    enum GraphicCellsTypes
-    {
-        GRAPHICCELL,
-        ENTRANCE,
-        WAY,
-        EXIT
-    };
-
-    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QString file);
+    GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY,
+                Cell* cell, GraphicIEntity* graphicEntity,  QString file);
     virtual ~GraphicCell() = default;
 
     GraphicCell(const GraphicCell& other);
@@ -32,17 +26,20 @@ public:
     void DrawCell(QPainter *painter);
     void UpdateAvatar(QString filename);
 
-    virtual int Type();
-    virtual void Moving(GraphicCell* swapCell);
-    virtual bool CanMoveIn() override;
+private:
+    Cell* _cell;
 
-protected:
+    GraphicIEntity* _graphicEntity;
+
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;
+
+
+
+    //Maybe add scale//
+
+    Avatar _avatar;
 
 signals:
     void CellUpdate();
-
-private:
-    Avatar _avatar;
 };
 

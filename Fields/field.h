@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Cells/entrance.h"
-#include "Cells/exit.h"
-#include "Cells/way.h"
+#include "Cells/cell.h"
 #include "Containers/vector.h"
 
 class Field
@@ -33,6 +31,5 @@ protected:
     int _widthInCells;
 
     Vector<Vector<Cell*>> _cells; // Will think how to make it private
-
 };
 

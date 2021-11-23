@@ -1,18 +1,15 @@
 #pragma once
 
-#include "graphiccell.h"
+#include "cell.h"
 
-class Exit : public GraphicCell
+class Exit : public Cell
 {
-    Q_OBJECT
 public:
-    Exit(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y,
-         QString filename = "C:/QtProjects/OOP/FightOrDie/Src/Portal.png");
+    Exit(int coord_x, int coord_y);
     virtual ~Exit() = default;
 
-    virtual void Moving(GraphicCell* swapCell) override;
-    virtual int Type() override;
-    virtual bool CanMoveIn() override;
-signals:
+    virtual void Moving(Cell* swapCell) override;
+    virtual bool CanMoveIn(const IEntity* entity) override;
+
     void GameOver();
 };

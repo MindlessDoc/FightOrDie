@@ -1,20 +1,12 @@
 #include "way.h"
 
-Way::Way(int leftUpX, int leftUpY, int rightDownX, int rightDownY, int coord_x, int coord_y, QString filename)
-    : GraphicCell(leftUpX, leftUpY, rightDownX, rightDownY, coord_x, coord_y, filename)
+Way::Way(int coord_x, int coord_y)
+    : Cell(coord_x, coord_y)
 {
 
 }
 
-int Way::Type()
+bool Way::CanMoveIn(const IEntity* entity)
 {
-    return GraphicCellsTypes::WAY;
-}
-
-bool Way::CanMoveIn()
-{
-    if(GetEntityType() == IEntity::NULLPTR || GetEntityType() == IEntity::PLAYER)
-        return true;
-    else
-        return false;
+    return true;
 }

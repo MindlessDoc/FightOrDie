@@ -2,14 +2,6 @@
 
 #include"Entities/ientity.h"
 
-#include"Entities/Characters/Player/player.h"
-#include"Entities/Characters/Enemies/virus.h"
-#include"Entities/Characters/Enemies/trojan.h"
-#include"Entities/Characters/Enemies/immortal.h"
-#include"Entities/Items/HealthItem/healthitem.h"
-#include"Entities/Items/ArmorItem/armoritem.h"
-#include"Entities/Items/AttackItem/attackitem.h"
-
 #include<memory>
 #include<iostream>
 
@@ -27,15 +19,16 @@ public:
     int GetColumn() const;
     int GetRow() const;
 
-    virtual bool CanMoveIn();
+    virtual void Moving(Cell* swapCell);
 
-    void Moving(Cell* swapCell);
+    IEntity* GetEntity();
+    void SetEntity(IEntity* entity);
 
-protected:
+    virtual bool CanMoveIn(const IEntity* entity) = 0;
+
+    //int GetEntityType();
+
+private:
     int _column, _row;
-
-public:
-    IEntity* _entity; // MAKE PRIVATE
-    int GetEntityType();
-    //IEntity* GetItem();
+    IEntity* _entity;
 };
