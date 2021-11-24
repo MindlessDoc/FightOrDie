@@ -35,7 +35,6 @@ void Field::InitField(Player* player, Mediator* mediator)
 //               connect(static_cast<Exit*>(_exit), &Exit::GameOver, this, &GraphicField::GameOver);
             }
             else
-
             {
                 _cells[i][j] = new Way(i, j, mediator);
             }

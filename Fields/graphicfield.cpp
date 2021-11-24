@@ -10,7 +10,7 @@ GraphicField::GraphicField(Field* field, int heightOfCell, int widthOfCell)
     _graphicCells.resize(_field->GetHeightInCells());
     for(int i = 0; i < _field->GetHeightInCells(); i++)
     {
-        _graphicCells[i].resize(_field->GetHeightInCells());
+        _graphicCells[i].resize(_field->GetWidthInCells());
         for(int j = 0; j < _field->GetWidthInCells(); j++)
         {
             _graphicCells[i][j] = _cellFactory.CreateGraphicCell(_heightOfCell, _widthOfCell,
