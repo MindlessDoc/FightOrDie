@@ -27,11 +27,11 @@ GraphicEntity* EntityFactory::CreateGraphicEntity(IEntity* entity, const Graphic
     }
     else if(typeid(*entity) == typeid(ArmorItem))
     {
-        return new GraphicEntity(entity, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/ArmorIcon.png");
+        return new GraphicEntity(entity, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Antivirus.png");
     }
     else if(typeid(*entity) == typeid(AttackItem))
     {
-        return new GraphicEntity(entity, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/AttackIcon.png");
+        return new GraphicEntity(entity, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/ZeroGun.png");
     }
     else if(typeid(*entity) == typeid(HealthItem))
     {

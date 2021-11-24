@@ -8,20 +8,10 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     , _mediator(mediator)
     , _height(heightOfCell * heightInCells)
     , _width(widthOfCell * widthInCells)
-    //, _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells)
     , _frameUpdateTime(20)
 {
     ui->setupUi(this);
     setFixedSize(_width + 20, _height + _sizeOfPlayerAvatar + _sizeOfIcons * 3);
-
-//    connect(this, &MainWindow::MovingPlayerSignal, graphicField, &GraphicField::MovingPlayerSlot);
-
-//    connect(player, &Player::HealthChange, this, &MainWindow::PlayerInfoHealthUpdate);
-//    connect(player, &Player::AttackChange, this, &MainWindow::PlayerInfoAttackUpdate);
-//    connect(player, &Player::ArmorChange, this, &MainWindow::PlayerInfoArmorUpdate);
-
-//    connect(this, &MainWindow::MovingPlayerSignal, player, &Player::Move);
-//    connect(player, &Player::GameOver, this, &MainWindow::DoCloseWindow);
 
     _timer = new QTimer();
     connect(_timer, &QTimer::timeout, this, &MainWindow::FrameUpdate);

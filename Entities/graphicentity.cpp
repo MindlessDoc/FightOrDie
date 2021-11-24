@@ -10,3 +10,8 @@ void GraphicEntity::Draw(GraphicCell *graphicCell, QPainter *painter)
 {
    _avatar.Draw(graphicCell, painter);
 }
+
+GraphicEntity::~GraphicEntity()
+{
+
+}

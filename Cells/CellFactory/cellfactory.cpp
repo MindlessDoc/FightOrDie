@@ -36,5 +36,4 @@ GraphicCell* CellFactory::CreateGraphicCell(int heightOfCell, int widthOfCell, C
                                (cell->GetRow() + 1) * widthOfCell, (cell->GetColumn() + 1) * heightOfCell,
                                cell, "C:/QtProjects/OOP/FightOrDie/Src/Way.png");
     }
-    //std::cout << typeid (cell).name() << " " << typeid (Entrance*).name() << std::endl;
 }

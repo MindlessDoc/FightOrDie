@@ -25,10 +25,10 @@ public:
 
     bool CheckOnInclusion(int column, int row);
 
-protected:
+private:
     int _heightInCells;
     int _widthInCells;
 
-    Vector<Vector<Cell*>> _cells; // Will think how to make it private
+    Vector<Vector<Cell*>> _cells;
 };
 

@@ -22,7 +22,6 @@ protected:
     Vector<Vector<int>> _direction;
 
 private:
-    //QTimer* _timerForMove;
     int _movingTime;
 
     EnemyMoveController* _enemyMoveController;
