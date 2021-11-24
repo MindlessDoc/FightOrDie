@@ -1,9 +1,10 @@
 #include "virus.h"
 #include "Cells/cell.h"
 #include "Fields/field.h"
+#include <iostream>
 
 Virus::Virus(Field* gameField, Cell* cell, Mediator* mediator)
-    : Enemy(gameField, cell, 1000, mediator)
+    : Enemy(gameField, cell, 2000, mediator)
 {
     //Think how to reduce
     _directionCount = 4;
@@ -21,9 +22,10 @@ Virus::Virus(Field* gameField, Cell* cell, Mediator* mediator)
 
 void Virus::Move(int variant)
 {
-    //CHANGE!!!!!
+
     int newColumn = _cell->GetColumn() + _direction[variant][0];
     int newRow = _cell->GetRow() + _direction[variant][1];
+
     if(_gameField->CheckOnInclusion(newColumn, newRow))
     {
         if(((_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))

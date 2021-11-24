@@ -33,7 +33,10 @@ Cell& Cell::operator=(const Cell& other)
 
 void Cell::Moving(Cell* swapCell)
 {
-    std::swap(swapCell->_entity, _entity); // Think how add checking
+    IEntity* additional = swapCell->GetEntity();
+    swapCell->SetEntity(GetEntity());
+    SetEntity(additional);
+
     _mediator->notifySwap(this, swapCell);
 }
 

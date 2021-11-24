@@ -6,8 +6,8 @@ QtEnemyMoveController::QtEnemyMoveController(Enemy* enemy)
     : EnemyMoveController(enemy)
 {
     _timer = new QTimer();
-    _timer->start(_enemy->GetMovingTime());
     connect(_timer, &QTimer::timeout, this, &QtEnemyMoveController::CallEnemyMove);
+    _timer->start(_enemy->GetMovingTime());
 }
 
 void QtEnemyMoveController::CallEnemyMove()

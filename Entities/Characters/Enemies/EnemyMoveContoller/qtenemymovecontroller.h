@@ -2,6 +2,7 @@
 
 #include "enemymovecontroller.h"
 #include <QTimer>
+#include <QTime>
 #include "QObject"
 
 class QtEnemyMoveController : public QObject, public EnemyMoveController
@@ -10,8 +11,9 @@ class QtEnemyMoveController : public QObject, public EnemyMoveController
 public:
     QtEnemyMoveController(Enemy* enemy);
     virtual ~QtEnemyMoveController();
+
 private:
     QTimer* _timer;
-private slots:
+public slots:
     void CallEnemyMove();
 };

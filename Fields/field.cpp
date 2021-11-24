@@ -49,11 +49,11 @@ void Field::InitField(Player* player, Mediator* mediator)
                 _cells[i][j] = new Way(i, j, mediator);
             }
         }
-        new HealthItem(_cells[0][1], mediator);
-        new AttackItem(_cells[0][2], mediator);
-        new ArmorItem(_cells[0][3], mediator);
-        new Virus(this, _cells[0][4], mediator);
     }
+    new HealthItem(_cells[0][1], mediator);
+    new AttackItem(_cells[0][2], mediator);
+    new ArmorItem(_cells[0][3], mediator);
+    new Virus(this, _cells[0][4], mediator);
 }
 
 Field::~Field()
