@@ -1,8 +1,8 @@
 #include "attackitem.h"
 #include "Cells/cell.h"
 
-AttackItem::AttackItem(Cell* cell)
-    : Item(cell)
+AttackItem::AttackItem(Cell* cell, Mediator* mediator)
+    : Item(cell, mediator)
 {
     _cell->SetEntity(this);
 }

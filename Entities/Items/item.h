@@ -4,13 +4,16 @@
 #include <QString>
 
 class Cell;
+class Mediator;
 
 class Item : public IEntity
 {
 public:
-    Item(Cell* cell);
+    Item(Cell* cell, Mediator* mediator);
     virtual ~Item();
 protected:
     Cell* _cell;
+
+    Mediator* _mediator;
 };
 

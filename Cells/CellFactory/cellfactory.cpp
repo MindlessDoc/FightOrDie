@@ -4,6 +4,8 @@
 #include "Cells/exit.h"
 #include "Cells/entrance.h"
 
+#include <iostream>
+
 CellFactory::CellFactory()
 {
 
@@ -16,22 +18,23 @@ CellFactory::CellFactory()
 
 GraphicCell* CellFactory::CreateGraphicCell(int heightOfCell, int widthOfCell, Cell* cell)
 {
-    if(typeid (cell) == typeid (Entrance))
+    if(typeid (*cell) == typeid (Entrance))
     {
         return new GraphicCell(cell->GetRow() * widthOfCell, cell->GetColumn() * heightOfCell,
-                               (cell->GetRow() + 1) * widthOfCell, (cell->GetColumn() + 1) * heightOfCell,
-                               cell, "C:/QtProjects/OOP/FightOrDie/Src/Door.png");
+                                                  (cell->GetRow() + 1) * widthOfCell, (cell->GetColumn() + 1) * heightOfCell,
+                                                  cell, "C:/QtProjects/OOP/FightOrDie/Src/Door.png");
     }
-    else if(typeid (cell) == typeid (Exit))
+    else if(typeid (*cell) == typeid (Exit))
     {
         return new GraphicCell(cell->GetRow() * widthOfCell, cell->GetColumn() * heightOfCell,
                                (cell->GetRow() + 1) * widthOfCell, (cell->GetColumn() + 1) * heightOfCell,
                                cell, "C:/QtProjects/OOP/FightOrDie/Src/Portal.png");
     }
-    else if(typeid (cell) == typeid (Way))
+    else if(typeid (*cell) == typeid (Way))
     {
         return new GraphicCell(cell->GetRow() * widthOfCell, cell->GetColumn() * heightOfCell,
                                (cell->GetRow() + 1) * widthOfCell, (cell->GetColumn() + 1) * heightOfCell,
                                cell, "C:/QtProjects/OOP/FightOrDie/Src/Way.png");
     }
+    //std::cout << typeid (cell).name() << " " << typeid (Entrance*).name() << std::endl;
 }

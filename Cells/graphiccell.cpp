@@ -1,4 +1,6 @@
 #include "graphiccell.h"
+#include "Entities/graphicentity.h"
+#include "Entities/EntityFactory/entityfactory.h"
 
 GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDownY,
                          Cell* cell, QString file)
@@ -9,13 +11,13 @@ GraphicCell::GraphicCell(int leftUpX, int leftUpY, int rightDownX, int rightDown
     , _rightDownY(rightDownY)
     , _avatar(this, file)
 {
-
+    _graphicEntity = _entityFactory.CreateGraphicEntity(_cell->GetEntity(), this);
 }
 void GraphicCell::DrawCell(QPainter *painter)
 {
     _avatar.Draw(this, painter);
     if(_graphicEntity != nullptr)
-        _graphicEntity->Draw(painter);
+        _graphicEntity->Draw(this, painter);
 }
 
 void GraphicCell::UpdateAvatar(QString filename)
@@ -44,6 +46,11 @@ GraphicCell& GraphicCell::operator=(const GraphicCell& other)
     _rightDownY = other._rightDownY;
 
     return *this;
+}
+
+void GraphicCell::EntitySwap(GraphicCell *graphicCell)
+{
+    std::swap(graphicCell->_graphicEntity, _graphicEntity);
 }
 
 int GraphicCell::GetLeftUpX() const { return _leftUpX; }

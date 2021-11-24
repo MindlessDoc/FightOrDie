@@ -16,6 +16,6 @@ class EntityFactory
 public:
     EntityFactory();
 
-    virtual IEntity* CreateEntity();
-    virtual GraphicEntity* CreateGraphicEntity();
+    //virtual IEntity* CreateEntity();
+    virtual GraphicEntity* CreateGraphicEntity(IEntity* _entity, const GraphicCell* graphicCell);
 };

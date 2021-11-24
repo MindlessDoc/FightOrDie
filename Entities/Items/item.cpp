@@ -1,8 +1,9 @@
 #include "item.h"
 #include "Cells/cell.h"
 
-Item::Item(Cell* cell)
+Item::Item(Cell* cell, Mediator* mediator)
     : _cell(cell)
+    , _mediator(mediator)
 {
 
 }

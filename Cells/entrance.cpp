@@ -2,8 +2,8 @@
 
 #include"Entities/Characters/Player/player.h"
 
-Entrance::Entrance(int coord_x, int coord_y)
-    : Cell(coord_x, coord_y)
+Entrance::Entrance(int coord_x, int coord_y, Mediator* mediator)
+    : Cell(coord_x, coord_y, mediator)
 {
 
 }

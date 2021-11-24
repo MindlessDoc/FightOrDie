@@ -2,8 +2,8 @@
 #include "Cells/cell.h"
 #include "Fields/field.h"
 
-Trojan::Trojan(Field* gameField, Cell* cell)
-    : Enemy(gameField, cell, 1000)
+Trojan::Trojan(Field* gameField, Cell* cell, Mediator* mediator)
+    : Enemy(gameField, cell, 1000, mediator)
 {
     //Think how to reduce
     _directionCount = 8;

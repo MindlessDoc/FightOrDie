@@ -6,7 +6,7 @@
 class Enemy : public ICharacter
 {
 public:
-    Enemy(Field* gameField, Cell* cell, int movingTime);
+    Enemy(Field* gameField, Cell* cell, int movingTime, Mediator* _mediator);
     virtual ~Enemy();
 
     virtual void Move() = 0; // Think need 'Slot' or no    

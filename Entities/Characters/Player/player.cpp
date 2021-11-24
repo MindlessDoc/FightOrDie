@@ -10,13 +10,15 @@
 #include "Entities/Items/AttackItem/attackitem.h"
 #include "Entities/Items/HealthItem/healthitem.h"
 
-Player::Player(int health, int attack, int armor)
+Player::Player(int health, int attack, int armor, Mediator* mediator)
     : _health(health)
     , _attack(attack)
     , _armor(armor)
 {
     _gameField = nullptr;
     _cell = nullptr;
+
+    _mediator = mediator;
 }
 
 void Player::Init(Field* gameField, Cell* cell)
@@ -75,21 +77,25 @@ void Player::Move(int x, int y)
 void Player::UseHealthItem(int plusHealth)
 {
     _health += plusHealth;
-    HealthChange(_health);
+    _mediator->notifyPlayerHealthChange(_health);
 }
 
 void Player::UseAttackItem(int plusAttck)
 {
     _attack += plusAttck;
-    AttackChange(_attack);
+    _mediator->notifyPlayerAttackChange(_attack);
 }
 
 void Player::UseArmorItem(int plusArmor)
 {
     _armor += plusArmor;
-    ArmorChange(_armor);
+    _mediator->notifyPlayerArmorChange(_armor);
 }
 
+void Player::GameOver()
+{
+    _mediator->notifyGameOver();
+}
 
 int Player::GetHealth() const { return _health; }
 int Player::GetAttack() const { return _attack; }

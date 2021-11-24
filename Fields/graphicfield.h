@@ -7,9 +7,8 @@
 
 class MainWindow;
 
-class GraphicField : public QObject, public QGraphicsItem
+class GraphicField : public QGraphicsItem
 {
-    Q_OBJECT
 public:
     GraphicField(Field* field, int heightOfCell, int widthOfCell);
     virtual ~GraphicField();
@@ -23,10 +22,7 @@ public:
     int GetHeightOfCell();
     int GetWidthOfCell();
 
-public slots:
-    void GameOver();
-signals:
-    void DoCloseWindow();
+    GraphicCell* GetGraphicCell(int column, int row);
 
 private:
     Field* _field;
@@ -39,7 +35,7 @@ private:
 
     Vector<Vector<GraphicCell*>> _graphicCells;
 
-    CellFactory _factory;
+    CellFactory _cellFactory;
 
 //    GraphicCell* _entrance;
 //    GraphicCell* _exit;

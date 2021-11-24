@@ -1,6 +1,6 @@
 #include "qtentrancecellfactory.h"
 
-QtEntranceCellFactory::QtEntranceCellFactory()
-{
+//QtEntranceCellFactory::QtEntranceCellFactory()
+//{
 
-}
+//}

@@ -2,6 +2,7 @@
 #include <QApplication>
 #include "Application/mainwindow.h"
 #include "Fields/graphicfield.h"
+#include "mediator.h"
 
 class Game
 {
@@ -11,8 +12,10 @@ public:
 
     void  Start();
 private:
+    Field* _field;
     GraphicField* _graphicField;
     Player* _player;
     MainWindow* _mainWindow;
+    Mediator* _mediator;
 };
 

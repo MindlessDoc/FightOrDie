@@ -1,10 +1,8 @@
 #include "healthitem.h"
 #include "Cells/cell.h"
 
-int HealthItem::GetHealthPointers() { return _healthPointers; }
-
-HealthItem::HealthItem(Cell* cell)
-    : Item(cell)
+HealthItem::HealthItem(Cell* cell, Mediator* mediator)
+    : Item(cell, mediator)
 {
     _cell->SetEntity(this);
 }

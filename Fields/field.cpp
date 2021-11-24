@@ -17,7 +17,7 @@ Field::Field(int heightInCells, int widthInCells)
     //there may be a memory leak!!!!!
 }
 
-void Field::InitField(Player* player)
+void Field::InitField(Player* player, Mediator* mediator)
 {
     for(int i = 0; i < _heightInCells; i++)
     {
@@ -25,19 +25,19 @@ void Field::InitField(Player* player)
         {
             if(i == 0 && j == 0)
             {
-                _cells[i][j] = new Entrance(i, j);
+                _cells[i][j] = new Entrance(i, j, mediator);
                 player->Init(this, _cells[i][j]);
             }
             else if(i == GetHeightInCells() - 1 && j == GetWidthInCells() - 1)
             {
-               _cells[i][j] = new Exit(i, j);
+               _cells[i][j] = new Exit(i, j, mediator);
 //               _exit = static_cast<GraphicCell*>(_cells[i][j]);
 //               connect(static_cast<Exit*>(_exit), &Exit::GameOver, this, &GraphicField::GameOver);
             }
             else
 
             {
-                _cells[i][j] = new Way(i, j);
+                _cells[i][j] = new Way(i, j, mediator);
             }
         }
     }

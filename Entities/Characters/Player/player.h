@@ -8,7 +8,7 @@
 class Player : public ICharacter
 {
 public:
-    Player(int health, int attack, int armor);
+    Player(int health, int attack, int armor, Mediator* mediator);
     virtual ~Player();
 
     void Init(Field* gameField, Cell* cell);

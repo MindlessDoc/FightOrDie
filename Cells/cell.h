@@ -1,6 +1,7 @@
 #pragma once
 
 #include"Entities/ientity.h"
+#include "Application/mediator.h"
 
 #include<memory>
 #include<iostream>
@@ -8,8 +9,7 @@
 class Cell
 {
 public:
-
-    Cell(int column, int row);
+    Cell(int column, int row, Mediator* mediator);
     Cell() = default;
     virtual ~Cell();
 
@@ -27,6 +27,9 @@ public:
     virtual bool CanMoveIn(const IEntity* entity) = 0;
 
     //int GetEntityType();
+
+protected:
+    Mediator* _mediator;
 
 private:
     int _column, _row;

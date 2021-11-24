@@ -1,6 +1,6 @@
 #include "qtexitcellfactory.h"
 
-QtExitCellFactory::QtExitCellFactory()
-{
+//QtExitCellFactory::QtExitCellFactory()
+//{
 
-}
+//}

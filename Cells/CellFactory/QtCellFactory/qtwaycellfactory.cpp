@@ -1,6 +1,6 @@
 #include "qtwaycellfactory.h"
 
-QtWayCellFactory::QtWayCellFactory()
-{
+//QtWayCellFactory::QtWayCellFactory()
+//{
 
-}
+//}

@@ -5,7 +5,7 @@
 class AttackItem : public Item
 {
 public:
-    AttackItem(Cell* cell);
+    AttackItem(Cell* cell, Mediator* mediator);
     virtual ~AttackItem();
 
     int GetAttackPointers();

@@ -13,6 +13,7 @@ SOURCES += \
     Application/game.cpp \
     Application/main.cpp \
     Application/mainwindow.cpp \
+    Application/mediator.cpp \
     Avatar/avatar.cpp \
     Cells/CellFactory/QtCellFactory/qtentrancecellfactory.cpp \
     Cells/CellFactory/QtCellFactory/qtexitcellfactory.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
 HEADERS += \
     Application/game.h \
     Application/mainwindow.h \
+    Application/mediator.h \
     Avatar/avatar.h \
     Cells/CellFactory/QtCellFactory/qtentrancecellfactory.h \
     Cells/CellFactory/QtCellFactory/qtexitcellfactory.h \

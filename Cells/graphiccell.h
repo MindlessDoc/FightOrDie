@@ -4,8 +4,10 @@
 #include "cell.h"
 #include <QObject>
 #include "Avatar/avatar.h"
+#include "Entities/EntityFactory/entityfactory.h"
 
-class GraphicIEntity; // REPLACE WITH FILE INCLUDE
+class GraphicEntity;
+//class EntityFactory;
 
 class GraphicCell : public QObject
 {
@@ -26,14 +28,16 @@ public:
     void DrawCell(QPainter *painter);
     void UpdateAvatar(QString filename);
 
+    virtual void EntitySwap(GraphicCell* graphicCell);
+
 private:
     Cell* _cell;
 
-    GraphicIEntity* _graphicEntity;
+    GraphicEntity* _graphicEntity;
 
     int _leftUpX, _leftUpY, _rightDownX, _rightDownY;
 
-
+    EntityFactory _entityFactory;
 
     //Maybe add scale//
 

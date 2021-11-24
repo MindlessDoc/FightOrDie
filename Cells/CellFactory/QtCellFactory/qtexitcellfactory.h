@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../cellfactory.h"
+//#include "../cellfactory.h"
 
-class QtExitCellFactory : public CellFactory
-{
-public:
-    QtExitCellFactory();
-    virtual Cell* CreateCell();
-    virtual GraphicCell* CreateGraphicCell();
-};
+//class QtExitCellFactory : public CellFactory
+//{
+//public:
+//    QtExitCellFactory();
+//    virtual Cell* CreateCell();
+//    virtual GraphicCell* CreateGraphicCell();
+//};
 

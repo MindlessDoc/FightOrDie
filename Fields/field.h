@@ -10,7 +10,7 @@ public:
     Field(int heightInCells, int widthInCells);
     virtual ~Field();
 
-    void InitField(Player* player);
+    void InitField(Player* player, Mediator* mediator);
 
     Field(const Field& other);
     Field& operator=(const Field& other);

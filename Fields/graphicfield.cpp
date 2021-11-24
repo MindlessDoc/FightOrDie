@@ -13,7 +13,7 @@ GraphicField::GraphicField(Field* field, int heightOfCell, int widthOfCell)
         _graphicCells[i].resize(_field->GetHeightInCells());
         for(int j = 0; j < _field->GetWidthInCells(); j++)
         {
-            _graphicCells[i][j] = _factory.CreateGraphicCell(_heightOfCell, _widthOfCell,
+            _graphicCells[i][j] = _cellFactory.CreateGraphicCell(_heightOfCell, _widthOfCell,
                                                              field->GetCell(i, j));
             //may be add init Enemy in Factory(in creating of graphicCell)
             //there may be a memory leak!!!!!
@@ -109,10 +109,10 @@ QRectF GraphicField::boundingRect() const
     return QRectF(-1000, -1000, 1000, 1000);
 }
 
-void GraphicField::GameOver()
-{
-    emit DoCloseWindow();
-}
-
 int GraphicField::GetHeightOfCell() { return _heightOfCell; }
 int GraphicField::GetWidthOfCell() { return _widthOfCell; }
+
+GraphicCell* GraphicField::GetGraphicCell(int column, int row)
+{
+    return _graphicCells[column][row];
+}

@@ -2,9 +2,10 @@
 
 
 MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells,
-                       GraphicField* graphicField, Player* player, QWidget *parent)
+                       GraphicField* graphicField, Player* player, Mediator* mediator, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , _mediator(mediator)
     , _height(heightOfCell * heightInCells)
     , _width(widthOfCell * widthInCells)
     //, _graphicField(heightOfCell, widthOfCell, heightInCells, widthInCells)
@@ -14,13 +15,12 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
     setFixedSize(_width + 20, _height + _sizeOfPlayerAvatar + _sizeOfIcons * 3);
 
 //    connect(this, &MainWindow::MovingPlayerSignal, graphicField, &GraphicField::MovingPlayerSlot);
-    connect(graphicField, &GraphicField::DoCloseWindow, this, &MainWindow::DoCloseWindow);
 
-    connect(player, &Player::HealthChange, this, &MainWindow::PlayerInfoHealthUpdate);
-    connect(player, &Player::AttackChange, this, &MainWindow::PlayerInfoAttackUpdate);
-    connect(player, &Player::ArmorChange, this, &MainWindow::PlayerInfoArmorUpdate);
+//    connect(player, &Player::HealthChange, this, &MainWindow::PlayerInfoHealthUpdate);
+//    connect(player, &Player::AttackChange, this, &MainWindow::PlayerInfoAttackUpdate);
+//    connect(player, &Player::ArmorChange, this, &MainWindow::PlayerInfoArmorUpdate);
 
-    connect(this, &MainWindow::MovingPlayerSignal, player, &Player::Move);
+//    connect(this, &MainWindow::MovingPlayerSignal, player, &Player::Move);
 //    connect(player, &Player::GameOver, this, &MainWindow::DoCloseWindow);
 
     _timer = new QTimer();
@@ -69,7 +69,7 @@ void MainWindow::DrawField(QGraphicsItem* graphicfield)
     scene->addItem(graphicfield);
 }
 
-void MainWindow::DoCloseWindow()
+void MainWindow::CloseWindow()
 {
     close();
 }
@@ -83,10 +83,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key())
     {
-    case Qt::Key_S: emit MovingPlayerSignal(0, 1); break;
-    case Qt::Key_W: emit MovingPlayerSignal(0, -1); break;
-    case Qt::Key_A: emit MovingPlayerSignal(-1, 0); break;
-    case Qt::Key_D: emit MovingPlayerSignal(1, 0); break;
+    case Qt::Key_S: _mediator->notifyPlayerMove(0, 1); break;
+    case Qt::Key_W: _mediator->notifyPlayerMove(0, -1); break;
+    case Qt::Key_A: _mediator->notifyPlayerMove(-1, 0); break;
+    case Qt::Key_D: _mediator->notifyPlayerMove(1, 0); break;
     }
 }
 

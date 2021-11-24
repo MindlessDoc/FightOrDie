@@ -5,7 +5,7 @@
 class Virus : public Enemy
 {
 public:
-    Virus(Field* gameField, Cell* cell);
+    Virus(Field* gameField, Cell* cell, Mediator* mediator);
     virtual ~Virus() = default;
 
     virtual void Move() override;

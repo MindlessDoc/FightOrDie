@@ -1,8 +1,9 @@
 #include "cell.h"
 #include "graphiccell.h"
 
-Cell::Cell(int column, int row)
-    : _column(column)
+Cell::Cell(int column, int row, Mediator* mediator)
+    : _mediator(mediator)
+    , _column(column)
     , _row(row)
 {
     _entity = nullptr;
@@ -33,6 +34,7 @@ Cell& Cell::operator=(const Cell& other)
 void Cell::Moving(Cell* swapCell)
 {
     std::swap(swapCell->_entity, _entity); // Think how add checking
+    _mediator->notifySwap(this, swapCell);
 }
 
 int Cell::GetColumn() const { return _column; }

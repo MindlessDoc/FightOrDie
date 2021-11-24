@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 #include "ui_mainwindow.h"
+
 #include "Fields/graphicfield.h"
 #include <QTimer>
 #include <QTime>
@@ -19,31 +20,33 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells,
-               GraphicField* _graphicField, Player* _player, QWidget *parent = 0);
+               GraphicField* _graphicField, Player* _player, Mediator* mediator, QWidget *parent = 0);
     virtual ~MainWindow();
 
     void DrawField(QGraphicsItem* graphicfield);
 
-public slots:
-    void DoCloseWindow();
-    void FrameUpdate();
+    void CloseWindow();
+
     void PlayerInfoHealthUpdate(int health);
     void PlayerInfoAttackUpdate(int attack);
     void PlayerInfoArmorUpdate(int armor);
 
-signals:
-    void MovingPlayerSignal(int x, int y);
+public slots:   
+    void FrameUpdate();
+
 
 protected:
     virtual void keyPressEvent(QKeyEvent *event) override;
 
-private:
+private:    
     const int _sizeOfPlayerAvatar = 100;
     const int _sizeOfIcons = 25;
     void InitInterface(Player* player);
 
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
+
+    Mediator* _mediator;
 
     int _height;
     int _width;
