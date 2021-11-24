@@ -6,10 +6,13 @@ class Cell;
 class Field;
 class Mediator;
 
-class ICharacter : public IEntity
+class Character : public IEntity
 {
 public:
-    virtual ~ICharacter() = default;
+    virtual ~Character() = default;
+
+    //virtual void Move(int x, int y) = 0;
+
 protected:
     Mediator* _mediator;
 };

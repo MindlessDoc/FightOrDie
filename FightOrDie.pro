@@ -24,6 +24,8 @@ SOURCES += \
     Cells/exit.cpp \
     Cells/graphiccell.cpp \
     Cells/way.cpp \
+    Entities/Characters/Enemies/EnemyMoveContoller/enemymovecontroller.cpp \
+    Entities/Characters/Enemies/EnemyMoveContoller/qtenemymovecontroller.cpp \
     Entities/Characters/Enemies/enemy.cpp \
     Entities/Characters/Enemies/immortal.cpp \
     Entities/Characters/Enemies/trojan.cpp \
@@ -55,6 +57,8 @@ HEADERS += \
     Cells/exit.h \
     Cells/graphiccell.h \
     Cells/way.h \
+    Entities/Characters/Enemies/EnemyMoveContoller/enemymovecontroller.h \
+    Entities/Characters/Enemies/EnemyMoveContoller/qtenemymovecontroller.h \
     Entities/Characters/Enemies/enemy.h \
     Entities/Characters/Enemies/immortal.h \
     Entities/Characters/Enemies/trojan.h \

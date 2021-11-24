@@ -19,11 +19,11 @@ Virus::Virus(Field* gameField, Cell* cell, Mediator* mediator)
     _direction[3][0] = 0; _direction[3][1] = 1;
 }
 
-void Virus::Move()
+void Virus::Move(int variant)
 {
     //CHANGE!!!!!
-    int newColumn = _cell->GetColumn() + _direction[1][0];
-    int newRow = _cell->GetRow() + _direction[1][1];
+    int newColumn = _cell->GetColumn() + _direction[variant][0];
+    int newRow = _cell->GetRow() + _direction[variant][1];
     if(_gameField->CheckOnInclusion(newColumn, newRow))
     {
         if(((_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))

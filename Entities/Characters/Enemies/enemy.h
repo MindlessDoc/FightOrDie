@@ -2,14 +2,17 @@
 
 #include "Entities/Characters/icharacter.h"
 #include "Containers/vector.h"
+#include "Entities/Characters/Enemies/EnemyMoveContoller/enemymovecontroller.h"
 
-class Enemy : public ICharacter
+class Enemy : public Character
 {
 public:
     Enemy(Field* gameField, Cell* cell, int movingTime, Mediator* _mediator);
     virtual ~Enemy();
 
-    virtual void Move() = 0; // Think need 'Slot' or no    
+    virtual void Move(int variant) = 0;
+    virtual int GetMovingTime();
+    virtual int GetDirectionCount();
 
 protected:
     Field* _gameField;
@@ -22,5 +25,5 @@ private:
     //QTimer* _timerForMove;
     int _movingTime;
 
-
+    EnemyMoveController* _enemyMoveController;
 };

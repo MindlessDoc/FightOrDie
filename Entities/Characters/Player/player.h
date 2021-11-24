@@ -5,7 +5,7 @@
 #include <QKeyEvent>
 #include "Entities/Items/item.h"
 
-class Player : public ICharacter
+class Player : public Character
 {
 public:
     Player(int health, int attack, int armor, Mediator* mediator);
@@ -17,7 +17,7 @@ public:
     int GetAttack() const;
     int GetArmor() const;
 
-    void Move(int x, int y);
+    virtual void Move(int x, int y);
 
     void GameOver();
     void HealthChange(int health);

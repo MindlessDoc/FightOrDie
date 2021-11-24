@@ -30,7 +30,7 @@ void Immortal::UpdateActualDirection()
     }
 }
 
-void Immortal::Move()
+void Immortal::Move(int variant)
 {
     UpdateActualDirection();
     int newColumn = _cell->GetColumn() + _actualVertiaclDirection;

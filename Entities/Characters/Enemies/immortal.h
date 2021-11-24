@@ -8,7 +8,7 @@ public:
     Immortal(Field* gameField, Cell* cell, Mediator* mediator);
     virtual ~Immortal() = default;
 
-    virtual void Move() override;
+    virtual void Move(int variant) override;
 private:
     int _actualVertiaclDirection;
 

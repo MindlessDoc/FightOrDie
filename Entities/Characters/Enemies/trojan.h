@@ -8,7 +8,7 @@ public:
     Trojan(Field* gameField, Cell* cell, Mediator* mediator);
     virtual ~Trojan();
 
-//    virtual void Move() override;
+//    virtual void Move(int variant) override;
 //private:
 //    void SetNextStep();
 
