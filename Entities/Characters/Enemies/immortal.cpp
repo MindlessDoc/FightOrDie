@@ -23,8 +23,9 @@ void Immortal::UpdateActualDirection()
 {
     int newColumn = _cell->GetColumn() + _actualVertiaclDirection;
     int newRow = _cell->GetRow();
-    if(!(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells()
-            && _gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity())))
+    if(!(_gameField->CheckOnInclusion(newColumn, newRow))
+            || !(_gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity()))
+            || (_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) != typeid(Player)))
     {
         _actualVertiaclDirection *= -1;
     }
@@ -38,11 +39,16 @@ void Immortal::Move(int variant)
     if(_gameField->CheckOnInclusion(newColumn, newRow)
         && _gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity()))
     {
-        if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(_gameField->GetCell(newColumn, newRow)->GetEntity()) == typeid(Player))
+        if(!_gameField->GetCell(newColumn, newRow)->GetEntity())
+        {
+            _gameField->GetCell(newColumn, newRow)->Moving(_cell);
+            _cell = _gameField->GetCell(newColumn, newRow);
+        }
+        else if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))
         {
             delete _gameField->GetCell(newColumn, newRow)->GetEntity(); // CHEKING
+            _gameField->GetCell(newColumn, newRow)->Moving(_cell);
+            _cell = _gameField->GetCell(newColumn, newRow);
         }
-        _gameField->GetCell(newColumn, newRow)->Moving(_cell);
-        _cell = _gameField->GetCell(newColumn, newRow);
     }
 }
