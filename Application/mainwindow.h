@@ -51,8 +51,6 @@ private:
     int _height;
     int _width;
 
-    //GraphicField _graphicField;
-
     QTimer* _timer;
     int _frameUpdateTime;
 };

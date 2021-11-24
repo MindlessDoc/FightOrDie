@@ -59,24 +59,25 @@ Trojan::~Trojan()
 //    }
 //}
 
-//void Trojan::Move()
-//{
-//    if(_nextStep && _nextStep->CanMoveIn())
-//    {
-//        if(_nextStep->GetEntityType() == IEntity::PLAYER)
-//        {
-//            delete _nextStep->_entity;
-//        }
-//        _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
-//        _nextStep->Moving(_graphicCell);
-//        _graphicCell = _nextStep;
-//    }
-//    else if(_nextStep)
-//        _nextStep->UpdateAvatar("C:/QtProjects/OOP/FightOrDie/Src/Way.png");
-//    SetNextStep();
-//}
+void Trojan::Move(int variant)
+{
+    int newColumn = _cell->GetColumn() + _direction[variant][0];
+    int newRow = _cell->GetRow() + _direction[variant][1];
 
-//int Trojan::Type()
-//{
-//    return IEntity::TROJAN;
-//}
+    if(_gameField->CheckOnInclusion(newColumn, newRow))
+    {
+        if(((_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))
+                || (!_gameField->GetCell(newColumn, newRow)->GetEntity()))
+                && _gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity()))
+        {
+            if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))
+            {
+                //CHEKING!!!
+                delete _gameField->GetCell(newColumn, newRow)->GetEntity();
+            }
+            _gameField->GetCell(newColumn, newRow)->Moving(_cell);
+            _cell = _gameField->GetCell(newColumn, newRow);
+        }
+    }
+}
+

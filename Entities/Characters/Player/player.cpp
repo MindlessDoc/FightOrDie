@@ -45,7 +45,7 @@ void Player::Move(int x, int y)
         if(additional)
         {
             if(typeid (*additional) == typeid (Virus)
-                    || typeid (additional) == typeid (Trojan))
+                    || typeid (*additional) == typeid (Trojan))
             {
                 delete additional;
             }

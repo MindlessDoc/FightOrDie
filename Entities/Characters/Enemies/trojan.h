@@ -8,12 +8,12 @@ public:
     Trojan(Field* gameField, Cell* cell, Mediator* mediator);
     virtual ~Trojan();
 
-//    virtual void Move(int variant) override;
-//private:
-//    void SetNextStep();
+    virtual void Move(int variant) override;
+private:
+    //void SetNextStep();
 
-//    Cell* _nextStep;
-//    QString NextStepAvatarFilename;
+    //Cell* _nextStep;
+    //QString NextStepAvatarFilename;
 
-//    Vector<Vector<int>> _possibleDirection;
+    //Vector<Vector<int>> _possibleDirection;
 };

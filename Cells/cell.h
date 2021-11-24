@@ -26,8 +26,6 @@ public:
 
     virtual bool CanMoveIn(const IEntity* entity) = 0;
 
-    //int GetEntityType();
-
 protected:
     Mediator* _mediator;
 

@@ -56,6 +56,7 @@ void Field::InitField(Player* player, Mediator* mediator)
     new ArmorItem(_cells[1][5], mediator);
     new Virus(this, _cells[0][4], mediator);
     new Immortal(this, _cells[0][5], mediator);
+    new Trojan(this, _cells[0][6], mediator);
 }
 
 Field::~Field()
