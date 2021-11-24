@@ -58,3 +58,20 @@ int GraphicCell::GetLeftUpY() const { return _leftUpY; }
 int GraphicCell::GetRightDownX() const { return _rightDownX; }
 int GraphicCell::GetRightDownY() const { return _rightDownY; }
 
+GraphicEntity* GraphicCell::GetGraphicEntity()
+{
+    return _graphicEntity;
+}
+
+Cell* GraphicCell::GetCell()
+{
+    return _cell;
+}
+
+void GraphicCell::DeleteGraphicEntity()
+{
+    delete _graphicEntity;
+    _graphicEntity = nullptr;
+}
+
+

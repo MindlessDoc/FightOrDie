@@ -17,6 +17,7 @@ public:
     virtual void notifyPlayerHealthChange(int health);
     virtual void notifyPlayerArmorChange(int armor);
     virtual void notifyPlayerAttackChange(int attack);
+    virtual void notifyDeleteEntity(int column, int row);
 
 private:
     GraphicField* _graphicField;

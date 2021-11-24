@@ -25,10 +25,14 @@ public:
     int GetRightDownX() const;
     int GetRightDownY() const;
 
+    GraphicEntity* GetGraphicEntity();
+    Cell* GetCell();
+
     void DrawCell(QPainter *painter);
     void UpdateAvatar(QString filename);
 
     virtual void EntitySwap(GraphicCell* graphicCell);
+    virtual void DeleteGraphicEntity();
 
 private:
     Cell* _cell;

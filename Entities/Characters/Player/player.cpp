@@ -39,31 +39,31 @@ void Player::Move(int x, int y)
 {
     int newColumn = _cell->GetColumn() + y;
     int newRow = _cell->GetRow() + x;
-    if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
+    if(_gameField->CheckOnInclusion(newColumn, newRow))
     {
         IEntity* additional = _gameField->GetCell(newColumn, newRow)->GetEntity();
         if(additional)
         {
-            if(typeid (additional) == typeid (Virus)
+            if(typeid (*additional) == typeid (Virus)
                     || typeid (additional) == typeid (Trojan))
             {
                 delete additional;
             }
-            else if(typeid (additional) == typeid (Immortal))
+            else if(typeid (*additional) == typeid (Immortal))
             {
                 delete this;
             }
-            else if(typeid (additional) == typeid (HealthItem))
+            else if(typeid (*additional) == typeid (HealthItem))
             {
                 UseHealthItem(static_cast<HealthItem*>(_gameField->GetCell(newColumn, newRow)->GetEntity())->GetHealthPointers());
                 delete additional;
             }
-            else if(typeid (additional) == typeid (AttackItem))
+            else if(typeid (*additional) == typeid (AttackItem))
             {
                 UseAttackItem(static_cast<AttackItem*>(_gameField->GetCell(newColumn, newRow)->GetEntity())->GetAttackPointers());
                 delete additional;
             }
-            else if(typeid (additional) == typeid (ArmorItem))
+            else if(typeid (*additional) == typeid (ArmorItem))
             {
                 UseArmorItem(static_cast<ArmorItem*>(_gameField->GetCell(newColumn, newRow)->GetEntity())->GetArmorPointers());
                 delete additional;

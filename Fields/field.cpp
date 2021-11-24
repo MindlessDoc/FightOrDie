@@ -4,6 +4,16 @@
 #include "Cells/exit.h"
 #include "Cells/way.h"
 
+#include "Entities/ientity.h"
+#include "Entities/graphicentity.h"
+#include "Entities/Characters/Player/player.h"
+#include "Entities/Characters/Enemies/virus.h"
+#include "Entities/Characters/Enemies/trojan.h"
+#include "Entities/Characters/Enemies/immortal.h"
+#include "Entities/Items/HealthItem/healthitem.h"
+#include "Entities/Items/ArmorItem/armoritem.h"
+#include "Entities/Items/AttackItem/attackitem.h"
+
 Field::Field(int heightInCells, int widthInCells)
     : _heightInCells(heightInCells)
     , _widthInCells(widthInCells)
@@ -39,6 +49,10 @@ void Field::InitField(Player* player, Mediator* mediator)
                 _cells[i][j] = new Way(i, j, mediator);
             }
         }
+        new HealthItem(_cells[0][1], mediator);
+        new AttackItem(_cells[0][2], mediator);
+        new ArmorItem(_cells[0][3], mediator);
+        new Virus(this, _cells[0][4], mediator);
     }
 }
 
@@ -122,3 +136,15 @@ int Field::GetHeightInCells() { return _heightInCells; }
 int Field::GetWidthInCells() { return _widthInCells; }
 
 Cell* Field::GetCell(int column, int row) { return _cells[column][row]; }
+
+bool Field::CheckOnInclusion(int column, int row)
+{
+    if(column >= 0 && row >= 0 && column < _heightInCells && row < _widthInCells)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}

@@ -35,7 +35,7 @@ void Immortal::Move()
     UpdateActualDirection();
     int newColumn = _cell->GetColumn() + _actualVertiaclDirection;
     int newRow = _cell->GetRow();
-    if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells()
+    if(_gameField->CheckOnInclusion(newColumn, newRow)
         && _gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity()))
     {
         if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(_gameField->GetCell(newColumn, newRow)->GetEntity()) == typeid(Player))

@@ -23,6 +23,8 @@ public:
 
     Cell* GetCell(int column, int row);
 
+    bool CheckOnInclusion(int column, int row);
+
 protected:
     int _heightInCells;
     int _widthInCells;

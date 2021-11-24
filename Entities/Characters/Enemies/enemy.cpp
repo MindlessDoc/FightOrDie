@@ -17,4 +17,5 @@ Enemy::Enemy(Field* gameField, Cell* cell, int movingTime, Mediator* mediator)
 Enemy::~Enemy()
 {
     _cell->SetEntity(nullptr);
+    _mediator->notifyDeleteEntity(_cell->GetColumn(), _cell->GetRow());
 }

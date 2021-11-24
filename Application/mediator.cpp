@@ -49,3 +49,8 @@ void Mediator::notifyPlayerHealthChange(int health)
 {
     _mainWindow->PlayerInfoHealthUpdate(health);
 }
+
+void Mediator::notifyDeleteEntity(int column, int row)
+{
+    _graphicField->GetGraphicCell(column, row)->DeleteGraphicEntity();
+}

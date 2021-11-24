@@ -22,15 +22,15 @@ Virus::Virus(Field* gameField, Cell* cell, Mediator* mediator)
 void Virus::Move()
 {
     //CHANGE!!!!!
-    int newColumn = _cell->GetColumn() + _direction[0][0];
-    int newRow = _cell->GetRow() + _direction[0][1];
-    if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
+    int newColumn = _cell->GetColumn() + _direction[1][0];
+    int newRow = _cell->GetRow() + _direction[1][1];
+    if(_gameField->CheckOnInclusion(newColumn, newRow))
     {
-        if(((_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(_gameField->GetCell(newColumn, newRow)->GetEntity()) == typeid(Player))
+        if(((_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))
                 || (!_gameField->GetCell(newColumn, newRow)->GetEntity()))
                 && _gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity()))
         {
-            if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(_gameField->GetCell(newColumn, newRow)->GetEntity()) == typeid(Player))
+            if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))
             {
                 //CHEKING!!!
                 delete _gameField->GetCell(newColumn, newRow)->GetEntity();
