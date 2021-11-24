@@ -5,37 +5,27 @@
 #include <QKeyEvent>
 #include "Entities/Items/item.h"
 
-class Cell;
-class GraphicField;
-
 class Player : public ICharacter
 {
-    Q_OBJECT
 public:
     Player(int health, int attack, int armor);
     virtual ~Player();
 
-    void Init(GraphicField* gameField, GraphicCell* graphicCell);
-
-    virtual void Draw(QPainter* painter) override;
-    virtual int Type() override;
+    void Init(Field* gameField, Cell* cell);
 
     int GetHealth() const;
     int GetAttack() const;
     int GetArmor() const;
 
-public slots:
     void Move(int x, int y);
 
-signals:
     void GameOver();
     void HealthChange(int health);
     void AttackChange(int attack);
     void ArmorChange(int armor);
 private:
-    Avatar _avatar;
-    GraphicField* _gameField;
-    GraphicCell* _graphicCell;
+    Field* _gameField;
+    Cell* _cell;
 
     int _health;
     int _attack;

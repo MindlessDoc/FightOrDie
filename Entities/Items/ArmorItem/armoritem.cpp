@@ -1,25 +1,15 @@
 #include "armoritem.h"
-#include "Cells/graphiccell.h"
+#include "Cells/cell.h"
 
-ArmorItem::ArmorItem(GraphicCell* graphicCell)
-    : Item(graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Antivirus.png")
+ArmorItem::ArmorItem(Cell* cell)
+    : Item(cell)
 {
-    _graphicCell->_entity = this;
+    _cell->SetEntity(this);
 }
 
 ArmorItem::~ArmorItem()
 {
-    _graphicCell->_entity = nullptr;
-}
-
-void ArmorItem::Draw(QPainter* painter)
-{
-    _avatar.Draw(_graphicCell, painter);
-}
-
-int ArmorItem::Type()
-{
-    return IEntity::ARMORITEM;
+    _cell->SetEntity(nullptr);
 }
 
 int ArmorItem::GetArmorPointers() { return _armorPointers; }

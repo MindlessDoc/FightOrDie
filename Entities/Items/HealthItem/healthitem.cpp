@@ -1,25 +1,17 @@
 #include "healthitem.h"
-#include "Cells/graphiccell.h"
+#include "Cells/cell.h"
 
-HealthItem::HealthItem(GraphicCell* graphicCell)
-    : Item(graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/AidKit.png")
+int HealthItem::GetHealthPointers() { return _healthPointers; }
+
+HealthItem::HealthItem(Cell* cell)
+    : Item(cell)
 {
-    _graphicCell->_entity = this;
+    _cell->SetEntity(this);
 }
 
 HealthItem::~HealthItem()
 {
-    _graphicCell->_entity = nullptr;
-}
-
-void HealthItem::Draw(QPainter* painter)
-{
-    _avatar.Draw(_graphicCell, painter);
-}
-
-int HealthItem::Type()
-{
-    return IEntity::HEALTHITEM;
+    _cell->SetEntity(nullptr);
 }
 
 int HealthItem::GetHealthPointers() { return _healthPointers; }

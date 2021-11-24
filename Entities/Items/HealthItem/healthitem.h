@@ -5,11 +5,8 @@
 class HealthItem : public Item
 {
 public:
-    HealthItem(GraphicCell* graphicCell);
+    HealthItem(Cell* cell);
     virtual ~HealthItem();
-
-    virtual void Draw(QPainter* painter) override;
-    virtual int Type() override;
 
     int GetHealthPointers();
 private:

@@ -3,12 +3,14 @@
 #include "ientity.h"
 #include <QPainter>
 #include "Avatar/avatar.h"
+#include "Cells/graphiccell.h"
 
 class GraphicEntity
 {
 public:
-    GraphicEntity();
-    virtual void Draw(QPainter* painter);
+    GraphicEntity(IEntity* entity, const GraphicCell* graphicCell, const QString filename);
+    virtual void Draw(GraphicCell* graphicCell, QPainter* painter);
 private:
+    IEntity* _entity;
     Avatar _avatar;
 };

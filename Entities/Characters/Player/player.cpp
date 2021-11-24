@@ -1,7 +1,14 @@
 #include "player.h"
 #include "Cells/cell.h"
-#include "Cells/graphiccell.h"
-#include "Fields/graphicfield.h"
+#include "Fields/field.h"
+
+#include "Entities/Characters/Enemies/virus.h"
+#include "Entities/Characters/Enemies/immortal.h"
+#include "Entities/Characters/Enemies/trojan.h"
+
+#include "Entities/Items/ArmorItem/armoritem.h"
+#include "Entities/Items/AttackItem/attackitem.h"
+#include "Entities/Items/HealthItem/healthitem.h"
 
 Player::Player(int health, int attack, int armor)
     : _health(health)
@@ -9,97 +16,78 @@ Player::Player(int health, int attack, int armor)
     , _armor(armor)
 {
     _gameField = nullptr;
-    _graphicCell = nullptr;
+    _cell = nullptr;
 }
 
-void Player::Init(GraphicField *gameField, GraphicCell *graphicCell)
+void Player::Init(Field* gameField, Cell* cell)
 {
     _gameField = gameField;
-    _graphicCell = graphicCell;
-    _avatar = Avatar(_graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Player.png");
+    _cell = cell;
 
-    _graphicCell->_entity = this;
+    _cell->SetEntity(this);
 }
 
 Player::~Player()
 {
-    _graphicCell->_entity = nullptr;
-    emit GameOver();
-}
-
-void Player::Draw(QPainter* painter)
-{
-    _avatar.Draw(_graphicCell, painter);
+    _cell->SetEntity(nullptr);
+    GameOver();
 }
 
 void Player::Move(int x, int y)
 {
-    int newColumn = _graphicCell->GetColumn() + y;
-    int newRow = _graphicCell->GetRow() + x;
+    int newColumn = _cell->GetColumn() + y;
+    int newRow = _cell->GetRow() + x;
     if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
     {
-        if(_gameField->GetCell(newColumn, newRow)->_entity)
+        IEntity* additional = _gameField->GetCell(newColumn, newRow)->GetEntity();
+        if(additional)
         {
-            switch (_gameField->GetCell(newColumn, newRow)->_entity->Type())
+            if(typeid (additional) == typeid (Virus)
+                    || typeid (additional) == typeid (Trojan))
             {
-            case IEntity::ENEMY:
-            case IEntity::VIRUS:
-            case IEntity::TROJAN:
-            {
-                delete _gameField->GetCell(newColumn, newRow)->_entity;
-                break;
+                delete additional;
             }
-            case IEntity::IMMORTAL:
+            else if(typeid (additional) == typeid (Immortal))
             {
                 delete this;
-                break;
             }
-            case IEntity::HEALTHITEM:
+            else if(typeid (additional) == typeid (HealthItem))
             {
-                UseHealthItem(static_cast<HealthItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetHealthPointers());
-                delete _gameField->GetCell(newColumn, newRow)->_entity;
-                break;
+                UseHealthItem(static_cast<HealthItem*>(_gameField->GetCell(newColumn, newRow)->GetEntity())->GetHealthPointers());
+                delete additional;
             }
-            case IEntity::ATTACKITEM:
+            else if(typeid (additional) == typeid (AttackItem))
             {
-                UseAttackItem(static_cast<AttackItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetAttackPointers());
-                delete _gameField->GetCell(newColumn, newRow)->_entity;
-                break;
+                UseAttackItem(static_cast<AttackItem*>(_gameField->GetCell(newColumn, newRow)->GetEntity())->GetAttackPointers());
+                delete additional;
             }
-            case IEntity::ARMORITEM:
+            else if(typeid (additional) == typeid (ArmorItem))
             {
-                UseArmorItem(static_cast<ArmorItem*>(_gameField->GetCell(newColumn, newRow)->_entity)->GetArmorPointers());
-                delete _gameField->GetCell(newColumn, newRow)->_entity;
-                break;
-            }
+                UseArmorItem(static_cast<ArmorItem*>(_gameField->GetCell(newColumn, newRow)->GetEntity())->GetArmorPointers());
+                delete additional;
             }
         }
-        static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
-        _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
+        _gameField->GetCell(newColumn, newRow)->Moving(_cell);
+        _cell = _gameField->GetCell(newColumn, newRow);
     }
-}
-
-int Player::Type()
-{
-    return IEntity::PLAYER;
 }
 
 void Player::UseHealthItem(int plusHealth)
 {
     _health += plusHealth;
-    emit HealthChange(_health);
+    HealthChange(_health);
 }
 
 void Player::UseAttackItem(int plusAttck)
 {
     _attack += plusAttck;
-    emit AttackChange(_attack);
+    AttackChange(_attack);
 }
 
 void Player::UseArmorItem(int plusArmor)
 {
     _armor += plusArmor;
-    emit ArmorChange(_armor);
+    ArmorChange(_armor);
 }
 
 

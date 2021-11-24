@@ -29,6 +29,7 @@ SOURCES += \
     Entities/Characters/Enemies/virus.cpp \
     Entities/Characters/Player/player.cpp \
     Entities/Characters/icharacter.cpp \
+    Entities/EntityFactory/entityfactory.cpp \
     Entities/Items/HealthItem/healthitem.cpp \
     Entities/Items/ArmorItem/armoritem.cpp \
     Entities/Items/AttackItem/attackitem.cpp \
@@ -58,6 +59,7 @@ HEADERS += \
     Entities/Characters/Enemies/virus.h \
     Entities/Characters/Player/player.h \
     Entities/Characters/icharacter.h \
+    Entities/EntityFactory/entityfactory.h \
     Entities/Items/HealthItem/healthitem.h \
     Entities/Items/ArmorItem/armoritem.h \
     Entities/Items/AttackItem/attackitem.h \

@@ -1,14 +1,16 @@
 #pragma once
 
 #include "Entities/ientity.h"
+#include <QString>
+
+class Cell;
 
 class Item : public IEntity
 {
 public:
-    Item(GraphicCell* graphicCell, QString filename);
+    Item(Cell* cell);
     virtual ~Item();
 protected:
-    Avatar _avatar;
-    GraphicCell* _graphicCell;
+    Cell* _cell;
 };
 

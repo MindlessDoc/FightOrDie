@@ -1,25 +1,15 @@
 #include "attackitem.h"
-#include "Cells/graphiccell.h"
+#include "Cells/cell.h"
 
-AttackItem::AttackItem(GraphicCell* graphicCell)
-    : Item(graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/ZeroGun.png")
+AttackItem::AttackItem(Cell* cell)
+    : Item(cell)
 {
-    _graphicCell->_entity = this;
+    _cell->SetEntity(this);
 }
 
 AttackItem::~AttackItem()
 {
-    _graphicCell->_entity = nullptr;
-}
-
-void AttackItem::Draw(QPainter* painter)
-{
-    _avatar.Draw(_graphicCell, painter);
-}
-
-int AttackItem::Type()
-{
-    return IEntity::ATTACKITEM;
+    _cell->SetEntity(nullptr);
 }
 
 int AttackItem::GetAttackPointers() { return _attackPointers; }

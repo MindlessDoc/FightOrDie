@@ -1,9 +1,9 @@
 #include "virus.h"
-#include "Cells/graphiccell.h"
-#include "Fields/graphicfield.h"
+#include "Cells/cell.h"
+#include "Fields/field.h"
 
-Virus::Virus(GraphicField* gameField, GraphicCell* graphicCell)
-    : Enemy(gameField, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Virus.png", 1000)
+Virus::Virus(Field* gameField, Cell* cell)
+    : Enemy(gameField, cell, 1000)
 {
     //Think how to reduce
     _directionCount = 4;
@@ -21,27 +21,23 @@ Virus::Virus(GraphicField* gameField, GraphicCell* graphicCell)
 
 void Virus::Move()
 {
-    int index = QRandomGenerator::global()->bounded(0, _directionCount);
-    int newColumn = _graphicCell->GetColumn() + _direction[index][0];
-    int newRow = _graphicCell->GetRow() + _direction[index][1];
+    //CHANGE!!!!!
+    int newColumn = _cell->GetColumn() + _direction[0][0];
+    int newRow = _cell->GetRow() + _direction[0][1];
     if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells())
     {
-        if(((_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
-                || (!_gameField->GetCell(newColumn, newRow)->_entity))
-                && static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->CanMoveIn())
+        if(((_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(_gameField->GetCell(newColumn, newRow)->GetEntity()) == typeid(Player))
+                || (!_gameField->GetCell(newColumn, newRow)->GetEntity()))
+                && _gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity()))
         {
-            if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
+            if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(_gameField->GetCell(newColumn, newRow)->GetEntity()) == typeid(Player))
             {
-                delete _gameField->GetCell(newColumn, newRow)->_entity;
+                //CHEKING!!!
+                delete _gameField->GetCell(newColumn, newRow)->GetEntity();
             }
-            static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
-            _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
+            _gameField->GetCell(newColumn, newRow)->Moving(_cell);
+            _cell = _gameField->GetCell(newColumn, newRow);
         }
     }
-}
-
-int Virus::Type()
-{
-    return IEntity::VIRUS;
 }
 

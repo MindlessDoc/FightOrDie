@@ -1,14 +1,13 @@
 #include "item.h"
-#include "Cells/graphiccell.h"
+#include "Cells/cell.h"
 
-Item::Item(GraphicCell* graphicCell, QString filename)
-    : _avatar(graphicCell, filename)
-    , _graphicCell(graphicCell)
+Item::Item(Cell* cell)
+    : _cell(cell)
 {
 
 }
 
 Item::~Item()
 {
-    _graphicCell->_entity = nullptr;
+    _cell->SetEntity(nullptr);
 }

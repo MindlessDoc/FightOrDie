@@ -5,11 +5,8 @@
 class AttackItem : public Item
 {
 public:
-    AttackItem(GraphicCell* graphicCell);
+    AttackItem(Cell* cell);
     virtual ~AttackItem();
-
-    virtual void Draw(QPainter* painter) override;
-    virtual int Type() override;
 
     int GetAttackPointers();
 private:

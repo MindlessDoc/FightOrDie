@@ -3,28 +3,23 @@
 #include "Entities/Characters/icharacter.h"
 #include "Containers/vector.h"
 
-class GraphicField;
-
 class Enemy : public ICharacter
 {
 public:
-    Enemy(GraphicField* gameField, GraphicCell* graphicCell, QString filename, int movingTime);
+    Enemy(Field* gameField, Cell* cell, int movingTime);
     virtual ~Enemy();
 
-    virtual void Draw(QPainter* painter) override;
-    virtual int Type() override;
     virtual void Move() = 0; // Think need 'Slot' or no    
 
 protected:
-    GraphicField* _gameField;
-    GraphicCell* _graphicCell;
+    Field* _gameField;
+    Cell* _cell;
 
     int _directionCount;
     Vector<Vector<int>> _direction;
 
 private:
-
-    QTimer* _timerForMove;
+    //QTimer* _timerForMove;
     int _movingTime;
 
 

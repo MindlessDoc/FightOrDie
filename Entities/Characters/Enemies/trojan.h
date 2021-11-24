@@ -5,16 +5,15 @@
 class Trojan : public Enemy
 {
 public:
-    Trojan(GraphicField* gameField, GraphicCell* graphicCell);
+    Trojan(Field* gameField, Cell* cell);
     virtual ~Trojan();
 
-    virtual int Type() override;
-    virtual void Move() override;
-private:
-    void SetNextStep();
+//    virtual void Move() override;
+//private:
+//    void SetNextStep();
 
-    GraphicCell* _nextStep;
-    QString NextStepAvatarFilename;
+//    Cell* _nextStep;
+//    QString NextStepAvatarFilename;
 
-    Vector<Vector<int>> _possibleDirection;
+//    Vector<Vector<int>> _possibleDirection;
 };

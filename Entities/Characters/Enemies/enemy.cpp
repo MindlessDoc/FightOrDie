@@ -1,33 +1,20 @@
 #include "enemy.h"
 #include "Cells/cell.h"
-#include "Cells/graphiccell.h"
 #include "Fields/graphicfield.h"
 
-Enemy::Enemy(GraphicField* gameField, GraphicCell* graphicCell, QString filename, int movingTime)
+Enemy::Enemy(Field* gameField, Cell* cell, int movingTime)
     : _gameField(gameField)
-    , _graphicCell(graphicCell)
-    , _avatar(graphicCell, filename)
+    , _cell(cell)
     , _movingTime(movingTime)
 {
-    _graphicCell->_entity = this;
+    _cell->SetEntity(this);
 
-    _timerForMove = new QTimer();
-    connect(_timerForMove, &QTimer::timeout, this, &Enemy::Move);
-    _timerForMove->start(_movingTime);
+    //_timerForMove = new QTimer();
+    //connect(_timerForMove, &QTimer::timeout, this, &Enemy::Move);
+    //_timerForMove->start(_movingTime);
 }
 
 Enemy::~Enemy()
 {
-    _graphicCell->_entity = nullptr;
-    delete _timerForMove;
-}
-
-void Enemy::Draw(QPainter* painter)
-{
-    _avatar.Draw(_graphicCell, painter);
-}
-
-int Enemy::Type()
-{
-    return IEntity::ENEMY;
+    _cell->SetEntity(nullptr);
 }

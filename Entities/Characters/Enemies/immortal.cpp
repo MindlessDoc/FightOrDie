@@ -1,9 +1,9 @@
 #include "immortal.h"
-#include "Cells/graphiccell.h"
-#include "Fields/graphicfield.h"
+#include "Cells/cell.h"
+#include "Fields/field.h"
 
-Immortal::Immortal(GraphicField* gameField, GraphicCell* graphicCell)
-    : Enemy(gameField, graphicCell, "C:/QtProjects/OOP/FightOrDie/Src/Immortal.png", 1000)
+Immortal::Immortal(Field* gameField, Cell* cell)
+    : Enemy(gameField, cell, 1000)
 {
     //Think how to reduce
     _directionCount = 2;
@@ -21,10 +21,10 @@ Immortal::Immortal(GraphicField* gameField, GraphicCell* graphicCell)
 
 void Immortal::UpdateActualDirection()
 {
-    int newColumn = _graphicCell->GetColumn() + _actualVertiaclDirection;
-    int newRow = _graphicCell->GetRow();
+    int newColumn = _cell->GetColumn() + _actualVertiaclDirection;
+    int newRow = _cell->GetRow();
     if(!(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells()
-            && static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->CanMoveIn()))
+            && _gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity())))
     {
         _actualVertiaclDirection *= -1;
     }
@@ -33,22 +33,16 @@ void Immortal::UpdateActualDirection()
 void Immortal::Move()
 {
     UpdateActualDirection();
-    int newColumn = _graphicCell->GetColumn() + _actualVertiaclDirection;
-    int newRow = _graphicCell->GetRow();
+    int newColumn = _cell->GetColumn() + _actualVertiaclDirection;
+    int newRow = _cell->GetRow();
     if(newColumn >= 0 && newRow >= 0 && newColumn < _gameField->GetHeightInCells() && newRow < _gameField->GetWidthInCells()
-        && static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->CanMoveIn())
+        && _gameField->GetCell(newColumn, newRow)->CanMoveIn(_cell->GetEntity()))
     {
-        if(_gameField->GetCell(newColumn, newRow)->_entity && _gameField->GetCell(newColumn, newRow)->_entity->Type() == IEntity::PLAYER)
+        if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(_gameField->GetCell(newColumn, newRow)->GetEntity()) == typeid(Player))
         {
-            delete _gameField->GetCell(newColumn, newRow)->_entity;
+            delete _gameField->GetCell(newColumn, newRow)->GetEntity(); // CHEKING
         }
-        static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow))->Moving(_graphicCell);
-        _graphicCell = static_cast<GraphicCell*>(_gameField->GetCell(newColumn, newRow));
+        _gameField->GetCell(newColumn, newRow)->Moving(_cell);
+        _cell = _gameField->GetCell(newColumn, newRow);
     }
 }
-
-int Immortal::Type()
-{
-    return IEntity::IMMORTAL;
-}
-

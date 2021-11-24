@@ -5,11 +5,8 @@
 class ArmorItem : public Item
 {
 public:
-    ArmorItem(GraphicCell* graphicCell);
+    ArmorItem(Cell* cell);
     virtual ~ArmorItem();
-
-    virtual void Draw(QPainter* painter) override;
-    virtual int Type() override;
 
     int GetArmorPointers();
 private:

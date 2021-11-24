@@ -5,10 +5,9 @@
 class Virus : public Enemy
 {
 public:
-    Virus(GraphicField* gameField, GraphicCell* graphicCell);
+    Virus(Field* gameField, Cell* cell);
     virtual ~Virus() = default;
 
-    virtual int Type() override;
     virtual void Move() override;
 };
 

@@ -5,11 +5,10 @@
 class Immortal : public Enemy
 {
 public:
-    Immortal(GraphicField* gameField, GraphicCell* graphicCell);
+    Immortal(Field* gameField, Cell* cell);
     virtual ~Immortal() = default;
 
     virtual void Move() override;
-    virtual int Type() override;
 private:
     int _actualVertiaclDirection;
 
