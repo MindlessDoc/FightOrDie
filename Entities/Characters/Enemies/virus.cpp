@@ -4,7 +4,7 @@
 #include <iostream>
 
 Virus::Virus(Field* gameField, Cell* cell, Mediator* mediator)
-    : Enemy(gameField, cell, 2000, mediator)
+    : Enemy(gameField, cell, 1000, mediator)
 {
     //Think how to reduce
     _directionCount = 4;

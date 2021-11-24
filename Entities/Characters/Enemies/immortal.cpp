@@ -3,7 +3,7 @@
 #include "Fields/field.h"
 
 Immortal::Immortal(Field* gameField, Cell* cell, Mediator* mediator)
-    : Enemy(gameField, cell, 1000, mediator)
+    : Enemy(gameField, cell, 5000, mediator)
 {
     //Think how to reduce
     _directionCount = 2;

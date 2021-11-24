@@ -41,8 +41,6 @@ void Field::InitField(Player* player, Mediator* mediator)
             else if(i == GetHeightInCells() - 1 && j == GetWidthInCells() - 1)
             {
                _cells[i][j] = new Exit(i, j, mediator);
-//               _exit = static_cast<GraphicCell*>(_cells[i][j]);
-//               connect(static_cast<Exit*>(_exit), &Exit::GameOver, this, &GraphicField::GameOver);
             }
             else
             {
@@ -54,8 +52,23 @@ void Field::InitField(Player* player, Mediator* mediator)
     new AttackItem(_cells[0][2], mediator);
     new ArmorItem(_cells[0][3], mediator);
     new ArmorItem(_cells[1][5], mediator);
+
     new Virus(this, _cells[0][4], mediator);
-    new Immortal(this, _cells[0][5], mediator);
+    new Virus(this, _cells[3][1], mediator);
+    new Virus(this, _cells[3][2], mediator);
+    new Virus(this, _cells[3][3], mediator);
+    new Virus(this, _cells[3][4], mediator);
+
+    new Immortal(this, _cells[4][1], mediator);
+    new Immortal(this, _cells[4][2], mediator);
+    new Immortal(this, _cells[4][3], mediator);
+    new Immortal(this, _cells[4][4], mediator);
+
+    new Trojan(this, _cells[5][1], mediator);
+    new Trojan(this, _cells[5][2], mediator);
+    new Trojan(this, _cells[5][3], mediator);
+    new Trojan(this, _cells[5][4], mediator);
+
     new Trojan(this, _cells[0][6], mediator);
 }
 
@@ -65,51 +78,37 @@ Field::~Field()
 }
 
 
-//UPDATE THIS UPDATE THIS UPDATE THIS
+Field::Field(const Field& other)
+    : _heightInCells(other._heightInCells)
+    , _widthInCells(other._widthInCells)
+{
+    _cells.resize(_heightInCells);
 
-//Field::Field(const Field& other)
-//    : _heightInCells(other._heightInCells)
-//    , _widthInCells(other._widthInCells)
-//{
-//    _cells.resize(_heightInCells);
-
-//    for(int i = 0; i < _heightInCells; i++)
-//    {
-//        _cells[i].resize(_widthInCells);
-//        for(int j = 0; j < _widthInCells; j++)
-//        {
-//            _cells[i][j] = new Cell(*other._cells[i][j]);
-//        }
-//    }
-//}
-
-//UPDATE THIS UPDATE THIS UPDATE THIS
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        _cells[i].resize(_widthInCells);
+    }
+}
 
 
-//UPDATE THIS UPDATE THIS UPDATE THIS
-//Field& Field::operator=(const Field &other)
-//{
-//    if(&other == this)
-//        return *this;
 
-//    _heightInCells = other._heightInCells;
-//    _widthInCells = other._widthInCells;
+Field& Field::operator=(const Field &other)
+{
+    if(&other == this)
+        return *this;
 
-//    _cells.resize(_heightInCells);
+    _heightInCells = other._heightInCells;
+    _widthInCells = other._widthInCells;
 
-//    for(int i = 0; i < _heightInCells; i++)
-//    {
-//        _cells[i].resize(_widthInCells);
-//        for(int j = 0; j < _widthInCells; j++)
-//        {
-//            delete _cells[i][j];
-//            _cells[i][j] = new Cell(*other._cells[i][j]);
-//        }
-//    }
+    _cells.resize(_heightInCells);
 
-//    return *this;
-//}
-//UPDATE THIS UPDATE THIS UPDATE THIS
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        _cells[i].resize(_widthInCells);
+    }
+
+    return *this;
+}
 
 Field::Field(Field&& other)
     : _heightInCells(other._heightInCells)

@@ -14,8 +14,7 @@ GraphicField::GraphicField(Field* field, int heightOfCell, int widthOfCell)
         for(int j = 0; j < _field->GetWidthInCells(); j++)
         {
             _graphicCells[i][j] = _cellFactory.CreateGraphicCell(_heightOfCell, _widthOfCell,
-                                                             field->GetCell(i, j));
-            //may be add init Enemy in Factory(in creating of graphicCell)
+                                                             _field->GetCell(i, j));
             //there may be a memory leak!!!!!
         }
     }
@@ -27,67 +26,67 @@ GraphicField::~GraphicField()
 
 }
 
-//GraphicField::GraphicField(const GraphicField& other)
-//    : Field(other._heightOfCell, other._widthOfCell, other._heightInCells, other._widthInCells)
-//{
-//    _cells.resize(_heightInCells);
+GraphicField::GraphicField(const GraphicField& other)
+    : _field(other._field)
+{
+    _graphicCells.resize(_field->GetHeightInCells());
+    for(int i = 0; i < _field->GetHeightInCells(); i++)
+    {
+        _graphicCells[i].resize(_field->GetWidthInCells());
+        for(int j = 0; j < _field->GetWidthInCells(); j++)
+        {
+            _graphicCells[i][j] = _cellFactory.CreateGraphicCell(_heightOfCell, _widthOfCell,
+                                                             _field->GetCell(i, j));
+            //there may be a memory leak!!!!!
+        }
+    }
+}
 
-//    for(int i = 0; i < _heightInCells; i++)
-//    {
-//        _cells[i].resize(_widthInCells);
-//        for(int j = 0; j < _widthInCells; j++)
-//        {
-//            _cells[i][j] = new GraphicCell(*static_cast<GraphicCell*>(other._cells[i][j]));
-//        }
-//    }
-//}
+GraphicField& GraphicField::operator=(const GraphicField &other)
+{
+    if(&other == this)
+        return *this;
 
-//GraphicField& GraphicField::operator=(const GraphicField &other)
-//{
-//    if(&other == this)
-//        return *this;
+    _heightOfCell = other._heightOfCell;
+    _widthOfCell = other._widthOfCell;
 
-//    _heightOfCell = other._heightOfCell;
-//    _widthOfCell = other._widthOfCell;
-//    _heightInCells = other._heightInCells;
-//    _widthInCells = other._widthInCells;
+    _graphicCells.resize(_field->GetHeightInCells());
+    for(int i = 0; i < _field->GetHeightInCells(); i++)
+    {
+        _graphicCells[i].resize(_field->GetWidthInCells());
+        for(int j = 0; j < _field->GetWidthInCells(); j++)
+        {
+            _graphicCells[i][j] = _cellFactory.CreateGraphicCell(_heightOfCell, _widthOfCell,
+                                                             _field->GetCell(i, j));
+            //there may be a memory leak!!!!!
+        }
+    }
 
-//    _cells.resize(_heightInCells);
+    return *this;
+}
 
-//    for(int i = 0; i < _heightInCells; i++)
-//    {
-//        _cells[i].resize(_widthInCells);
-//        for(int j = 0; j < _widthInCells; j++)
-//        {
-//            _cells[i][j] = new GraphicCell(*static_cast<GraphicCell*>(other._cells[i][j]));
-//        }
-//    }
+GraphicField::GraphicField(GraphicField&& other)
+    : _field(other._field)
+{
+    _graphicCells = other._graphicCells;
+    //other._cells = nullptr; //THINK///
+}
 
-//    return *this;
-//}
+GraphicField& GraphicField::operator=(GraphicField &&other)
+{
+    if(&other == this)
+        return *this;
 
-//GraphicField::GraphicField(GraphicField&& other)
-//    : Field(other._heightOfCell, other._widthOfCell, other._heightInCells, other._widthInCells)
-//{
-//    _cells = other._cells;
-//    //other._cells = nullptr; //THINK///
-//}
+    _field = other._field;
 
-//GraphicField& GraphicField::operator=(GraphicField &&other)
-//{
-//    if(&other == this)
-//        return *this;
+    _heightOfCell = other._heightOfCell;
+    _widthOfCell = other._widthOfCell;
 
-//    _heightOfCell = other._heightOfCell;
-//    _widthOfCell = other._widthOfCell;
-//    _heightInCells = other._heightInCells;
-//    _widthInCells = other._widthInCells;
+     _graphicCells = other._graphicCells;
+    //other._cells = nullptr; //THINK///
 
-//    _cells = other._cells;
-//    //other._cells = nullptr; //THINK///
-
-//    return *this;
-//}
+    return *this;
+}
 
 void GraphicField::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
