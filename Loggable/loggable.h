@@ -4,6 +4,7 @@
 #include "Loggers/logger.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 class Loggable
 {

@@ -48,6 +48,7 @@ void Field::InitField(Player* player, Mediator* mediator, Logger* logger)
             }
         }
     }
+
     logger->AddInLogger(new HealthItem(_cells[0][1], mediator));
     logger->AddInLogger(new AttackItem(_cells[0][2], mediator));
     logger->AddInLogger(new ArmorItem(_cells[0][3], mediator));

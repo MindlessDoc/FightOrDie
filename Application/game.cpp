@@ -1,12 +1,13 @@
 #include "game.h"
 #include "Loggers/ConsolLogger/consollogger.h"
+#include "Loggers/FileLogger/filelogger.h"
 
 Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
 {
 
     _mediator = new Mediator();
 
-    _logger = new ConsolLogger();
+    _logger = new FileLogger();
 
     _field = new Field(heightInCells, widthInCells);
 

@@ -33,3 +33,5 @@ std::ostream& operator<<(std::ostream& out, const Loggable &loggable)
 {
     return out << loggable.LogOut();
 }
+
+
