@@ -9,6 +9,9 @@ public:
     virtual ~ArmorItem();
 
     int GetArmorPointers();
+
+    std::string LogOut() const override;
+
 private:
     const int _armorPointers = 10;
 };

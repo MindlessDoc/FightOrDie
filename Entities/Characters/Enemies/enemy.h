@@ -14,6 +14,8 @@ public:
     virtual int GetMovingTime();
     virtual int GetDirectionCount();
 
+    virtual std::string LogOut() const override;
+
 protected:
     Field* _gameField;
     Cell* _cell;

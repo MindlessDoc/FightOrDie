@@ -71,24 +71,28 @@ void Player::Move(int x, int y)
         }
         _gameField->GetCell(newColumn, newRow)->Moving(_cell);
         _cell = _gameField->GetCell(newColumn, newRow);
+        notify();
     }
 }
 
 void Player::UseHealthItem(int plusHealth)
 {
     _health += plusHealth;
+    notify();
     _mediator->notifyPlayerHealthChange(_health);
 }
 
 void Player::UseAttackItem(int plusAttck)
 {
     _attack += plusAttck;
+    notify();
     _mediator->notifyPlayerAttackChange(_attack);
 }
 
 void Player::UseArmorItem(int plusArmor)
 {
     _armor += plusArmor;
+    notify();
     _mediator->notifyPlayerArmorChange(_armor);
 }
 
@@ -100,3 +104,12 @@ void Player::GameOver()
 int Player::GetHealth() const { return _health; }
 int Player::GetAttack() const { return _attack; }
 int Player::GetArmor() const { return _armor; }
+
+std::string Player::LogOut() const
+{
+    return "Player Info:\nHealth: " + std::to_string(_health) +
+            " Attack: " + std::to_string(_attack) +
+            " Armor: " + std::to_string(_armor) + "\n" +
+            "Coordinates: column = " + std::to_string(_cell->GetColumn())+
+            " row = " + std::to_string(_cell->GetRow()) + "\n";
+}

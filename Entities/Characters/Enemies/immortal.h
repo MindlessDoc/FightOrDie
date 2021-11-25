@@ -9,6 +9,8 @@ public:
     virtual ~Immortal() = default;
 
     virtual void Move(int variant) override;
+
+    virtual std::string LogOut() const override;
 private:
     int _actualVertiaclDirection;
 

@@ -9,6 +9,9 @@ public:
     virtual ~AttackItem();
 
     int GetAttackPointers();
+
+    std::string LogOut() const override;
+
 private:
     const int _attackPointers = 10;
 };

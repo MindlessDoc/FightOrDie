@@ -79,5 +79,12 @@ void Trojan::Move(int variant)
             _cell = _gameField->GetCell(newColumn, newRow);
         }
     }
+    notify();
+}
+
+std::string Trojan::LogOut() const
+{
+    return  "Trojan info:\nCoordinates: column = " + std::to_string(_cell->GetColumn())+
+            " row = " + std::to_string(_cell->GetRow()) + "\n";
 }
 

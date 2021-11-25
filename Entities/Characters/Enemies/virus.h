@@ -9,5 +9,7 @@ public:
     virtual ~Virus() = default;
 
     virtual void Move(int variant) override;
+
+    virtual std::string LogOut() const override;
 };
 

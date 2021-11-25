@@ -4,6 +4,8 @@
 #include "Fields/graphicfield.h"
 #include "mediator.h"
 
+#include "Loggers/logger.h"
+
 class Game
 {
 public:
@@ -17,5 +19,7 @@ private:
     Player* _player;
     MainWindow* _mainWindow;
     Mediator* _mediator;
+
+    Logger* _logger;
 };
 

@@ -51,4 +51,11 @@ void Immortal::Move(int variant)
             _cell = _gameField->GetCell(newColumn, newRow);
         }
     }
+    notify();
+}
+
+std::string Immortal::LogOut() const
+{
+    return  "Immortal info:\nCoordinates: column = " + std::to_string(_cell->GetColumn())+
+            " row = " + std::to_string(_cell->GetRow()) + "\n";
 }

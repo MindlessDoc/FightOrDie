@@ -3,6 +3,7 @@
 #include "Cells/cell.h"
 #include "Containers/vector.h"
 #include "Entities/Characters/Player/player.h"
+#include "Loggers/logger.h"
 
 class Field
 {
@@ -10,7 +11,7 @@ public:
     Field(int heightInCells, int widthInCells);
     virtual ~Field();
 
-    void InitField(Player* player, Mediator* mediator);
+    void InitField(Player* player, Mediator* mediator, Logger* logger);
 
     Field(const Field& other);
     Field& operator=(const Field& other);

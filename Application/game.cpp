@@ -1,15 +1,20 @@
 #include "game.h"
+#include "Loggers/ConsolLogger/consollogger.h"
 
 Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
 {
 
     _mediator = new Mediator();
 
+    _logger = new ConsolLogger();
+
     _field = new Field(heightInCells, widthInCells);
 
     _player = new Player(100, 100, 100, _mediator);
+    _logger->AddInLogger(_player);
 
-    _field->InitField(_player, _mediator);
+
+    _field->InitField(_player, _mediator, _logger);
 
     _graphicField = new GraphicField(_field, heightOfCell, widthOfCell);
 

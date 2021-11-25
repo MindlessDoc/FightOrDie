@@ -23,6 +23,9 @@ public:
     void HealthChange(int health);
     void AttackChange(int attack);
     void ArmorChange(int armor);
+
+    virtual std::string LogOut() const override;
+
 private:
     Field* _gameField;
     Cell* _cell;

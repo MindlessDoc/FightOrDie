@@ -10,6 +10,12 @@ ArmorItem::ArmorItem(Cell* cell, Mediator* mediator)
 ArmorItem::~ArmorItem()
 {
     _cell->SetEntity(nullptr);
+    notify();
 }
 
 int ArmorItem::GetArmorPointers() { return _armorPointers; }
+
+std::string ArmorItem::LogOut() const
+{
+    return "ArmorItem: Have used!\n";
+}

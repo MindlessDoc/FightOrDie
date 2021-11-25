@@ -10,6 +10,12 @@ AttackItem::AttackItem(Cell* cell, Mediator* mediator)
 AttackItem::~AttackItem()
 {
     _cell->SetEntity(nullptr);
+    notify();
 }
 
 int AttackItem::GetAttackPointers() { return _attackPointers; }
+
+std::string AttackItem::LogOut() const
+{
+    return "AttackItem: Have used!\n";
+}

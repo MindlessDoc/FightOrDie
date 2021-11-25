@@ -39,7 +39,14 @@ void Virus::Move(int variant)
             }
             _gameField->GetCell(newColumn, newRow)->Moving(_cell);
             _cell = _gameField->GetCell(newColumn, newRow);
+            notify();
         }
     }
+}
+
+std::string Virus::LogOut() const
+{
+    return  "Virus info:\nCoordinates: column = " + std::to_string(_cell->GetColumn())+
+            " row = " + std::to_string(_cell->GetRow()) + "\n";
 }
 

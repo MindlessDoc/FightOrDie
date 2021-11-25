@@ -1,6 +1,8 @@
 #pragma once
 
-class IEntity
+#include "Loggable/loggable.h"
+
+class IEntity : public Loggable
 {
 public:
     virtual ~IEntity() = default;

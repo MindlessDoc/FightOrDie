@@ -10,6 +10,12 @@ HealthItem::HealthItem(Cell* cell, Mediator* mediator)
 HealthItem::~HealthItem()
 {
     _cell->SetEntity(nullptr);
+    notify();
 }
 
 int HealthItem::GetHealthPointers() { return _healthPointers; }
+
+std::string HealthItem::LogOut() const
+{
+    return "HealthItem: Have used!\n";
+}

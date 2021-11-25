@@ -41,6 +41,10 @@ SOURCES += \
     Entities/ientity.cpp \
     Fields/field.cpp \
     Fields/graphicfield.cpp \
+    Loggable/loggable.cpp \
+    Loggers/ConsolLogger/consollogger.cpp \
+    Loggers/FileLogger/filelogger.cpp \
+    Loggers/logger.cpp
 
 
 HEADERS += \
@@ -74,7 +78,11 @@ HEADERS += \
     Entities/ientity.h \
     Fields/field.h \
     Fields/graphicfield.h \
-    Containers/vector.h
+    Containers/vector.h \
+    Loggable/loggable.h \
+    Loggers/ConsolLogger/consollogger.h \
+    Loggers/FileLogger/filelogger.h \
+    Loggers/logger.h
 
 FORMS += \
     mainwindow.ui

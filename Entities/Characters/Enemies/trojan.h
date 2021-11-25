@@ -9,6 +9,8 @@ public:
     virtual ~Trojan();
 
     virtual void Move(int variant) override;
+
+    virtual std::string LogOut() const override;
 private:
     //void SetNextStep();
 

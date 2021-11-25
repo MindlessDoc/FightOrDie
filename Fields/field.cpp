@@ -27,7 +27,7 @@ Field::Field(int heightInCells, int widthInCells)
     //there may be a memory leak!!!!!
 }
 
-void Field::InitField(Player* player, Mediator* mediator)
+void Field::InitField(Player* player, Mediator* mediator, Logger* logger)
 {
     for(int i = 0; i < _heightInCells; i++)
     {
@@ -48,28 +48,28 @@ void Field::InitField(Player* player, Mediator* mediator)
             }
         }
     }
-    new HealthItem(_cells[0][1], mediator);
-    new AttackItem(_cells[0][2], mediator);
-    new ArmorItem(_cells[0][3], mediator);
-    new ArmorItem(_cells[1][5], mediator);
+    logger->AddInLogger(new HealthItem(_cells[0][1], mediator));
+    logger->AddInLogger(new AttackItem(_cells[0][2], mediator));
+    logger->AddInLogger(new ArmorItem(_cells[0][3], mediator));
+    logger->AddInLogger(new ArmorItem(_cells[1][5], mediator));
 
-    new Virus(this, _cells[0][4], mediator);
-    new Virus(this, _cells[3][1], mediator);
-    new Virus(this, _cells[3][2], mediator);
-    new Virus(this, _cells[3][3], mediator);
-    new Virus(this, _cells[3][4], mediator);
+    logger->AddInLogger(new Virus(this, _cells[0][4], mediator));
+    logger->AddInLogger(new Virus(this, _cells[3][1], mediator));
+    logger->AddInLogger(new Virus(this, _cells[3][2], mediator));
+    logger->AddInLogger(new Virus(this, _cells[3][3], mediator));
+    logger->AddInLogger(new Virus(this, _cells[3][4], mediator));
 
-    new Immortal(this, _cells[4][1], mediator);
-    new Immortal(this, _cells[4][2], mediator);
-    new Immortal(this, _cells[4][3], mediator);
-    new Immortal(this, _cells[4][4], mediator);
+    logger->AddInLogger(new Immortal(this, _cells[4][1], mediator));
+    logger->AddInLogger(new Immortal(this, _cells[4][2], mediator));
+    logger->AddInLogger(new Immortal(this, _cells[4][3], mediator));
+    logger->AddInLogger(new Immortal(this, _cells[4][4], mediator));
 
-    new Trojan(this, _cells[5][1], mediator);
-    new Trojan(this, _cells[5][2], mediator);
-    new Trojan(this, _cells[5][3], mediator);
-    new Trojan(this, _cells[5][4], mediator);
+    logger->AddInLogger(new Trojan(this, _cells[5][1], mediator));
+    logger->AddInLogger(new Trojan(this, _cells[5][2], mediator));
+    logger->AddInLogger(new Trojan(this, _cells[5][3], mediator));
+    logger->AddInLogger(new Trojan(this, _cells[5][4], mediator));
 
-    new Trojan(this, _cells[0][6], mediator);
+    logger->AddInLogger(new Trojan(this, _cells[0][6], mediator));
 }
 
 Field::~Field()

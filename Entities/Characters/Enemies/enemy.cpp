@@ -31,3 +31,9 @@ int Enemy::GetDirectionCount()
 {
     return _directionCount;
 }
+
+std::string Enemy::LogOut() const
+{
+    return  "Coordinates: column = " + std::to_string(_cell->GetColumn())+
+            " row = " + std::to_string(_cell->GetRow()) + "\n";
+}

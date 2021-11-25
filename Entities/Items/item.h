@@ -11,6 +11,9 @@ class Item : public IEntity
 public:
     Item(Cell* cell, Mediator* mediator);
     virtual ~Item();
+
+    virtual std::string LogOut() const override;
+
 protected:
     Cell* _cell;
 

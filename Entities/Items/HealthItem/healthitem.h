@@ -9,6 +9,9 @@ public:
     virtual ~HealthItem();
 
     int GetHealthPointers();
+
+    std::string LogOut() const override;
+
 private:
     const int _healthPointers = 10;
 };
