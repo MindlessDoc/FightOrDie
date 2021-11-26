@@ -1,6 +1,8 @@
 #include "cell.h"
 #include "graphiccell.h"
 
+#include "Application/mediator.h"
+
 Cell::Cell(int column, int row, Mediator* mediator)
     : _mediator(mediator)
     , _column(column)

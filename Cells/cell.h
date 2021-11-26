@@ -1,10 +1,11 @@
 #pragma once
 
 #include"Entities/ientity.h"
-#include "Application/mediator.h"
 
 #include<memory>
 #include<iostream>
+
+class Mediator;
 
 class Cell
 {

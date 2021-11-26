@@ -1,6 +1,8 @@
 #include "item.h"
 #include "Cells/cell.h"
 
+#include "Application/mediator.h"
+
 Item::Item(Cell* cell, Mediator* mediator)
     : _cell(cell)
     , _mediator(mediator)

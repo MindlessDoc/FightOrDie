@@ -2,6 +2,7 @@
 #include "Cells/cell.h"
 #include "Fields/graphicfield.h"
 #include "EnemyMoveContoller/qtenemymovecontroller.h"
+#include "Application/mediator.h"
 
 Enemy::Enemy(Field* gameField, Cell* cell, int movingTime, Mediator* mediator)
     : _gameField(gameField)

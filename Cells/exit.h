@@ -1,6 +1,7 @@
 #pragma once
 
 #include "cell.h"
+#include "Application/mediator.h"
 
 class Exit : public Cell
 {

@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "Application/mediator.h"
 
 
 MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells,
