@@ -1,67 +1,26 @@
 #pragma once
 
-#include "Fields/graphicfield.h"
-#include "Application/mainwindow.h"
-#include "Entities/Characters/Player/player.h"
+class Cell;
+class GraphicField;
+class Player;
+class MainWindow;
 
 class Mediator
 {
 public:
-    Mediator()
-        : _graphicField(nullptr)
-    {
+    //Mediator();
+    virtual void InitMediator(GraphicField* graphicField, Player* player, MainWindow* mainWindow) = 0;
 
-    }
-    void InitMediator(GraphicField* graphicField, Player* player, MainWindow* mainWindow)
-    {
-        _graphicField = graphicField;
-        _player = player;
-        _mainWindow = mainWindow;
-    }
+    virtual void notifySwap(Cell* first, Cell* second) = 0;
+    virtual void notifyGameOver() = 0;
+    virtual void notifyPlayerMove(int x, int y) = 0;
+    virtual void notifyPlayerHealthChange(int health) = 0;
+    virtual void notifyPlayerArmorChange(int armor) = 0;
+    virtual void notifyPlayerAttackChange(int attack) = 0;
+    virtual void notifyDeleteEntity(int column, int row) = 0;
 
-    virtual void notifySwap(Cell* first, Cell* second)
-    {
-        _graphicField->GetGraphicCell(first->GetColumn(),
-                                      first->GetRow())->EntitySwap(_graphicField->GetGraphicCell(second->GetColumn(),
-                                                                                               second->GetRow()));
-    }
-
-    virtual void notifyGameOver()
-    {
-        //add  clearing memory
-        _mainWindow->CloseWindow();
-    }
-
-    virtual void notifyPlayerMove(int x, int y)
-    {
-        _player->Move(x, y);
-    }
-
-
-    virtual void notifyPlayerHealthChange(int health)
-    {
-        _mainWindow->PlayerInfoHealthUpdate(health);
-    }
-
-
-    virtual void notifyPlayerArmorChange(int armor)
-    {
-        _mainWindow->PlayerInfoArmorUpdate(armor);
-    }
-
-    virtual void notifyPlayerAttackChange(int attack)
-    {
-        _mainWindow->PlayerInfoAttackUpdate(attack);
-    }
-
-    virtual void notifyDeleteEntity(int column, int row)
-    {
-        _graphicField->GetGraphicCell(column, row)->DeleteGraphicEntity();
-    }
-
-
-private:
-    GraphicField* _graphicField;
-    Player* _player;
-    MainWindow* _mainWindow;
+//private:
+//    GraphicField* _graphicField;
+//    Player* _player;
+//    MainWindow* _mainWindow;
 };

@@ -44,10 +44,13 @@ SOURCES += \
     Loggable/loggable.cpp \
     Loggers/ConsolLogger/consollogger.cpp \
     Loggers/FileLogger/filelogger.cpp \
-    Loggers/logger.cpp
+    Loggers/logger.cpp \
+    Rules/LoggerRule/loggerrule.cpp \
+    Rules/rule.cpp
 
 
 HEADERS += \
+    Application/TemplateMediator.h \
     Application/game.h \
     Application/mainwindow.h \
     Application/mediator.h \
@@ -82,7 +85,9 @@ HEADERS += \
     Loggable/loggable.h \
     Loggers/ConsolLogger/consollogger.h \
     Loggers/FileLogger/filelogger.h \
-    Loggers/logger.h
+    Loggers/logger.h \
+    Rules/LoggerRule/loggerrule.h \
+    Rules/rule.h
 
 FORMS += \
     mainwindow.ui

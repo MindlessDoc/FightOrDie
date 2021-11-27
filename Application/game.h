@@ -20,6 +20,6 @@ private:
     MainWindow* _mainWindow;
     Mediator* _mediator;
 
-    Logger* _logger;
+    //Logger* _logger;
 };
 

@@ -5,7 +5,7 @@ FileLogger::FileLogger(std::string filename)
     :_filename(filename)
 {
     _out.open("C:/QtProjects/OOP/FightOrDie/logout.txt");
-    _out.clear();
+    //_out.clear();
 
     try
     {
