@@ -5,7 +5,7 @@
 #include "Application/mainwindow.h"
 #include "Entities/Characters/Player/player.h"
 
-template<class LogRule>
+template<class LogRule, class EnemySpawn>
 class TemplateMediator : public Mediator
 {
 public:
@@ -20,6 +20,11 @@ public:
         _player = player;
         _logRule.AddInLogger(_player);
         _mainWindow = mainWindow;
+    }
+
+    virtual void DoSpawnEnemy(Field* field) override
+    {
+        _enemySpawn.Spawn(field, this);
     }
 
     virtual void notifySwap(Cell* first, Cell* second)
@@ -69,4 +74,5 @@ private:
     MainWindow* _mainWindow;
 
     LogRule _logRule;
+    EnemySpawn _enemySpawn;
 };

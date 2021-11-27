@@ -2,6 +2,7 @@
 
 class Cell;
 class GraphicField;
+class Field;
 class Player;
 class MainWindow;
 
@@ -10,6 +11,7 @@ class Mediator
 public:
     //Mediator();
     virtual void InitMediator(GraphicField* graphicField, Player* player, MainWindow* mainWindow) = 0;
+    virtual void DoSpawnEnemy(Field* field) = 0;
 
     virtual void notifySwap(Cell* first, Cell* second) = 0;
     virtual void notifyGameOver() = 0;

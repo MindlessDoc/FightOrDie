@@ -24,6 +24,8 @@ SOURCES += \
     Cells/exit.cpp \
     Cells/graphiccell.cpp \
     Cells/way.cpp \
+    ChooseCell/QtRandomChooseCell/qtrandomchoosecell.cpp \
+    ChooseCell/choosecell.cpp \
     Entities/Characters/Enemies/EnemyMoveContoller/enemymovecontroller.cpp \
     Entities/Characters/Enemies/EnemyMoveContoller/qtenemymovecontroller.cpp \
     Entities/Characters/Enemies/enemy.cpp \
@@ -45,6 +47,7 @@ SOURCES += \
     Loggers/ConsolLogger/consollogger.cpp \
     Loggers/FileLogger/filelogger.cpp \
     Loggers/logger.cpp \
+    Rules/EnemySpawnRule/enemyspawnrule.cpp \
     Rules/LoggerRule/loggerrule.cpp \
     Rules/rule.cpp
 
@@ -64,6 +67,8 @@ HEADERS += \
     Cells/exit.h \
     Cells/graphiccell.h \
     Cells/way.h \
+    ChooseCell/QtRandomChooseCell/qtrandomchoosecell.h \
+    ChooseCell/choosecell.h \
     Entities/Characters/Enemies/EnemyMoveContoller/enemymovecontroller.h \
     Entities/Characters/Enemies/EnemyMoveContoller/qtenemymovecontroller.h \
     Entities/Characters/Enemies/enemy.h \
@@ -86,6 +91,7 @@ HEADERS += \
     Loggers/ConsolLogger/consollogger.h \
     Loggers/FileLogger/filelogger.h \
     Loggers/logger.h \
+    Rules/EnemySpawnRule/enemyspawnrule.h \
     Rules/LoggerRule/loggerrule.h \
     Rules/rule.h
 

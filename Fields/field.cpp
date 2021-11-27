@@ -7,9 +7,7 @@
 #include "Entities/ientity.h"
 #include "Entities/graphicentity.h"
 #include "Entities/Characters/Player/player.h"
-#include "Entities/Characters/Enemies/virus.h"
-#include "Entities/Characters/Enemies/trojan.h"
-#include "Entities/Characters/Enemies/immortal.h"
+
 #include "Entities/Items/HealthItem/healthitem.h"
 #include "Entities/Items/ArmorItem/armoritem.h"
 #include "Entities/Items/AttackItem/attackitem.h"
@@ -54,23 +52,23 @@ void Field::InitField(Player* player, Mediator* mediator)
     new ArmorItem(_cells[0][3], mediator);
     new ArmorItem(_cells[1][5], mediator);
 
-    new Virus(this, _cells[0][4], mediator);
-    new Virus(this, _cells[3][1], mediator);
-    new Virus(this, _cells[3][2], mediator);
-    new Virus(this, _cells[3][3], mediator);
-    new Virus(this, _cells[3][4], mediator);
+//    new Virus(this, _cells[0][4], mediator);
+//    new Virus(this, _cells[3][1], mediator);
+//    new Virus(this, _cells[3][2], mediator);
+//    new Virus(this, _cells[3][3], mediator);
+//    new Virus(this, _cells[3][4], mediator);
 
-    new Immortal(this, _cells[4][1], mediator);
-    new Immortal(this, _cells[4][2], mediator);
-    new Immortal(this, _cells[4][3], mediator);
-    new Immortal(this, _cells[4][4], mediator);
+//    new Immortal(this, _cells[4][1], mediator);
+//    new Immortal(this, _cells[4][2], mediator);
+//    new Immortal(this, _cells[4][3], mediator);
+//    new Immortal(this, _cells[4][4], mediator);
 
-    new Trojan(this, _cells[5][1], mediator);
-    new Trojan(this, _cells[5][2], mediator);
-    new Trojan(this, _cells[5][3], mediator);
-    new Trojan(this, _cells[5][4], mediator);
+//    new Trojan(this, _cells[5][1], mediator);
+//    new Trojan(this, _cells[5][2], mediator);
+//    new Trojan(this, _cells[5][3], mediator);
+//    new Trojan(this, _cells[5][4], mediator);
 
-    new Trojan(this, _cells[0][6], mediator);
+//    new Trojan(this, _cells[0][6], mediator);
 }
 
 Field::~Field()

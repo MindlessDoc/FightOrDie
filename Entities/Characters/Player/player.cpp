@@ -54,6 +54,7 @@ void Player::Move(int x, int y)
             else if(typeid (*additional) == typeid (Immortal))
             {
                 delete this;
+                return; // FIX
             }
             else if(typeid (*additional) == typeid (HealthItem))
             {
