@@ -4,6 +4,7 @@
 #include "Fields/graphicfield.h"
 #include "Application/mainwindow.h"
 #include "Entities/Characters/Player/player.h"
+#include "Controller/controller.h"
 
 template<class LogRule, class EnemySpawn>
 class TemplateMediator : public Mediator
@@ -14,12 +15,13 @@ public:
     {
 
     }
-    void InitMediator(GraphicField* graphicField, Player* player, MainWindow* mainWindow)
+    void InitMediator(GraphicField* graphicField, Player* player, MainWindow* mainWindow, Controller* controller)
     {
         _graphicField = graphicField;
         _player = player;
         _logRule.AddInLogger(_player);
         _mainWindow = mainWindow;
+        _controller = controller;
     }
 
     virtual void DoSpawnEnemy(Field* field) override
@@ -67,11 +69,17 @@ public:
         _graphicField->GetGraphicCell(column, row)->DeleteGraphicEntity();
     }
 
+    virtual void notifyController(int pressedKey)
+    {
+        _controller->KeyIsPressed(pressedKey);
+    }
+
 
 private:
     GraphicField* _graphicField;
     Player* _player;
     MainWindow* _mainWindow;
+    Controller* _controller;
 
     LogRule _logRule;
     EnemySpawn _enemySpawn;

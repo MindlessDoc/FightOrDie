@@ -5,12 +5,14 @@ class GraphicField;
 class Field;
 class Player;
 class MainWindow;
+class Controller;
 
 class Mediator
 {
 public:
     //Mediator();
-    virtual void InitMediator(GraphicField* graphicField, Player* player, MainWindow* mainWindow) = 0;
+    virtual void InitMediator(GraphicField* graphicField, Player* player,
+                              MainWindow* mainWindow, Controller* controller) = 0;
     virtual void DoSpawnEnemy(Field* field) = 0;
 
     virtual void notifySwap(Cell* first, Cell* second) = 0;
@@ -20,6 +22,7 @@ public:
     virtual void notifyPlayerArmorChange(int armor) = 0;
     virtual void notifyPlayerAttackChange(int attack) = 0;
     virtual void notifyDeleteEntity(int column, int row) = 0;
+    virtual void notifyController(int pressedKey) = 0;
 
 //private:
 //    GraphicField* _graphicField;

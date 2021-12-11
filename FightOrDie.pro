@@ -26,6 +26,7 @@ SOURCES += \
     Cells/way.cpp \
     ChooseCell/QtRandomChooseCell/qtrandomchoosecell.cpp \
     ChooseCell/choosecell.cpp \
+    Controller/QtController/qtcontroller.cpp \
     Entities/Characters/Enemies/EnemyMoveContoller/enemymovecontroller.cpp \
     Entities/Characters/Enemies/EnemyMoveContoller/qtenemymovecontroller.cpp \
     Entities/Characters/Enemies/enemy.cpp \
@@ -49,7 +50,8 @@ SOURCES += \
     Loggers/logger.cpp \
     Rules/EnemySpawnRule/enemyspawnrule.cpp \
     Rules/LoggerRule/loggerrule.cpp \
-    Rules/rule.cpp
+    Rules/rule.cpp \
+    Controller/controller.cpp
 
 
 HEADERS += \
@@ -69,6 +71,7 @@ HEADERS += \
     Cells/way.h \
     ChooseCell/QtRandomChooseCell/qtrandomchoosecell.h \
     ChooseCell/choosecell.h \
+    Controller/QtController/qtcontroller.h \
     Entities/Characters/Enemies/EnemyMoveContoller/enemymovecontroller.h \
     Entities/Characters/Enemies/EnemyMoveContoller/qtenemymovecontroller.h \
     Entities/Characters/Enemies/enemy.h \
@@ -93,7 +96,8 @@ HEADERS += \
     Loggers/logger.h \
     Rules/EnemySpawnRule/enemyspawnrule.h \
     Rules/LoggerRule/loggerrule.h \
-    Rules/rule.h
+    Rules/rule.h \
+    Controller/controller.h
 
 FORMS += \
     mainwindow.ui

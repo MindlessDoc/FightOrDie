@@ -3,6 +3,7 @@
 #include "Application/mainwindow.h"
 #include "Fields/graphicfield.h"
 #include "mediator.h"
+#include "Controller/controller.h"
 
 #include "Loggers/logger.h"
 
@@ -19,6 +20,7 @@ private:
     Player* _player;
     MainWindow* _mainWindow;
     Mediator* _mediator;
+    Controller* _controller;
 
     //Logger* _logger;
 };

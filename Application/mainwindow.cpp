@@ -72,13 +72,7 @@ void MainWindow::FrameUpdate()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    switch (event->key())
-    {
-    case Qt::Key_S: _mediator->notifyPlayerMove(0, 1); break;
-    case Qt::Key_W: _mediator->notifyPlayerMove(0, -1); break;
-    case Qt::Key_A: _mediator->notifyPlayerMove(-1, 0); break;
-    case Qt::Key_D: _mediator->notifyPlayerMove(1, 0); break;
-    }
+    _mediator->notifyController(event->key());
 }
 
 void MainWindow::PlayerInfoHealthUpdate(int health)

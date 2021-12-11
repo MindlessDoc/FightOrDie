@@ -12,12 +12,14 @@
 #include "Entities/Characters/Enemies/trojan.h"
 #include "Entities/Characters/Enemies/immortal.h"
 
+#include "Controller/QtController/qtcontroller.h"
+
 
 Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
 {
 
     _mediator = new TemplateMediator<LoggerRule<false, true>,
-            EnemySpawnRule<QtRandomChooseCell, Virus, 1, Trojan, 1, Immortal, 1,
+            EnemySpawnRule<QtRandomChooseCell, Virus, 2, Trojan, 1, Immortal, 1,
             LoggerRule<true, true>>>();
 
     _field = new Field(heightInCells, widthInCells);
@@ -33,7 +35,9 @@ Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCell
 
     _mainWindow = new MainWindow(heightOfCell, widthOfCell, heightInCells, widthInCells, _graphicField, _player, _mediator);
 
-    _mediator->InitMediator(_graphicField, _player, _mainWindow);
+    _controller = new QtController(_mediator);
+
+    _mediator->InitMediator(_graphicField, _player, _mainWindow, _controller);
 }
 
 Game::~Game()
@@ -41,6 +45,7 @@ Game::~Game()
     delete _mainWindow;
     //delete _player; //DANGLING POINTER - FIX!!!
     delete _graphicField;
+    delete _controller;
 }
 
 void Game::Start()
