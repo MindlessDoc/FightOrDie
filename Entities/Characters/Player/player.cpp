@@ -12,6 +12,15 @@
 
 #include "Application/mediator.h"
 
+Player::Player(int health, int attack, int armor)
+    : _health(health)
+    , _attack(attack)
+    , _armor(armor)
+{
+    _gameField = nullptr;
+    _cell = nullptr;
+}
+
 Player::Player(int health, int attack, int armor, Mediator* mediator)
     : _health(health)
     , _attack(attack)

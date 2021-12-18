@@ -5,6 +5,7 @@
 class ArmorItem : public Item
 {
 public:
+    ArmorItem(Cell* cell);
     ArmorItem(Cell* cell, Mediator* mediator);
     virtual ~ArmorItem();
 

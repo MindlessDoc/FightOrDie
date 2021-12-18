@@ -5,6 +5,7 @@
 class Trojan : public Enemy
 {
 public:
+    Trojan(Field* gameField, Cell* cell);
     Trojan(Field* gameField, Cell* cell, Mediator* mediator);
     virtual ~Trojan();
 

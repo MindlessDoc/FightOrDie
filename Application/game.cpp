@@ -55,8 +55,15 @@ void Game::Start()
     _mainWindow->show();
 }
 
+void Game::Save()
+{
+    //_gameObjects = memento->GetGameObjects();
+}
+
+
 void Game::Download(Memento *memento)
 {
     _gameObjects = memento->GetGameObjects();
-
+    _field = _gameObjects->GetField();
+    _player = _gameObjects->GetPlayer();
 }

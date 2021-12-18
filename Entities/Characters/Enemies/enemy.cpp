@@ -4,6 +4,16 @@
 #include "EnemyMoveContoller/qtenemymovecontroller.h"
 #include "Application/mediator.h"
 
+Enemy::Enemy(Field* gameField, Cell* cell, int movingTime)
+    : _gameField(gameField)
+    , _cell(cell)
+    , _movingTime(movingTime)
+{
+    _cell->SetEntity(this);
+
+    _enemyMoveController = new QtEnemyMoveController(this);
+}
+
 Enemy::Enemy(Field* gameField, Cell* cell, int movingTime, Mediator* mediator)
     : _gameField(gameField)
     , _cell(cell)

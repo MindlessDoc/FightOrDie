@@ -7,6 +7,13 @@ AttackItem::AttackItem(Cell* cell, Mediator* mediator)
     _cell->SetEntity(this);
 }
 
+AttackItem::AttackItem(Cell* cell)
+    : Item(cell)
+{
+    _cell->SetEntity(this);
+}
+
+
 AttackItem::~AttackItem()
 {
     _cell->SetEntity(nullptr);

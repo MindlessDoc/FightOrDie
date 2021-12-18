@@ -2,6 +2,23 @@
 #include "Cells/cell.h"
 #include "Fields/field.h"
 
+Immortal::Immortal(Field* gameField, Cell* cell)
+    : Enemy(gameField, cell, 5000)
+{
+    //Think how to reduce
+    _directionCount = 2;
+    _direction.resize(_directionCount);
+    for(int i = 0; i < _directionCount; i++)
+    {
+        _direction[i].resize(2);
+    }
+
+//    _direction[0][0] = -1; _direction[0][1] = 0;
+//    _direction[1][0] = 1; _direction[1][1] = 0;
+
+    _actualVertiaclDirection = 1;
+}
+
 Immortal::Immortal(Field* gameField, Cell* cell, Mediator* mediator)
     : Enemy(gameField, cell, 5000, mediator)
 {

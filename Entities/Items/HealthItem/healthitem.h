@@ -5,6 +5,7 @@
 class HealthItem : public Item
 {
 public:
+    HealthItem(Cell* cell);
     HealthItem(Cell* cell, Mediator* mediator);
     virtual ~HealthItem();
 

@@ -2,6 +2,29 @@
 #include "Cells/cell.h"
 #include "Fields/field.h"
 
+Trojan::Trojan(Field* gameField, Cell* cell)
+    : Enemy(gameField, cell, 3000)
+{
+    //Think how to reduce
+    _directionCount = 8;
+    _direction.resize(_directionCount);
+    for(int i = 0; i < _directionCount; i++)
+    {
+        _direction[i].resize(2);
+    }
+
+    _direction[0][0] = -1; _direction[0][1] = -2;
+    _direction[1][0] = 1; _direction[1][1] = -2;
+    _direction[2][0] = -2; _direction[2][1] = -1;
+    _direction[3][0] = -2; _direction[3][1] = 1;
+    _direction[4][0] = -1; _direction[4][1] = 2;
+    _direction[5][0] = 1; _direction[5][1] = 2;
+    _direction[6][0] = 2; _direction[6][1] = -1;
+    _direction[7][0] = 2; _direction[7][1] = 1;
+
+    //SetNextStep();
+}
+
 Trojan::Trojan(Field* gameField, Cell* cell, Mediator* mediator)
     : Enemy(gameField, cell, 3000, mediator)
 {

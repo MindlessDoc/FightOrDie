@@ -5,6 +5,7 @@
 class Immortal : public Enemy
 {
 public:
+    Immortal(Field* gameField, Cell* cell);
     Immortal(Field* gameField, Cell* cell, Mediator* mediator);
     virtual ~Immortal() = default;
 

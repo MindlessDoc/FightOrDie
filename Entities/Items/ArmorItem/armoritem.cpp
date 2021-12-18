@@ -7,6 +7,12 @@ ArmorItem::ArmorItem(Cell* cell, Mediator* mediator)
     _cell->SetEntity(this);
 }
 
+ArmorItem::ArmorItem(Cell* cell)
+    : Item(cell)
+{
+    _cell->SetEntity(this);
+}
+
 ArmorItem::~ArmorItem()
 {
     _cell->SetEntity(nullptr);

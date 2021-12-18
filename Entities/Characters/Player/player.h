@@ -8,6 +8,7 @@
 class Player : public Character
 {
 public:
+    Player(int health, int attack, int armor);
     Player(int health, int attack, int armor, Mediator* mediator);
     virtual ~Player();
 

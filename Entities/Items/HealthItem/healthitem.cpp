@@ -7,6 +7,12 @@ HealthItem::HealthItem(Cell* cell, Mediator* mediator)
     _cell->SetEntity(this);
 }
 
+HealthItem::HealthItem(Cell* cell)
+    : Item(cell)
+{
+    _cell->SetEntity(this);
+}
+
 HealthItem::~HealthItem()
 {
     _cell->SetEntity(nullptr);

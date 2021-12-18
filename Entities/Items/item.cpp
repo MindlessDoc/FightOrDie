@@ -10,6 +10,12 @@ Item::Item(Cell* cell, Mediator* mediator)
 
 }
 
+Item::Item(Cell* cell)
+    : _cell(cell)
+{
+
+}
+
 Item::~Item()
 {
     _cell->SetEntity(nullptr);
@@ -20,3 +26,5 @@ std::string Item::LogOut() const
 {
     return "Have used!";
 }
+
+void Item::SetMediator(Mediator* mediator) { _mediator = mediator; }
