@@ -24,6 +24,11 @@ public:
         _controller = controller;
     }
 
+    void UpdateMediator(GraphicField* graphicField, Player* player, MainWindow* mainWindow, Controller* controller)
+    {
+
+    }
+
     virtual void DoSpawnEnemy(Field* field) override
     {
         _enemySpawn.Spawn(field, this);

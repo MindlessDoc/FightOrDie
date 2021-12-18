@@ -11,6 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     Application/game.cpp \
+    Application/gameobjects.cpp \
     Application/main.cpp \
     Application/mainwindow.cpp \
     Application/mediator.cpp \
@@ -48,6 +49,9 @@ SOURCES += \
     Loggers/ConsolLogger/consollogger.cpp \
     Loggers/FileLogger/filelogger.cpp \
     Loggers/logger.cpp \
+    Memento/caretaker.cpp \
+    Memento/memento.cpp \
+    Memento/originator.cpp \
     Rules/EnemySpawnRule/enemyspawnrule.cpp \
     Rules/LoggerRule/loggerrule.cpp \
     Rules/rule.cpp \
@@ -57,6 +61,7 @@ SOURCES += \
 HEADERS += \
     Application/TemplateMediator.h \
     Application/game.h \
+    Application/gameobjects.h \
     Application/mainwindow.h \
     Application/mediator.h \
     Avatar/avatar.h \
@@ -94,6 +99,9 @@ HEADERS += \
     Loggers/ConsolLogger/consollogger.h \
     Loggers/FileLogger/filelogger.h \
     Loggers/logger.h \
+    Memento/caretaker.h \
+    Memento/memento.h \
+    Memento/originator.h \
     Rules/EnemySpawnRule/enemyspawnrule.h \
     Rules/LoggerRule/loggerrule.h \
     Rules/rule.h \

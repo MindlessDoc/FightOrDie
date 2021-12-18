@@ -38,6 +38,8 @@ Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCell
     _controller = new QtController(_mediator);
 
     _mediator->InitMediator(_graphicField, _player, _mainWindow, _controller);
+
+    _gameObjects = new GameObjects(_field, _player);
 }
 
 Game::~Game()
@@ -51,4 +53,10 @@ Game::~Game()
 void Game::Start()
 {
     _mainWindow->show();
+}
+
+void Game::Download(Memento *memento)
+{
+    _gameObjects = memento->GetGameObjects();
+
 }

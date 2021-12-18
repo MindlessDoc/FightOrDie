@@ -11,7 +11,7 @@ class Character : public IEntity
 public:
     virtual ~Character() = default;
 
-    //virtual void Move(int x, int y) = 0;
+    void SetMediator(Mediator* mediator);
 
 protected:
     Mediator* _mediator;
