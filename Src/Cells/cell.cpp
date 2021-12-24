@@ -58,3 +58,8 @@ void Cell::SetEntity(IEntity *entity)
 {
     _entity = entity;
 }
+
+void Cell::InitMediator(Mediator *mediator)
+{
+    _mediator = mediator;
+}

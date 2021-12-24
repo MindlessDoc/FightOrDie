@@ -28,6 +28,8 @@ public:
 
     virtual bool CanMoveIn(const IEntity* entity) = 0;
 
+    void InitMediator(Mediator* mediator);
+
 protected:
     Mediator* _mediator;
 
