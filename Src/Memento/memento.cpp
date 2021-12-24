@@ -11,7 +11,7 @@
 
 #include "Src/Application/gameobjects.h"
 
-Memento::Memento(std::string fileName, std::map<std::string, DeserializableFactory*> creator)
+Memento::Memento(std::string fileName, std::map<std::string, DeserializableFactory*>* creator)
 {
     Field* field = nullptr;
     Cell* prevCell = nullptr;
@@ -21,11 +21,11 @@ Memento::Memento(std::string fileName, std::map<std::string, DeserializableFacto
     {
         std::string type;
         in >> type;
-        field = static_cast<Field*>(creator[type]->CreateObject(in, field, prevCell, &creator));
+        field = static_cast<Field*>((*creator)[type]->CreateObject(in, field, prevCell, creator));
         while(!in.eof())
         {
             in >> type;
-            creator[type]->CreateObject(in, field, prevCell, &creator);
+            (*creator)[type]->CreateObject(in, field, prevCell, creator);
         }
     }
     else

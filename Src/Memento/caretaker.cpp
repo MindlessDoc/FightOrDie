@@ -36,7 +36,7 @@ void Caretaker::DoDownload(int index)
     std::ifstream fin(fullFileName);
     if(fin.is_open())
     {
-        _originator->Download(new Memento(fullFileName));
+        _originator->Download(new Memento(fullFileName, _originator->GetCreator()));
     }
     else
     {
