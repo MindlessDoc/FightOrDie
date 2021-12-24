@@ -1,6 +1,7 @@
-#include "serializableattack.h"
+#include "deserializableattack.h"
 
-SerializableAttack::SerializableAttack()
+Serializable* DeserializableAttack::CreateObject(std::istream &is, Field *field, Cell *cell)
 {
-
+    return new AttackItem(cell);
 }
+

@@ -1,6 +1,6 @@
-#include "serializablearmor.h"
+#include "deserializablearmor.h"
 
-SerializableArmor::SerializableArmor()
+Serializable* DeserializableArmor::CreateObject(std::istream &is, Field *field, Cell *cell)
 {
-
+    return new ArmorItem(cell);
 }

@@ -1,6 +1,6 @@
-#include "serializablehealth.h"
+#include "deserializablehealth.h"
 
-SerializableHealth::SerializableHealth()
+Serializable* DeserializableHealth::CreateObject(std::istream &is, Field *field, Cell *cell)
 {
-
+    return new HealthItem(cell);
 }

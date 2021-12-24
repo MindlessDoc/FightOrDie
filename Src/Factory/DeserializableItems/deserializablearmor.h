@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Src/Factory/deserializablefactory.h"
+#include "Src/Entities/Items/ArmorItem/armoritem.h"
 
 class DeserializableArmor : public DeserializableFactory
 {
