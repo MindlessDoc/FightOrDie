@@ -1,6 +1,6 @@
 #include "deserializableimmortal.h"
 
-IEntity* DeserializableImmortal::operator()(std::istream &is)
+Serializable* DeserializableImmortal::CreateObject(std::istream &is, Field *field, Cell *cell)
 {
-
+    return new Immortal(field, cell);
 }

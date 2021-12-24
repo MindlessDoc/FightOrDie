@@ -1,11 +1,10 @@
-#ifndef DESERIALIZABLEHEALTH_H
-#define DESERIALIZABLEHEALTH_H
+#pragma once
 
+#include "Src/Factory/deserializablefactory.h"
 
-class DeserializableHealth
+class DeserializableHealth : public DeserializableFactory
 {
 public:
     DeserializableHealth();
+    virtual Serializable* CreateObject(std::istream& is, Field* field, Cell* cell) override;
 };
-
-#endif // DESERIALIZABLEHEALTH_H

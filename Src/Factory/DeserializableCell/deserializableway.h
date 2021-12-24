@@ -1,11 +1,12 @@
 #pragma once
 
+#include "Src/Factory/deserializablefactory.h"
 #include "Src/Cells/way.h"
 
-class DeserializableWay
+class DeserializableWay : public DeserializableFactory
 {
 public:
     DeserializableWay() = default;
-    Cell* operator()(std::istream& is);
+    virtual Serializable* CreateObject(std::istream& is, Field* field, Cell* cell) override;
 };
 

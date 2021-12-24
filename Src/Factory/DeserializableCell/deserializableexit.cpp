@@ -1,6 +1,6 @@
 #include "deserializableexit.h"
 
-Cell* DeserializableExit::operator()(std::istream& is)
+Serializable* DeserializableExit::CreateObject(std::istream &is, Field *field, Cell *cell)
 {
     int coord_x, coord_y;
     is >> coord_x >> coord_y;

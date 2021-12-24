@@ -7,7 +7,7 @@
 
 class Mediator;
 
-class Cell
+class Cell : public Serializable
 {
 public:
     Cell(int column, int row);

@@ -1,6 +1,6 @@
-#include "serializablevirus.h"
+#include "deserializablevirus.h"
 
-SerializableVirus::SerializableVirus()
+Serializable* DeserializableVirus::CreateObject(std::istream &is, Field *field, Cell *cell)
 {
-
+    return new Virus(field, cell);
 }

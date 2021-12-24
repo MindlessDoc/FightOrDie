@@ -1,11 +1,10 @@
-#ifndef DESERIALIZABLEATTACK_H
-#define DESERIALIZABLEATTACK_H
+#pragma once
 
+#include "Src/Factory/deserializablefactory.h"
 
-class DeserializableAttack
+class DeserializableAttack : public DeserializableFactory
 {
 public:
     DeserializableAttack();
+    virtual Serializable* CreateObject(std::istream& is, Field* field, Cell* cell) override;
 };
-
-#endif // DESERIALIZABLEATTACK_H

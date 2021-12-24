@@ -1,11 +1,10 @@
-#ifndef DESERIALIZABLEARMOR_H
-#define DESERIALIZABLEARMOR_H
+#pragma once
 
+#include "Src/Factory/deserializablefactory.h"
 
-class DeserializableArmor
+class DeserializableArmor : public DeserializableFactory
 {
 public:
     DeserializableArmor();
+    virtual Serializable* CreateObject(std::istream& is, Field* field, Cell* cell) override;
 };
-
-#endif // DESERIALIZABLEARMOR_H

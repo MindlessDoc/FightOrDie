@@ -1,14 +1,12 @@
 #pragma once
 #include <iostream>
 
-#include "Src/Factory/deserializablefactory.h"
-
 class Serializable
 {
 protected:
     ~Serializable() = default;
-private:
-    DeserializableFactory* _serializableFactory;
+//private:
+//    DeserializableFactory* _serializableFactory;
 
 public:
 //    virtual void Serialize(std::ostream& os);

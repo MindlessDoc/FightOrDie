@@ -1,10 +1,11 @@
 #pragma once
 
+#include "Src/Factory/deserializablefactory.h"
 #include "Src/Entities/Characters/Enemies/immortal.h"
 
 class DeserializableImmortal : public DeserializableFactory
 {
 public:
     DeserializableImmortal() = default;
-    IEntity* operator()(std::istream& is);
+    virtual Serializable* CreateObject(std::istream& is, Field* field, Cell* cell) override;
 };

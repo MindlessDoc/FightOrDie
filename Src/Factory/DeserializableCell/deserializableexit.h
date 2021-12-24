@@ -1,11 +1,12 @@
 #pragma once
 
+#include "Src/Factory/deserializablefactory.h"
 #include "Src/Cells/exit.h"
 
-class DeserializableExit
+class DeserializableExit : public DeserializableFactory
 {
 public:
     DeserializableExit() = default;
-    Cell* operator()(std::istream& is);
+    virtual Serializable* CreateObject(std::istream& is, Field* field, Cell* cell) override;
 };
 
