@@ -1,11 +1,8 @@
-#ifndef DESERIALIZABLECELL_H
-#define DESERIALIZABLECELL_H
+#pragma once
 
 
 class DeserializableCell
 {
 public:
-    DeserializableCell();
+    DeserializableCell() = default;
 };
-
-#endif // DESERIALIZABLECELL_H

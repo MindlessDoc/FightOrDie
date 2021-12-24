@@ -44,6 +44,9 @@ SOURCES += \
     Src/Entities/graphicentity.cpp \
     Src/Entities/ientity.cpp \
     Src/Factory/DeserializableCell/deserializablecell.cpp \
+    Src/Factory/DeserializableCell/deserializableentrance.cpp \
+    Src/Factory/DeserializableCell/deserializableexit.cpp \
+    Src/Factory/DeserializableCell/deserializableway.cpp \
     Src/Factory/DeserializableCharacters/deserializableimmortal.cpp \
     Src/Factory/DeserializableCharacters/deserializableplayer.cpp \
     Src/Factory/DeserializableCharacters/deserializabletrojan.cpp \
@@ -104,6 +107,9 @@ HEADERS += \
     Src/Entities/graphicentity.h \
     Src/Entities/ientity.h \
     Src/Factory/DeserializableCell/deserializablecell.h \
+    Src/Factory/DeserializableCell/deserializableentrance.h \
+    Src/Factory/DeserializableCell/deserializableexit.h \
+    Src/Factory/DeserializableCell/deserializableway.h \
     Src/Factory/DeserializableCharacters/deserializableimmortal.h \
     Src/Factory/DeserializableCharacters/deserializableplayer.h \
     Src/Factory/DeserializableCharacters/deserializabletrojan.h \
