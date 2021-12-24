@@ -43,14 +43,16 @@ SOURCES += \
     Src/Entities/Items/item.cpp \
     Src/Entities/graphicentity.cpp \
     Src/Entities/ientity.cpp \
-    Src/Factory/SerializableCharacters/serializableimmortal.cpp \
-    Src/Factory/SerializableCharacters/serializableplayer.cpp \
-    Src/Factory/SerializableCharacters/serializabletrojan.cpp \
-    Src/Factory/SerializableCharacters/serializablevirus.cpp \
-    Src/Factory/SerializableItems/serializablearmor.cpp \
-    Src/Factory/SerializableItems/serializableattack.cpp \
-    Src/Factory/SerializableItems/serializablehealth.cpp \
-    Src/Factory/serializablefactory.cpp \
+    Src/Factory/DeserializableCell/deserializablecell.cpp \
+    Src/Factory/DeserializableCharacters/deserializableimmortal.cpp \
+    Src/Factory/DeserializableCharacters/deserializableplayer.cpp \
+    Src/Factory/DeserializableCharacters/deserializabletrojan.cpp \
+    Src/Factory/DeserializableCharacters/deserializablevirus.cpp \
+    Src/Factory/DeserializableField/deserializablefield.cpp \
+    Src/Factory/DeserializableItems/deserializablearmor.cpp \
+    Src/Factory/DeserializableItems/deserializableattack.cpp \
+    Src/Factory/DeserializableItems/deserializablehealth.cpp \
+    Src/Factory/deserializablefactory.cpp \
     Src/Fields/field.cpp \
     Src/Fields/graphicfield.cpp \
     Src/Loggable/loggable.cpp \
@@ -101,14 +103,16 @@ HEADERS += \
     Src/Entities/Items/item.h \
     Src/Entities/graphicentity.h \
     Src/Entities/ientity.h \
-    Src/Factory/SerializableCharacters/serializableimmortal.h \
-    Src/Factory/SerializableCharacters/serializableplayer.h \
-    Src/Factory/SerializableCharacters/serializabletrojan.h \
-    Src/Factory/SerializableCharacters/serializablevirus.h \
-    Src/Factory/SerializableItems/serializablearmor.h \
-    Src/Factory/SerializableItems/serializableattack.h \
-    Src/Factory/SerializableItems/serializablehealth.h \
-    Src/Factory/serializablefactory.h \
+    Src/Factory/DeserializableCell/deserializablecell.h \
+    Src/Factory/DeserializableCharacters/deserializableimmortal.h \
+    Src/Factory/DeserializableCharacters/deserializableplayer.h \
+    Src/Factory/DeserializableCharacters/deserializabletrojan.h \
+    Src/Factory/DeserializableCharacters/deserializablevirus.h \
+    Src/Factory/DeserializableField/deserializablefield.h \
+    Src/Factory/DeserializableItems/deserializablearmor.h \
+    Src/Factory/DeserializableItems/deserializableattack.h \
+    Src/Factory/DeserializableItems/deserializablehealth.h \
+    Src/Factory/deserializablefactory.h \
     Src/Fields/field.h \
     Src/Fields/graphicfield.h \
     Src/Containers/vector.h \
