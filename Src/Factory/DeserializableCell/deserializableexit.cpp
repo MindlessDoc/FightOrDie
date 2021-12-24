@@ -2,7 +2,7 @@
 #include "Src/Fields/field.h"
 
 Serializable* DeserializableExit::CreateObject(std::istream& is, Field* field, Cell* cell,
-                                               std::map<std::string, DeserializableFactory>* creator)
+                                               std::map<std::string, DeserializableFactory*>* creator)
 {
     int coord_x, coord_y;
     is >> coord_x >> coord_y;
@@ -11,7 +11,7 @@ Serializable* DeserializableExit::CreateObject(std::istream& is, Field* field, C
     is >> type;
     if(type != "Nullptr")
     {
-        (*creator)[type].CreateObject(is, field, nowCell, creator);
+        (*creator)[type]->CreateObject(is, field, nowCell, creator);
     }
     field->InitCell(coord_x, coord_y, new Exit(coord_x, coord_y));
 }

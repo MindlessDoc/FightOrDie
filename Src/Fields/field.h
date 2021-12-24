@@ -5,7 +5,7 @@
 #include "Src/Entities/Characters/Player/player.h"
 #include "Src/Loggers/logger.h"
 
-class Field
+class Field : public Serializable
 {
 public:
     Field(int heightInCells, int widthInCells);

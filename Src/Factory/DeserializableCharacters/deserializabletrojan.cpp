@@ -1,7 +1,7 @@
 #include "deserializabletrojan.h"
 
 Serializable* DeserializableTrojan::CreateObject(std::istream& is, Field* field, Cell* cell,
-                                                 std::map<std::string, DeserializableFactory>* creator)
+                                                 std::map<std::string, DeserializableFactory*>* creator)
 {
     return new Trojan(field, cell);
 }

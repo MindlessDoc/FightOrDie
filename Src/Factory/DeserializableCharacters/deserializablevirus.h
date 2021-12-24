@@ -8,5 +8,5 @@ class DeserializableVirus : public DeserializableFactory
 public:
     DeserializableVirus();
     virtual Serializable* CreateObject(std::istream& is, Field* field, Cell* cell,
-                                       std::map<std::string, DeserializableFactory>* creator) override;
+                                       std::map<std::string, DeserializableFactory*>* creator) override;
 };

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include "Src/Serializable/serializable.h"
 #include <map>
 
@@ -12,5 +11,5 @@ class DeserializableFactory
 public:
     DeserializableFactory();
     virtual Serializable* CreateObject(std::istream& is, Field* field, Cell* cell,
-                                       std::map<std::string, DeserializableFactory>* creator) = 0;
+                                       std::map<std::string, DeserializableFactory*>* creator) = 0;
 };
