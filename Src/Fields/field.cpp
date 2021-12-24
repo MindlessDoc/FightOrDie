@@ -131,3 +131,9 @@ bool Field::CheckOnInclusion(int column, int row)
         return false;
     }
 }
+
+void Field::InitCell(int column, int row, Cell* cell)
+{
+    delete _cells[column][row];
+    _cells[column][row] = cell;
+}

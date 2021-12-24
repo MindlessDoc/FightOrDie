@@ -12,6 +12,7 @@ public:
     virtual ~Field();
 
     void InitField(Player* player, Mediator* mediator);
+    void InitCell(int column, int row, Cell* cell);
 
     Field(const Field& other);
     Field& operator=(const Field& other);

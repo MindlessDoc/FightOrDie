@@ -39,7 +39,7 @@ Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCell
 
     _mediator->InitMediator(_graphicField, _player, _mainWindow, _controller);
 
-    _gameObjects = new GameObjects(_field, _player);
+    //_gameObjects = new GameObjects(_field, _player);
 }
 
 Game::~Game()
