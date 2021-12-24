@@ -65,7 +65,16 @@ void Game::Download(Memento *memento)
 {
     _gameObjects = memento->GetGameObjects();
     _field = _gameObjects->GetField();
-    _player = _gameObjects->GetPlayer();
+    _player = _field->GetPlayer();
+    _field->InitMediator(_mediator);
+    int height = _graphicField->GetHeightOfCell();
+    int width = _graphicField->GetWidthOfCell();
+    delete _graphicField;
+    _graphicField = new GraphicField(_field, height, width);
+    delete _mainWindow;
+    _mainWindow = new MainWindow(height, width, _field->GetHeightInCells(), _field->GetWidthInCells(), _graphicField, _player, _mediator);
+    _mediator->InitMediator(_graphicField, _player, _mainWindow, _controller);
+    Start();
 }
 
 Mediator* Game::GetMediator() { return _mediator; }

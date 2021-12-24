@@ -13,5 +13,7 @@ public:
     virtual void Moving(Cell* swapCell) override;
     virtual bool CanMoveIn(const IEntity* entity) override;
 
+    virtual void Serialize(std::ostream& os) override;
+
     void GameOver();
 };

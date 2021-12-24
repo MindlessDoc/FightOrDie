@@ -27,4 +27,7 @@ std::string Item::LogOut() const
     return "Have used!";
 }
 
-void Item::SetMediator(Mediator* mediator) { _mediator = mediator; }
+void Item::InitMediator(Mediator *mediator)
+{
+    _mediator = mediator;
+}

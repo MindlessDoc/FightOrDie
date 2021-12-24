@@ -125,3 +125,8 @@ std::string Player::LogOut() const
             "Coordinates: column = " + std::to_string(_cell->GetColumn())+
             " row = " + std::to_string(_cell->GetRow()) + "\n";
 }
+
+void Player::Serialize(std::ostream &os)
+{
+    os << typeid (Player).name() << " " << _health << " " << _attack << " " << _armor << std::endl;
+}

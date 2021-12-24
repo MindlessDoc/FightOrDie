@@ -13,6 +13,8 @@ public:
 
     std::string LogOut() const override;
 
+    virtual void Serialize(std::ostream& os) override;
+
 private:
     const int _healthPointers = 10;
 };

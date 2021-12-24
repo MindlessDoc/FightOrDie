@@ -40,3 +40,8 @@ void Exit::GameOver()
 {
     _mediator->notifyGameOver();
 }
+
+void Exit::Serialize(std::ostream &os)
+{
+    os << typeid (Exit).name() << " " << GetColumn() << " " << GetRow() << std::endl;
+}

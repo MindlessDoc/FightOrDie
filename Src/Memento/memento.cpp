@@ -32,6 +32,7 @@ Memento::Memento(std::string fileName, std::map<std::string, DeserializableFacto
     {
 
     }
+    _gameObjects = new GameObjects(field, nullptr);
 }
 
 GameObjects* Memento::GetGameObjects() { return _gameObjects; }

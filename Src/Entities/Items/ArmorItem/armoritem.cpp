@@ -25,3 +25,8 @@ std::string ArmorItem::LogOut() const
 {
     return "ArmorItem: Have used!\n";
 }
+
+void ArmorItem::Serialize(std::ostream &os)
+{
+    os << typeid (ArmorItem).name() << std::endl;
+}

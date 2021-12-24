@@ -16,3 +16,8 @@ bool Way::CanMoveIn(const IEntity* entity)
 {
     return true;
 }
+
+void Way::Serialize(std::ostream &os)
+{
+    os << typeid (Way).name() << " " << GetColumn() << " " << GetRow() << std::endl;
+}

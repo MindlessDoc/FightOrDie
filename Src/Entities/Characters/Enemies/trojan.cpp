@@ -111,3 +111,8 @@ std::string Trojan::LogOut() const
             " row = " + std::to_string(_cell->GetRow()) + "\n";
 }
 
+void Trojan::Serialize(std::ostream &os)
+{
+    os << typeid (Trojan).name() << std::endl;
+}
+

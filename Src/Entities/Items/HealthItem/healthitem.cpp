@@ -25,3 +25,8 @@ std::string HealthItem::LogOut() const
 {
     return "HealthItem: Have used!\n";
 }
+
+void HealthItem::Serialize(std::ostream &os)
+{
+    os << typeid (HealthItem).name() << std::endl;
+}

@@ -27,6 +27,8 @@ public:
 
     virtual std::string LogOut() const override;
 
+    virtual void Serialize(std::ostream& os) override;
+
 private:
     Field* _gameField;
     Cell* _cell;

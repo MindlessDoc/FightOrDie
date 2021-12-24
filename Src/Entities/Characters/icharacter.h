@@ -11,7 +11,7 @@ class Character : public IEntity
 public:
     virtual ~Character() = default;
 
-    void SetMediator(Mediator* mediator);
+    virtual void InitMediator(Mediator* mediator) override;
 
 protected:
     Mediator* _mediator;

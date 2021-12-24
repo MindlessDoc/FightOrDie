@@ -11,5 +11,7 @@ public:
     virtual ~Entrance() = default;
 
     virtual bool CanMoveIn(const IEntity* entity) override;
+
+    virtual void Serialize(std::ostream& os) override;
 };
 

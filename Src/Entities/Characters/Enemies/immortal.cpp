@@ -76,3 +76,9 @@ std::string Immortal::LogOut() const
     return  "Immortal info:\nCoordinates: column = " + std::to_string(_cell->GetColumn())+
             " row = " + std::to_string(_cell->GetRow()) + "\n";
 }
+
+
+void Immortal::Serialize(std::ostream &os)
+{
+    os << typeid (Immortal).name() << std::endl;
+}

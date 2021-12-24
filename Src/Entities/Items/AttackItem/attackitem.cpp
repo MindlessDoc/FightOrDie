@@ -26,3 +26,8 @@ std::string AttackItem::LogOut() const
 {
     return "AttackItem: Have used!\n";
 }
+
+void AttackItem::Serialize(std::ostream &os)
+{
+    os << typeid (AttackItem).name() << std::endl;
+}

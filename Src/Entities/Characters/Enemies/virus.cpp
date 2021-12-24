@@ -67,3 +67,8 @@ std::string Virus::LogOut() const
             " row = " + std::to_string(_cell->GetRow()) + "\n";
 }
 
+void Virus::Serialize(std::ostream &os)
+{
+    os << typeid (Virus).name() << std::endl;
+}
+

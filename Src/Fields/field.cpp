@@ -120,6 +120,31 @@ int Field::GetWidthInCells() { return _widthInCells; }
 
 Cell* Field::GetCell(int column, int row) { return _cells[column][row]; }
 
+Player* Field::GetPlayer()
+{
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            if(typeid(Player*) == typeid(_cells[i][j]->GetEntity()))
+            {
+                return static_cast<Player*>(_cells[i][j]->GetEntity());
+            }
+        }
+    }
+}
+
+void Field::InitMediator(Mediator* mediator)
+{
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            _cells[i][j]->InitMediator(mediator);
+        }
+    }
+}
+
 bool Field::CheckOnInclusion(int column, int row)
 {
     if(column >= 0 && row >= 0 && column < _heightInCells && row < _widthInCells)
@@ -136,4 +161,9 @@ void Field::InitCell(int column, int row, Cell* cell)
 {
     delete _cells[column][row];
     _cells[column][row] = cell;
+}
+
+void Field::Serialize(std::ostream &os)
+{
+    os << typeid (Field).name() << " " << _heightInCells << " " << _widthInCells << std::endl;
 }

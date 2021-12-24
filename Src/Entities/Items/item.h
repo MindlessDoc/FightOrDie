@@ -14,7 +14,7 @@ public:
     virtual ~Item();
 
     virtual std::string LogOut() const override;
-    void SetMediator(Mediator* mediator);
+    virtual void InitMediator(Mediator* mediator) override;
 
 protected:
     Cell* _cell;

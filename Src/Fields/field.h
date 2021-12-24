@@ -24,8 +24,13 @@ public:
     int GetWidthInCells();
 
     Cell* GetCell(int column, int row);
+    Player* GetPlayer();
+
+    void InitMediator(Mediator* mediator);
 
     bool CheckOnInclusion(int column, int row);
+
+    virtual void Serialize(std::ostream& os) override;
 
 private:
     int _heightInCells;
