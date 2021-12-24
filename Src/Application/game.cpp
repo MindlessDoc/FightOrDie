@@ -34,7 +34,7 @@
 Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
 {
 
-    _mediator = new TemplateMediator<LoggerRule<false, true>,
+    _mediator = new TemplateMediator<LoggerRule<false, false>,
             EnemySpawnRule<QtRandomChooseCell, Virus, 2, Trojan, 1, Immortal, 1,
             LoggerRule<true, true>>>();
 
@@ -54,10 +54,8 @@ Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCell
     _controller = new QtController(_mediator);
 
     _mediator->InitMediator(_graphicField, _player, _mainWindow, _controller);
-    _mediator->InitCaretaker(new Caretaker(this, "C:/QtProjects/OOP/FightOrDie"));
 
-    _mediator->notifyCaretakerSave();
-    std::map<std::string, DeserializableFactory*> creator =
+    _additionalCreator =
                                                  {{typeid (ArmorItem).name(), new DeserializableArmor()},
                                                  {typeid (AttackItem).name(), new DeserializableAttack()},
                                                  {typeid (HealthItem).name(), new DeserializableHealth()},
@@ -72,8 +70,13 @@ Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCell
                                                  {typeid (Immortal).name(), new DeserializableImmortal()},
                                                  {typeid (Trojan).name(), new DeserializableTrojan()},
                                                  {typeid (Virus).name(), new DeserializableVirus()}};
-    SetCreator(&creator);
-    _mediator->notifyCaretakerDownload();
+    SetCreator(&_additionalCreator);
+
+    _mediator->InitCaretaker(new Caretaker(this, "C:/QtProjects/OOP/FightOrDie"));
+
+    //_mediator->notifyCaretakerSave();
+
+    //_mediator->notifyCaretakerDownload();
 
     //_gameObjects = new GameObjects(_field, _player);
 }
@@ -102,17 +105,16 @@ void Game::Download(Memento *memento)
     _gameObjects = memento->GetGameObjects();
     delete _field;
     _field = _gameObjects->GetField();
-    delete _player;
+    //delete _player;
     _player = _field->GetPlayer();
     _field->InitMediator(_mediator);
     int height = _graphicField->GetHeightOfCell();
     int width = _graphicField->GetWidthOfCell();
     delete _graphicField;
     _graphicField = new GraphicField(_field, height, width);
-    delete _mainWindow;
-    _mainWindow = new MainWindow(height, width, _field->GetHeightInCells(), _field->GetWidthInCells(), _graphicField, _player, _mediator);
+    _mainWindow->InitMainWindow(height, width, _field->GetHeightInCells(), _field->GetWidthInCells(), _graphicField, _player, _mediator);
     _mediator->InitMediator(_graphicField, _player, _mainWindow, _controller);
-    Start();
+    //Start();
 }
 
 Mediator* Game::GetMediator() { return _mediator; }

@@ -29,6 +29,37 @@ MainWindow::MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int
 
     DrawField(graphicField);
 }
+
+void MainWindow::InitMainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells,
+                    GraphicField* graphicField, Player* player, Mediator* mediator, QWidget *parent)
+{
+    _height = heightOfCell * heightInCells;
+    _width = widthOfCell * widthInCells;
+
+    setFixedSize(_width + 20, _height + _sizeOfPlayerAvatar + _sizeOfIcons * 3);
+
+    delete _timer;
+    _timer = new QTimer();
+    connect(_timer, &QTimer::timeout, this, &MainWindow::FrameUpdate);
+    _timer->start(_frameUpdateTime);
+
+    delete scene;
+    scene = new QGraphicsScene();
+
+    ui->graphicsView->setScene(scene);
+    scene->setSceneRect(0, 0, _width, _height);
+    //ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    InitInterface(player);
+
+    DrawField(graphicField);
+
+    scene->update();
+}
+
+
 MainWindow::~MainWindow()
 {
     delete _timer;
@@ -89,3 +120,15 @@ void MainWindow::PlayerInfoArmorUpdate(int armor)
 {
     ui->armorText->setText(QString::number(armor));
 }
+
+void MainWindow::on_saveButton_clicked()
+{
+    _mediator->notifyCaretakerSave();
+}
+
+
+void MainWindow::on_downloadButton_clicked()
+{
+    _mediator->notifyCaretakerDownload();
+}
+

@@ -28,9 +28,13 @@ Enemy::Enemy(Field* gameField, Cell* cell, int movingTime, Mediator* mediator)
 Enemy::~Enemy()
 {
     _cell->SetEntity(nullptr);
-    _mediator->notifyDeleteEntity(_cell->GetColumn(), _cell->GetRow());
-
     delete _enemyMoveController;
+}
+
+void Enemy::Die()
+{
+    _mediator->notifyDeleteEntity(_cell->GetColumn(), _cell->GetRow());
+    delete this;
 }
 
 int Enemy::GetMovingTime()
@@ -48,3 +52,4 @@ std::string Enemy::LogOut() const
     return  "Coordinates: column = " + std::to_string(_cell->GetColumn())+
             " row = " + std::to_string(_cell->GetRow()) + "\n";
 }
+

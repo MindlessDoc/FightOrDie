@@ -42,7 +42,12 @@ void Player::Init(Field* gameField, Cell* cell)
 Player::~Player()
 {
     _cell->SetEntity(nullptr);
+}
+
+void Player::Die()
+{
     GameOver();
+    delete this;
 }
 
 void Player::Move(int x, int y)
@@ -57,11 +62,11 @@ void Player::Move(int x, int y)
             if(typeid (*additional) == typeid (Virus)
                     || typeid (*additional) == typeid (Trojan))
             {
-                delete additional;
+                static_cast<Enemy*>(additional)->Die();
             }
             else if(typeid (*additional) == typeid (Immortal))
             {
-                delete this;
+                Die();
                 return; // FIX
             }
             else if(typeid (*additional) == typeid (HealthItem))

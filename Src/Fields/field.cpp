@@ -55,7 +55,13 @@ void Field::InitField(Player* player, Mediator* mediator)
 
 Field::~Field()
 {
-
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            delete _cells[i][j];
+        }
+    }
 }
 
 
@@ -126,13 +132,10 @@ Player* Field::GetPlayer()
     {
         for(int j = 0; j < _widthInCells; j++)
         {
-            if(typeid(Player).name() == typeid(*_cells[i][j]->GetEntity()).name())
+            if(_cells[i][j]->GetEntity() && typeid(Player).name() == typeid(*(_cells[i][j]->GetEntity())).name())
             {
-
                 return static_cast<Player*>(_cells[i][j]->GetEntity());
             }
-            std::cout << typeid(Player*).name() << std::endl;
-            std::cout << typeid(_cells[i][j]->GetEntity()).name() << std::endl;
         }
     }
 }

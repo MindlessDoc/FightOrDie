@@ -63,7 +63,7 @@ void Immortal::Move(int variant)
         }
         else if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))
         {
-            delete _gameField->GetCell(newColumn, newRow)->GetEntity(); // CHEKING
+            static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->GetEntity())->Die(); // CHEKING
             _gameField->GetCell(newColumn, newRow)->Moving(_cell);
             _cell = _gameField->GetCell(newColumn, newRow);
         }

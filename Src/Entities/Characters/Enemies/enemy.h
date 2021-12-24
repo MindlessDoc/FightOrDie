@@ -11,6 +11,8 @@ public:
     Enemy(Field* gameField, Cell* cell, int movingTime, Mediator* _mediator);
     virtual ~Enemy();
 
+    virtual void Die();
+
     virtual void Move(int variant) = 0;
     virtual int GetMovingTime();
     virtual int GetDirectionCount();

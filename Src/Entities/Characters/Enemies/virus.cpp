@@ -52,7 +52,7 @@ void Virus::Move(int variant)
             if(_gameField->GetCell(newColumn, newRow)->GetEntity() && typeid(*(_gameField->GetCell(newColumn, newRow)->GetEntity())) == typeid(Player))
             {
                 //CHEKING!!!
-                delete _gameField->GetCell(newColumn, newRow)->GetEntity();
+                static_cast<Player*>(_gameField->GetCell(newColumn, newRow)->GetEntity())->Die();
             }
             _gameField->GetCell(newColumn, newRow)->Moving(_cell);
             _cell = _gameField->GetCell(newColumn, newRow);

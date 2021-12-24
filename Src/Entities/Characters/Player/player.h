@@ -12,6 +12,8 @@ public:
     Player(int health, int attack, int armor, Mediator* mediator);
     virtual ~Player();
 
+    void Die();
+
     void Init(Field* gameField, Cell* cell);
 
     int GetHealth() const;

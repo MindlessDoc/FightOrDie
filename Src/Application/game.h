@@ -30,6 +30,8 @@ private:
 
     GameObjects* _gameObjects;
 
+    std::map<std::string, DeserializableFactory*> _additionalCreator;
+
     //Logger* _logger;
 };
 

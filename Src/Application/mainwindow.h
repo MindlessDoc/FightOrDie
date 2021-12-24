@@ -21,6 +21,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells,
                GraphicField* _graphicField, Player* _player, Mediator* mediator, QWidget *parent = 0);
+    void InitMainWindow(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells,
+                        GraphicField* graphicField, Player* player, Mediator* mediator, QWidget *parent = 0);
     virtual ~MainWindow();
 
     void DrawField(QGraphicsItem* graphicfield);
@@ -38,7 +40,12 @@ public slots:
 protected:
     virtual void keyPressEvent(QKeyEvent *event) override;
 
-private:    
+private slots:
+    void on_saveButton_clicked();
+
+    void on_downloadButton_clicked();
+
+private:
     const int _sizeOfPlayerAvatar = 100;
     const int _sizeOfIcons = 25;
     void InitInterface(Player* player);
