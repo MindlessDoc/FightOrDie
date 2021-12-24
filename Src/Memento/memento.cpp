@@ -11,12 +11,11 @@
 
 #include "Src/Application/gameobjects.h"
 
-Memento::Memento(std::string fileName, std::map<std::string, DeserializableFactory*>* creator)
+Memento::Memento(std::ifstream& in, std::map<std::string, DeserializableFactory*>* creator)
 {
     Field* field = nullptr;
     Cell* prevCell = nullptr;
 
-    std::ifstream in(fileName);
     if(in.is_open())
     {
         std::string type;

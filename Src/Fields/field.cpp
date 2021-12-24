@@ -126,10 +126,13 @@ Player* Field::GetPlayer()
     {
         for(int j = 0; j < _widthInCells; j++)
         {
-            if(typeid(Player*) == typeid(_cells[i][j]->GetEntity()))
+            if(typeid(Player).name() == typeid(*_cells[i][j]->GetEntity()).name())
             {
+
                 return static_cast<Player*>(_cells[i][j]->GetEntity());
             }
+            std::cout << typeid(Player*).name() << std::endl;
+            std::cout << typeid(_cells[i][j]->GetEntity()).name() << std::endl;
         }
     }
 }
@@ -159,11 +162,19 @@ bool Field::CheckOnInclusion(int column, int row)
 
 void Field::InitCell(int column, int row, Cell* cell)
 {
-    delete _cells[column][row];
+    //if(_cells[column][row])
+        //delete _cells[column][row];
     _cells[column][row] = cell;
 }
 
 void Field::Serialize(std::ostream &os)
 {
     os << typeid (Field).name() << " " << _heightInCells << " " << _widthInCells << std::endl;
+    for(int i = 0; i < _heightInCells; i++)
+    {
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            _cells[i][j]->Serialize(os);
+        }
+    }
 }

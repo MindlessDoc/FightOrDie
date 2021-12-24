@@ -9,7 +9,7 @@ class GameObjects;
 class Memento
 {
 public:
-    Memento(std::string fileName, std::map<std::string, DeserializableFactory*>* creator);
+    Memento(std::ifstream& in, std::map<std::string, DeserializableFactory*>* creator);
 
     GameObjects* GetGameObjects();
 

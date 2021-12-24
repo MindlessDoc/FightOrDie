@@ -44,4 +44,6 @@ void Exit::GameOver()
 void Exit::Serialize(std::ostream &os)
 {
     os << typeid (Exit).name() << " " << GetColumn() << " " << GetRow() << std::endl;
+    if(GetEntity())
+        GetEntity()->Serialize(os);
 }

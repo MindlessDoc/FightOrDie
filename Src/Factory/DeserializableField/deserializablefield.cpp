@@ -1,6 +1,7 @@
 #include "deserializablefield.h"
 
-Field* DeserializableField::operator()(std::istream &is)
+Serializable* DeserializableField::CreateObject(std::istream& is, Field* field, Cell* cell,
+                                       std::map<std::string, DeserializableFactory*>* creator)
 {
     int heightInCells, widthInCells;
     is >> heightInCells >> widthInCells;

@@ -5,6 +5,7 @@
 #include "Src/Application/mainwindow.h"
 #include "Src/Entities/Characters/Player/player.h"
 #include "Src/Controller/controller.h"
+#include "Src/Memento/caretaker.h"
 
 template<class LogRule, class EnemySpawn>
 class TemplateMediator : public Mediator
@@ -23,6 +24,10 @@ public:
         _mainWindow = mainWindow;
         _controller = controller;
     }
+    virtual void InitCaretaker(Caretaker* caretaker)
+    {
+        _caretaker = caretaker;
+    }
 
     void UpdateMediator(GraphicField* graphicField, Player* player, MainWindow* mainWindow, Controller* controller)
     {
@@ -32,6 +37,16 @@ public:
     virtual void DoSpawnEnemy(Field* field) override
     {
         _enemySpawn.Spawn(field, this);
+    }
+
+    virtual void notifyCaretakerSave()
+    {
+        _caretaker->DoSave(1);
+    }
+
+    virtual void notifyCaretakerDownload()
+    {
+        _caretaker->DoDownload(1);
     }
 
     virtual void notifySwap(Cell* first, Cell* second)
@@ -85,6 +100,7 @@ private:
     Player* _player;
     MainWindow* _mainWindow;
     Controller* _controller;
+    Caretaker* _caretaker;
 
     LogRule _logRule;
     EnemySpawn _enemySpawn;

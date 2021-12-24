@@ -13,5 +13,5 @@ Serializable* DeserializableWay::CreateObject(std::istream& is, Field* field, Ce
     {
         (*creator)[type]->CreateObject(is, field, nowCell, creator);
     }
-    field->InitCell(coord_x, coord_y, new Way(coord_x, coord_y));
+    field->InitCell(coord_x, coord_y, nowCell);
 }

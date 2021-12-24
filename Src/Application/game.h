@@ -16,8 +16,8 @@ public:
 
     void  Start();
 
-    virtual void Save();
-    virtual void Download(Memento* memento);
+    virtual void Save(std::ofstream& out) override;
+    virtual void Download(Memento* memento) override;
 
     Mediator* GetMediator();
 private:

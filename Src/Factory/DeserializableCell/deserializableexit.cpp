@@ -9,9 +9,9 @@ Serializable* DeserializableExit::CreateObject(std::istream& is, Field* field, C
     Cell* nowCell = new Exit(coord_x, coord_y);
     std::string type;
     is >> type;
-    if(type != "Nullptr")
+    if(type != "Nullptr" && creator->count(type) != 0)
     {
         (*creator)[type]->CreateObject(is, field, nowCell, creator);
     }
-    field->InitCell(coord_x, coord_y, new Exit(coord_x, coord_y));
+    field->InitCell(coord_x, coord_y, nowCell);
 }

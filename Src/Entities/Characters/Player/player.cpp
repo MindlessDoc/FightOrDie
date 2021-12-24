@@ -36,7 +36,6 @@ void Player::Init(Field* gameField, Cell* cell)
 {
     _gameField = gameField;
     _cell = cell;
-
     _cell->SetEntity(this);
 }
 

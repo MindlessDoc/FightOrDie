@@ -2,6 +2,7 @@
 #include "Src/Loggers/ConsolLogger/consollogger.h"
 #include "Src/Loggers/FileLogger/filelogger.h"
 #include "TemplateMediator.h"
+#include "Src/Fields/field.h"
 
 #include "Src/Rules/LoggerRule/loggerrule.h"
 
@@ -13,7 +14,22 @@
 #include "Src/Entities/Characters/Enemies/immortal.h"
 
 #include "Src/Controller/QtController/qtcontroller.h"
+#include "Src/Memento/caretaker.h"
 
+#include "Src/Factory/DeserializableField/deserializablefield.h"
+
+#include "Src/Factory/DeserializableCell/deserializableentrance.h"
+#include "Src/Factory/DeserializableCell/deserializableexit.h"
+#include "Src/Factory/DeserializableCell/deserializableway.h"
+
+#include "Src/Factory/DeserializableCharacters/deserializableimmortal.h"
+#include "Src/Factory/DeserializableCharacters/deserializableplayer.h"
+#include "Src/Factory/DeserializableCharacters/deserializabletrojan.h"
+#include "Src/Factory/DeserializableCharacters/deserializablevirus.h"
+
+#include "Src/Factory/DeserializableItems/deserializablearmor.h"
+#include "Src/Factory/DeserializableItems/deserializableattack.h"
+#include "Src/Factory/DeserializableItems/deserializablehealth.h"
 
 Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCells)
 {
@@ -38,6 +54,26 @@ Game::Game(int heightOfCell, int widthOfCell, int heightInCells, int widthInCell
     _controller = new QtController(_mediator);
 
     _mediator->InitMediator(_graphicField, _player, _mainWindow, _controller);
+    _mediator->InitCaretaker(new Caretaker(this, "C:/QtProjects/OOP/FightOrDie"));
+
+    _mediator->notifyCaretakerSave();
+    std::map<std::string, DeserializableFactory*> creator =
+                                                 {{typeid (ArmorItem).name(), new DeserializableArmor()},
+                                                 {typeid (AttackItem).name(), new DeserializableAttack()},
+                                                 {typeid (HealthItem).name(), new DeserializableHealth()},
+
+                                                 {typeid (Field).name(), new DeserializableField()},
+
+                                                 {typeid (Entrance).name(), new DeserializableEntrance()},
+                                                 {typeid (Exit).name(), new DeserializableExit()},
+                                                 {typeid (Way).name(), new DeserializableWay()},
+
+                                                 {typeid (Player).name(), new DeserializablePlayer()},
+                                                 {typeid (Immortal).name(), new DeserializableImmortal()},
+                                                 {typeid (Trojan).name(), new DeserializableTrojan()},
+                                                 {typeid (Virus).name(), new DeserializableVirus()}};
+    SetCreator(&creator);
+    _mediator->notifyCaretakerDownload();
 
     //_gameObjects = new GameObjects(_field, _player);
 }
@@ -55,16 +91,18 @@ void Game::Start()
     _mainWindow->show();
 }
 
-void Game::Save()
+void Game::Save(std::ofstream& out)
 {
-    //_gameObjects = memento->GetGameObjects();
+    _field->Serialize(out);
 }
 
 
 void Game::Download(Memento *memento)
 {
     _gameObjects = memento->GetGameObjects();
+    delete _field;
     _field = _gameObjects->GetField();
+    delete _player;
     _player = _field->GetPlayer();
     _field->InitMediator(_mediator);
     int height = _graphicField->GetHeightOfCell();

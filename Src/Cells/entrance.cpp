@@ -29,5 +29,7 @@ bool Entrance::CanMoveIn(const IEntity* entity)
 void Entrance::Serialize(std::ostream &os)
 {
     os << typeid (Entrance).name() << " " << GetColumn() << " " << GetRow() << std::endl;
+    if(GetEntity())
+        GetEntity()->Serialize(os);
 }
 
