@@ -43,6 +43,14 @@ SOURCES += \
     Src/Entities/Items/item.cpp \
     Src/Entities/graphicentity.cpp \
     Src/Entities/ientity.cpp \
+    Src/Factory/SerializableCharacters/serializableimmortal.cpp \
+    Src/Factory/SerializableCharacters/serializableplayer.cpp \
+    Src/Factory/SerializableCharacters/serializabletrojan.cpp \
+    Src/Factory/SerializableCharacters/serializablevirus.cpp \
+    Src/Factory/SerializableItems/serializablearmor.cpp \
+    Src/Factory/SerializableItems/serializableattack.cpp \
+    Src/Factory/SerializableItems/serializablehealth.cpp \
+    Src/Factory/serializablefactory.cpp \
     Src/Fields/field.cpp \
     Src/Fields/graphicfield.cpp \
     Src/Loggable/loggable.cpp \
@@ -55,7 +63,8 @@ SOURCES += \
     Src/Rules/EnemySpawnRule/enemyspawnrule.cpp \
     Src/Rules/LoggerRule/loggerrule.cpp \
     Src/Rules/rule.cpp \
-    Src/Controller/controller.cpp
+    Src/Controller/controller.cpp \
+    Src/Serializable/serializable.cpp
 
 
 HEADERS += \
@@ -92,6 +101,14 @@ HEADERS += \
     Src/Entities/Items/item.h \
     Src/Entities/graphicentity.h \
     Src/Entities/ientity.h \
+    Src/Factory/SerializableCharacters/serializableimmortal.h \
+    Src/Factory/SerializableCharacters/serializableplayer.h \
+    Src/Factory/SerializableCharacters/serializabletrojan.h \
+    Src/Factory/SerializableCharacters/serializablevirus.h \
+    Src/Factory/SerializableItems/serializablearmor.h \
+    Src/Factory/SerializableItems/serializableattack.h \
+    Src/Factory/SerializableItems/serializablehealth.h \
+    Src/Factory/serializablefactory.h \
     Src/Fields/field.h \
     Src/Fields/graphicfield.h \
     Src/Containers/vector.h \
@@ -105,7 +122,8 @@ HEADERS += \
     Src/Rules/EnemySpawnRule/enemyspawnrule.h \
     Src/Rules/LoggerRule/loggerrule.h \
     Src/Rules/rule.h \
-    Src/Controller/controller.h
+    Src/Controller/controller.h \
+    Src/Serializable/serializable.h
 
 FORMS += \
     mainwindow.ui
