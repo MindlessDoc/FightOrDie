@@ -1,11 +1,10 @@
-#ifndef DESERIALIZABLEFIELD_H
-#define DESERIALIZABLEFIELD_H
+#pragma once
 
+#include "Src/Fields/field.h"
 
 class DeserializableField
 {
 public:
-    DeserializableField();
+    DeserializableField() = default;
+    Field* operator()(std::istream& is);
 };
-
-#endif // DESERIALIZABLEFIELD_H

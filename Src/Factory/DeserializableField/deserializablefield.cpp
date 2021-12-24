@@ -1,6 +1,8 @@
 #include "deserializablefield.h"
 
-DeserializableField::DeserializableField()
+Field* DeserializableField::operator()(std::istream &is)
 {
-
+    int heightInCells, widthInCells;
+    is >> heightInCells >> widthInCells;
+    return new Field(heightInCells, widthInCells);
 }

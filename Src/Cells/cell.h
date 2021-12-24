@@ -10,6 +10,7 @@ class Mediator;
 class Cell
 {
 public:
+    Cell(int column, int row);
     Cell(int column, int row, Mediator* mediator);
     Cell() = default;
     virtual ~Cell();
