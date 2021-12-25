@@ -14,6 +14,6 @@ public:
     GameObjects* GetGameObjects();
 
 private:
-    GameObjects* _gameObjects;
+    GameObjects* _gameObjects = nullptr;
 };
 

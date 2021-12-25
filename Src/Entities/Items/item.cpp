@@ -19,7 +19,8 @@ Item::Item(Cell* cell)
 Item::~Item()
 {
     _cell->SetEntity(nullptr);
-    _mediator->notifyDeleteEntity(_cell->GetColumn(), _cell->GetRow());
+    if(_mediator)
+        _mediator->notifyDeleteEntity(_cell->GetColumn(), _cell->GetRow());
 }
 
 std::string Item::LogOut() const

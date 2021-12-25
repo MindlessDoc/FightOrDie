@@ -102,6 +102,8 @@ void Game::Save(std::ofstream& out)
 
 void Game::Download(Memento *memento)
 {
+    if(!memento->GetGameObjects())
+        return;
     _gameObjects = memento->GetGameObjects();
     delete _field;
     _field = _gameObjects->GetField();

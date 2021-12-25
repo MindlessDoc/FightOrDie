@@ -12,7 +12,7 @@ class Cell : public Serializable
 public:
     Cell(int column, int row);
     Cell(int column, int row, Mediator* mediator);
-    Cell() = default;
+    Cell();
     virtual ~Cell();
 
     Cell(const Cell& other);
@@ -31,9 +31,9 @@ public:
     void InitMediator(Mediator* mediator);
 
 protected:
-    Mediator* _mediator;
+    Mediator* _mediator = nullptr;
 
 private:
-    int _column, _row;
-    IEntity* _entity;
+    int _column = 0, _row = 0;
+    IEntity* _entity = nullptr;
 };

@@ -19,6 +19,6 @@ public:
 protected:
     Cell* _cell;
 
-    Mediator* _mediator;
+    Mediator* _mediator = nullptr;
 };
 

@@ -1,5 +1,7 @@
 #include "field.h"
 
+#include "Src/Cells/cell.h"
+
 #include "Src/Cells/entrance.h"
 #include "Src/Cells/exit.h"
 #include "Src/Cells/way.h"
@@ -21,6 +23,10 @@ Field::Field(int heightInCells, int widthInCells)
     for(int i = 0; i < _heightInCells; i++)
     {
         _cells[i].resize(_widthInCells);
+        for(int j = 0; j < _widthInCells; j++)
+        {
+            _cells[i][j] = new Way(0, 0);
+        }
     }
     //there may be a memory leak!!!!!
 }

@@ -18,20 +18,43 @@ Memento::Memento(std::ifstream& in, std::map<std::string, DeserializableFactory*
 
     if(in.is_open())
     {
-        std::string type;
-        in >> type;
-        field = static_cast<Field*>((*creator)[type]->CreateObject(in, field, prevCell, creator));
-        while(!in.eof())
+        try
         {
+            std::string type;
             in >> type;
-            (*creator)[type]->CreateObject(in, field, prevCell, creator);
+            if(type != typeid (Field).name())
+            {
+                _gameObjects = nullptr;
+                throw std::exception();
+                return;
+            }
+            else
+            {
+                field = static_cast<Field*>((*creator)[type]->CreateObject(in, field, prevCell, creator));
+                while(!in.eof())
+                {
+                    in >> type;
+                    if(creator->count(type) == 0)
+                        throw std::exception();
+                    else
+                        (*creator)[type]->CreateObject(in, field, prevCell, creator);
+                }
+                _gameObjects = new GameObjects(field, nullptr);
+            }
         }
+        catch (std::exception& ex)
+        {
+            std::cout << "Error";
+            delete field;
+            _gameObjects = nullptr;
+        }
+
     }
     else
     {
 
     }
-    _gameObjects = new GameObjects(field, nullptr);
+
 }
 
 GameObjects* Memento::GetGameObjects() { return _gameObjects; }

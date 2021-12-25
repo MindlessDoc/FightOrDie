@@ -3,6 +3,10 @@
 
 #include "Src/Application/mediator.h"
 
+Cell::Cell()
+{
+    _entity = nullptr;
+}
 
 Cell::Cell(int column, int row)
     : _column(column)
