@@ -5,7 +5,12 @@ Serializable* DeserializablePlayer::CreateObject(std::istream& is, Field* field,
 {
     int health, attack, armor;
     is >> health >> attack >> armor;
-    Player* player = new Player(health, attack, armor);
-    player->Init(field, cell);
-    return player;
+    if(health == 0 || attack == 0 || armor == 0)
+        throw std::exception();
+    else
+    {
+        Player* player = new Player(health, attack, armor);
+        player->Init(field, cell);
+        return player;
+    }
 }

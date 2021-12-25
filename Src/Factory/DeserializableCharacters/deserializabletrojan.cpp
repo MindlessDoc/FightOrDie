@@ -5,4 +5,3 @@ Serializable* DeserializableTrojan::CreateObject(std::istream& is, Field* field,
 {
     return new Trojan(field, cell);
 }
-
